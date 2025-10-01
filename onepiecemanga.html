@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Piece Manga</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #333;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ====== الشريط العلوي ====== */
+    header {
+      background: #111;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      color: white;
+    }
+
+    .logo img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ====== المحتوى ====== */
+    main {
+      flex: 1;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    .chapters {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .chapter-card {
+      background: #1c1c1c;
+      border-radius: 10px;
+      overflow: hidden;
+      text-align: center;
+      width: 180px;
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: white;
+      display: block;
+    }
+
+    .chapter-card:hover {
+      transform: scale(1.05);
+    }
+
+    .chapter-card img {
+      width: 100%;
+      height: 240px;
+      object-fit: contain;
+      background: #000;
+      border-bottom: 2px solid white;
+    }
+
+    .chapter-card h3 {
+      margin: 10px 0 5px;
+      font-size: 15px;
+      color: white;
+    }
+
+    .chapter-card p {
+      font-size: 13px;
+      color: #ccc;
+      margin: 0 0 10px;
+    }
+
+    /* ====== الفوتر ====== */
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      margin-top: auto;
+    }
+
+    footer a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- الشريط العلوي -->
+  <header>
+    <nav>
+      <div class="logo">
+        <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
+        <span>lufy manga</span>
+      </div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- المحتوى -->
+  <main>
+    <h2>LIST OF CHAPTERS</h2>
+    <div class="chapters">
+      <!-- الفصل 1161 -->
+      <a href="chapterop1161.html" class="chapter-card">
+        <img src="1161/saf2345rthgy.png" alt="One Piece Chapter 1161 Cover">
+        <h3>Chapter 1161</h3>
+        <p>a love ballad in a hail of arrows</p>
+      </a>
+
+      <!-- الفصل 1160 -->
+      <a href="chapterop1160.html" class="chapter-card">
+        <img src="1160/sdg45rtyghjdjg.png" alt="One Piece Chapter 1160 Cover">
+        <h3>Chapter 1160</h3>
+        <p>the god valley incident</p>
+      </a>
+    </div>
+  </main>
+
+  <!-- الفوتر -->
+  <footer>
+    <a href="TermsofService.html">Terms of Service</a> |
+    <a href="DigitalMillenniumCopyrightAct.html">Digital Millennium Copyright Act</a> |
+    <a href="PrivacyPolicy.html">Privacy Policy</a>
+  </footer>
+
+</body>
+</html>

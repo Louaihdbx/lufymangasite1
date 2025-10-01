@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Floating Characters in Space</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+      font-family: Arial, sans-serif;
+    }
+
+    canvas {
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    #moonBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 150px;
+      height: 150px;
+      z-index: 2000;
+      pointer-events: none;
+    }
+
+    #centerText {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1200;
+      pointer-events: none; 
+      width: 100%;
+      padding: 0 10px;
+    }
+
+    #centerText .logo {
+      width: 280px;
+      height: 280px;
+      margin-bottom: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 10px solid #000;
+      box-shadow: 0 0 28px rgba(0, 150, 255, 0.5);
+    }
+
+    #centerText h1 {
+      margin: 0;
+      font-weight: 900;
+      font-size: 60px;
+      color: #fff;
+      letter-spacing: 2px;
+      text-shadow: 0 6px 12px rgba(0,150,255,0.5);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #centerText p {
+      margin: 18px 0 0;
+      font-size: 28px;
+      color: #87CEFA;
+      text-shadow: 0 3px 8px rgba(135,206,250,0.45);
+      font-weight: 400;
+      max-width: 700px;
+      line-height: 2;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+      gap: 24px;
+      pointer-events: auto;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 40px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(128,128,128,0.15);
+      color: #fff;
+      font-size: 26px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .social-btn:hover {
+      background: rgba(128,128,128,0.3);
+      transform: translateY(-4px);
+    }
+    .social-btn .icon {
+      width: 36px;
+      height: 36px;
+      filter: brightness(0) invert(1);
+    }
+
+    footer {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-size: 22px;
+      font-weight: 500;
+      text-align: center;
+      pointer-events: none;
+    }
+
+    /* -------- نسخة الموبايل أكبر بضعف -------- */
+    @media (max-width: 768px) {
+      #moonBtn { width: 200px; height: 200px; }
+
+      #centerText .logo {
+        width: 400px; 
+        height: 400px; 
+        margin-bottom: 36px; 
+      }
+
+      #centerText h1 { 
+        font-size: 90px; 
+        line-height: 1.4;
+      }
+
+      #centerText p { 
+        font-size: 48px; 
+        line-height: 2.2;
+        max-width: 95%;
+        color: #ffffff;
+      }
+
+      .social-links { 
+        flex-direction: column; 
+        gap: 36px;
+        margin-top: 48px;
+      }
+
+      .social-btn { 
+        width: 100%; 
+        justify-content: center; 
+        font-size: 48px;
+        padding: 28px 40px;
+        border-radius: 24px;
+      }
+
+      .social-btn .icon { 
+        width: 64px; 
+        height: 64px; 
+      }
+
+      footer {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="space"></canvas>
+
+  <img id="moonBtn" src="characters/moon.webp" alt="Moon" />
+
+  <div id="centerText">
+    <img src="characters/dstf234retyghj.jpg" alt="Luffy" class="logo" />
+    <h1>Welcome to lufy site</h1>
+    <p>
+      We provide the latest <strong>One Piece</strong> manga chapters, fully translated to English, 
+      delivered in the highest quality and as fast as possible. Our goal is to make sure fans 
+      enjoy the story with clear visuals, accurate translations, and quick updates every week.
+    </p>
+
+    <div class="social-links">
+      <a href="https://instagram.com/lufy" target="_blank" class="social-btn instagram">
+        <img src="characters/4922972.png" alt="Instagram Icon" class="icon" />
+        <span>Instagram</span>
+      </a>
+      <a href="manga.html" class="social-btn manga">
+        <img src="characters/4860886.png" alt="Manga Icon" class="icon" />
+        <span>Manga</span>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    lufy © 2025
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('space');
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    /* -------- النجوم -------- */
+    const stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        brightness: Math.random(),
+        speed: (Math.random() - 0.5) * 0.2,
+        pulse: Math.random() * 0.05
+      });
+    }
+
+    function drawStars() {
+      for (const s of stars) {
+        s.brightness += s.pulse * (Math.random() > 0.5 ? 1 : -1);
+        if (s.brightness < 0.2) s.brightness = 0.2;
+        if (s.brightness > 1) s.brightness = 1;
+
+        s.x += s.speed;
+        if (s.x < 0) s.x = canvas.width;
+        if (s.x > canvas.width) s.x = 0;
+
+        ctx.fillStyle = '#fff';
+        ctx.globalAlpha = s.brightness;
+        ctx.fillRect(s.x, s.y, s.size, s.size);
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    /* -------- النيازك -------- */
+    class Meteor {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = -50;
+        this.length = 120;
+        this.speed = 8;
+        this.opacity = 1;
+      }
+      update() {
+        this.x += this.speed;
+        this.y += this.speed;
+        this.opacity -= 0.01;
+      }
+      draw() {
+        const grad = ctx.createLinearGradient(this.x, this.y, this.x - this.length, this.y - this.length);
+        grad.addColorStop(0, `rgba(255,255,255,${this.opacity})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x - this.length, this.y - this.length);
+        ctx.stroke();
+      }
+      isDead() {
+        return this.opacity <= 0;
+      }
+    }
+
+    const meteors = [];
+
+    // كل 10 ثواني نيزكين أو ثلاثة
+    setInterval(() => {
+      const count = 2 + Math.floor(Math.random() * 2); // 2 أو 3
+      for (let i = 0; i < count; i++) {
+        meteors.push(new Meteor());
+      }
+    }, 10000);
+
+    function drawMeteors() {
+      for (let i = meteors.length - 1; i >= 0; i--) {
+        const m = meteors[i];
+        m.update();
+        m.draw();
+        if (m.isDead()) meteors.splice(i, 1);
+      }
+    }
+
+    /* -------- حلقة الرسم -------- */
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawStars();
+      drawMeteors();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    addEventListener('resize', ()=>{
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    });
+  </script>
+</body>
+</html>

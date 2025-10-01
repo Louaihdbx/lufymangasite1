@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Digital Millennium Copyright Act - lufy manga</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --bg:#2e2e2e;
+      --text:#ffffff;
+      --muted:#cfcfcf;
+      --header:#111;
+    }
+
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      display:flex;
+      flex-direction:column;
+      min-height:100vh;
+    }
+
+    /* Header */
+    header{
+      width:100%;
+      background:var(--header);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:10px 20px;
+      box-shadow:0 2px 6px rgba(0,0,0,.4);
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .logo img{
+      width:42px;
+      height:42px;
+      border-radius:50%;
+      object-fit:cover;
+    }
+    .logo h1{
+      margin:0;
+      font-size:20px;
+      font-weight:700;
+    }
+    .nav-right a{
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      transition:color .2s;
+    }
+    .nav-right a:hover{ color:#87CEFA; }
+
+    /* Content */
+    main{
+      max-width:900px;
+      margin:40px auto;
+      padding:0 20px 40px;
+      line-height:1.7;
+      font-size:16px;
+      color:var(--muted);
+    }
+    main h2{
+      color:#fff;
+      margin-top:30px;
+      font-size:22px;
+    }
+    main p{ margin:12px 0; }
+
+    /* Footer */
+    footer{
+      width:100%;
+      background:#000;
+      color:#fff;
+      font-size:14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:12px 20px;
+      margin-top:auto;
+    }
+    footer a{
+      color:#fff;
+      text-decoration:none;
+      margin-left:18px;
+      transition:color .2s;
+    }
+    footer a:hover{ color:#87CEFA; }
+
+    @media(max-width:768px){
+      .logo img{ width:36px; height:36px; }
+      .logo h1{ font-size:18px; }
+      main{ font-size:15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="characters/dstf234retyghj.jpg" alt="logo">
+      <h1>lufy manga</h1>
+    </div>
+    <div class="nav-right">
+      <a href="index.html">Home</a>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main>
+    <h2>Digital Millennium Copyright Act (DMCA)</h2>
+    <p>At <strong>lufy manga</strong>, we respect the rights of copyright owners and do not support digital piracy. 
+       Our platform’s purpose is to provide fans with access to manga content while respecting intellectual property.</p>
+
+    <p>If you are a copyright owner or an authorized representative and believe that any material on our website 
+       infringes your rights under the Digital Millennium Copyright Act (DMCA), you may send us a takedown notice 
+       including the following information:</p>
+
+    <ul>
+      <li>A physical or electronic signature of the copyright owner or authorized agent.</li>
+      <li>Identification of the copyrighted work claimed to have been infringed.</li>
+      <li>Identification of the specific content to be removed (direct links required, not search results).</li>
+      <li>Your contact information (address, telephone number, and email address).</li>
+      <li>A statement of good faith belief that the disputed use is not authorized by the copyright owner, 
+          its agent, or the law.</li>
+      <li>A statement that the information provided is accurate, and under penalty of perjury, that you are authorized 
+          to act on behalf of the copyright owner.</li>
+    </ul>
+
+    <p>Upon receiving a valid DMCA notice, we will review the claim and take appropriate action, which may include 
+       removing or disabling access to the infringing content.</p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-left">
+      © 2025 lufy manga
+    </div>
+    <div class="footer-right">
+      <a href="TermsofService.html">Terms of Service</a>
+      <a href="DigitalMillenniumCopyrightAct.html">Digital Millennium Copyright Act</a>
+      <a href="PrivacyPolicy.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+</body>
+</html>

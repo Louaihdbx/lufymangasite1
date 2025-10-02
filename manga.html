@@ -4,6 +4,11 @@
   <meta charset="UTF-8">
   <title>lufy manga</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-132910049548971"
+     crossorigin="anonymous"></script>
+
   <style>
     :root{
       --card:#3a3a3a;
@@ -17,7 +22,7 @@
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      background:#000; /* خلفية أساسية سوداء */
+      background:#000;
       color:var(--text);
       min-height:100dvh;
       display:flex;
@@ -30,10 +35,9 @@
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1; /* يخلي الخلفية ورا */
+      z-index: -1;
     }
 
-    /* -------- Header -------- */
     header{
       width:100%;
       background:rgba(17,17,17,0.85);
@@ -70,11 +74,8 @@
       font-weight:600;
       transition:color .2s;
     }
-    .nav-right a:hover{
-      color:#87CEFA;
-    }
+    .nav-right a:hover{ color:#87CEFA; }
 
-    /* -------- Hero text -------- */
     .hero{
       width:100%;
       max-width:980px;
@@ -97,7 +98,15 @@
       color:var(--muted);
     }
 
-    /* -------- Cards area -------- */
+    /* إعلان */
+    .ads-container{
+      margin: 20px auto;
+      text-align: center;
+      max-width: 100%;
+      z-index:2;
+      position:relative;
+    }
+
     .cards{
       width:100%;
       max-width:1100px;
@@ -120,7 +129,6 @@
       color:inherit;
       display:inline-block;
     }
-
     .card img{
       width:100%;
       height:320px;
@@ -129,7 +137,6 @@
       transition:transform .35s ease;
     }
     .card a:hover img{ transform:scale(1.08); }
-
     .card p{
       margin:10px 10px 12px;
       font-size:16px;
@@ -137,7 +144,6 @@
       text-align:center;
     }
 
-    /* -------- Footer -------- */
     footer {
       width: 100%;
       background: rgba(0,0,0,0.85);
@@ -151,18 +157,14 @@
       position:relative;
       z-index:2;
     }
-
     footer a {
       color: #fff;
       text-decoration: none;
       margin-left: 18px;
       transition: color 0.2s;
     }
-    footer a:hover {
-      color: #87CEFA;
-    }
+    footer a:hover { color: #87CEFA; }
 
-    /* -------- Responsive -------- */
     @media (max-width: 768px){
       .logo img{ width:36px; height:36px; }
       .logo h1{ font-size:18px; }
@@ -176,10 +178,8 @@
 </head>
 <body>
 
-  <!-- الخلفية نجوم -->
   <canvas id="space"></canvas>
 
-  <!-- Header -->
   <header>
     <a href="index.html" class="logo">
       <img src="characters/dstf234retyghj.jpg" alt="logo">
@@ -190,13 +190,24 @@
     </div>
   </header>
 
-  <!-- Hero copy -->
   <section class="hero">
     <p>Here you’ll find the latest chapter of the manga you want to read.</p>
     <div class="sub">Earlier chapters will be added gradually.</div>
   </section>
 
-  <!-- Cards -->
+  <!-- ✅ إعلان أسفل الـ Hero -->
+  <div class="ads-container">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-132910049548971"
+         data-ad-slot="1234567890"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
   <section class="cards">
     <div class="card">
       <a href="onepiecemanga.html" aria-label="Open One Piece manga">
@@ -206,7 +217,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-left">
       © 2025 lufy manga
@@ -218,14 +228,12 @@
     </div>
   </footer>
 
-  <!-- سكربت النجوم + النيازك -->
   <script>
     const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');
     canvas.width = innerWidth;
     canvas.height = innerHeight;
 
-    /* -------- النجوم -------- */
     const stars = [];
     for (let i = 0; i < 150; i++) {
       stars.push({
@@ -255,7 +263,6 @@
       ctx.globalAlpha = 1;
     }
 
-    /* -------- النيازك -------- */
     class Meteor {
       constructor() {
         this.x = Math.random() * canvas.width;
@@ -280,9 +287,7 @@
         ctx.lineTo(this.x - this.length, this.y - this.length);
         ctx.stroke();
       }
-      isDead() {
-        return this.opacity <= 0;
-      }
+      isDead() { return this.opacity <= 0; }
     }
 
     const meteors = [];

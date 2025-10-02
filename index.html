@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <title>lufysite</title>
 
+  <!-- Google AdSense Verification -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1329100449548971"
+       crossorigin="anonymous"></script>
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HJHRNZ31H"></script>
   <script>
@@ -128,50 +132,15 @@
       pointer-events: none;
     }
 
-    /* -------- نسخة الموبايل -------- */
     @media (max-width: 768px) {
       #moonBtn { width: 200px; height: 200px; }
-
-      #centerText .logo {
-        width: 400px; 
-        height: 400px; 
-        margin-bottom: 36px; 
-      }
-
-      #centerText h1 { 
-        font-size: 90px; 
-        line-height: 1.4;
-      }
-
-      #centerText p { 
-        font-size: 48px; 
-        line-height: 2.2;
-        max-width: 95%;
-        color: #ffffff;
-      }
-
-      .social-links { 
-        flex-direction: column; 
-        gap: 36px;
-        margin-top: 48px;
-      }
-
-      .social-btn { 
-        width: 100%; 
-        justify-content: center; 
-        font-size: 48px;
-        padding: 28px 40px;
-        border-radius: 24px;
-      }
-
-      .social-btn .icon { 
-        width: 64px; 
-        height: 64px; 
-      }
-
-      footer {
-        font-size: 36px;
-      }
+      #centerText .logo { width: 400px; height: 400px; margin-bottom: 36px; }
+      #centerText h1 { font-size: 90px; line-height: 1.4; }
+      #centerText p { font-size: 48px; line-height: 2.2; max-width: 95%; color: #ffffff; }
+      .social-links { flex-direction: column; gap: 36px; margin-top: 48px; }
+      .social-btn { width: 100%; justify-content: center; font-size: 48px; padding: 28px 40px; border-radius: 24px; }
+      .social-btn .icon { width: 64px; height: 64px; }
+      footer { font-size: 36px; }
     }
   </style>
 </head>
@@ -211,7 +180,6 @@
     canvas.width = innerWidth;
     canvas.height = innerHeight;
 
-    /* -------- النجوم -------- */
     const stars = [];
     for (let i = 0; i < 150; i++) {
       stars.push({
@@ -241,7 +209,6 @@
       ctx.globalAlpha = 1;
     }
 
-    /* -------- النيازك -------- */
     class Meteor {
       constructor() {
         this.x = Math.random() * canvas.width;
@@ -266,16 +233,12 @@
         ctx.lineTo(this.x - this.length, this.y - this.length);
         ctx.stroke();
       }
-      isDead() {
-        return this.opacity <= 0;
-      }
+      isDead() { return this.opacity <= 0; }
     }
 
     const meteors = [];
-
-    // كل 10 ثواني نيزكين أو ثلاثة
     setInterval(() => {
-      const count = 2 + Math.floor(Math.random() * 2); // 2 أو 3
+      const count = 2 + Math.floor(Math.random() * 2);
       for (let i = 0; i < count; i++) {
         meteors.push(new Meteor());
       }
@@ -290,7 +253,6 @@
       }
     }
 
-    /* -------- حلقة الرسم -------- */
     function animate(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
       drawStars();

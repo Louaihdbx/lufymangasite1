@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root{
-      --bg:#2e2e2e;
       --card:#3a3a3a;
       --text:#ffffff;
       --muted:#cfcfcf;
@@ -18,22 +17,33 @@
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      background:var(--bg);
+      background:#000; /* خلفية أساسية سوداء */
       color:var(--text);
       min-height:100dvh;
       display:flex;
       flex-direction:column;
+      overflow-x:hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1; /* يخلي الخلفية ورا */
     }
 
     /* -------- Header -------- */
     header{
       width:100%;
-      background:var(--header);
+      background:rgba(17,17,17,0.85);
       display:flex;
       align-items:center;
       justify-content:space-between;
       padding:10px 20px;
       box-shadow:0 2px 6px rgba(0,0,0,.4);
+      position:relative;
+      z-index:2;
     }
     .logo{
       display:flex;
@@ -71,6 +81,8 @@
       text-align:center;
       padding:40px 20px 24px;
       margin:auto;
+      position:relative;
+      z-index:2;
     }
     .hero p{
       margin:0;
@@ -94,11 +106,13 @@
       gap:24px;
       padding:10px 20px 60px;
       place-items:center;
+      position:relative;
+      z-index:2;
     }
 
     .card{
       width:220px;
-      background:var(--card);
+      background:rgba(58,58,58,0.9);
       border:2px solid var(--border);
       border-radius:10px;
       overflow:hidden;
@@ -126,7 +140,7 @@
     /* -------- Footer -------- */
     footer {
       width: 100%;
-      background: #000;
+      background: rgba(0,0,0,0.85);
       color: #fff;
       font-size: 14px;
       display: flex;
@@ -134,6 +148,8 @@
       align-items: center;
       padding: 12px 20px;
       margin-top: auto;
+      position:relative;
+      z-index:2;
     }
 
     footer a {
@@ -159,6 +175,9 @@
   </style>
 </head>
 <body>
+
+  <!-- الخلفية نجوم -->
+  <canvas id="space"></canvas>
 
   <!-- Header -->
   <header>
@@ -199,5 +218,102 @@
     </div>
   </footer>
 
+  <!-- سكربت النجوم + النيازك -->
+  <script>
+    const canvas = document.getElementById('space');
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    /* -------- النجوم -------- */
+    const stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        brightness: Math.random(),
+        speed: (Math.random() - 0.5) * 0.2,
+        pulse: Math.random() * 0.05
+      });
+    }
+
+    function drawStars() {
+      for (const s of stars) {
+        s.brightness += s.pulse * (Math.random() > 0.5 ? 1 : -1);
+        if (s.brightness < 0.2) s.brightness = 0.2;
+        if (s.brightness > 1) s.brightness = 1;
+
+        s.x += s.speed;
+        if (s.x < 0) s.x = canvas.width;
+        if (s.x > canvas.width) s.x = 0;
+
+        ctx.fillStyle = '#fff';
+        ctx.globalAlpha = s.brightness;
+        ctx.fillRect(s.x, s.y, s.size, s.size);
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    /* -------- النيازك -------- */
+    class Meteor {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = -50;
+        this.length = 120;
+        this.speed = 8;
+        this.opacity = 1;
+      }
+      update() {
+        this.x += this.speed;
+        this.y += this.speed;
+        this.opacity -= 0.01;
+      }
+      draw() {
+        const grad = ctx.createLinearGradient(this.x, this.y, this.x - this.length, this.y - this.length);
+        grad.addColorStop(0, `rgba(255,255,255,${this.opacity})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x - this.length, this.y - this.length);
+        ctx.stroke();
+      }
+      isDead() {
+        return this.opacity <= 0;
+      }
+    }
+
+    const meteors = [];
+    setInterval(() => {
+      const count = 2 + Math.floor(Math.random() * 2);
+      for (let i = 0; i < count; i++) {
+        meteors.push(new Meteor());
+      }
+    }, 10000);
+
+    function drawMeteors() {
+      for (let i = meteors.length - 1; i >= 0; i--) {
+        const m = meteors[i];
+        m.update();
+        m.draw();
+        if (m.isDead()) meteors.splice(i, 1);
+      }
+    }
+
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawStars();
+      drawMeteors();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    addEventListener('resize', ()=>{
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    });
+  </script>
 </body>
 </html>

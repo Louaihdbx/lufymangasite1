@@ -8,14 +8,13 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #444; /* خلفية رمادية */
+      background: #444;
       color: white;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
     }
 
-    /* ====== الشريط العلوي ====== */
     header {
       background: #111;
       padding: 10px 20px;
@@ -60,7 +59,6 @@
       font-weight: bold;
     }
 
-    /* ====== المحتوى ====== */
     main {
       flex: 1;
       padding: 20px;
@@ -85,7 +83,28 @@
       border-radius: 8px;
     }
 
-    /* ====== الفوتر ====== */
+    /* أزرار الفصول */
+    .chapter-nav {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .chapter-nav a {
+      background: #222;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .chapter-nav a:hover {
+      background: #666;
+    }
+
     footer {
       background: #111;
       text-align: center;
@@ -107,7 +126,6 @@
 </head>
 <body>
 
-  <!-- الشريط العلوي -->
   <header>
     <nav>
       <div class="logo">
@@ -120,15 +138,13 @@
     </nav>
   </header>
 
-  <!-- المحتوى -->
   <main>
     <h2>One Piece - Chapter 1161</h2>
     <div class="chapter-pages">
-      <!-- الصفحة 1 من CDN jsDelivr -->
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/G1xcWpKWsAA2c6I (1).jpg" alt="">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/saf2345rthgy.png" alt="">
-       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/sdfg546y7tuikjolsaf.jpg" alt="">
-       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/ojidsuhf98we4yugobcfvsaf3.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/sdfg546y7tuikjolsaf.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/ojidsuhf98we4yugobcfvsaf3.jpg" alt="">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/adsgdsh345t6yruhjsaf.jpg" alt="">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/grtyhgujkvcghn.jpg" alt="">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/gdsg34r5etyuhjgksaf.jpg" alt="">
@@ -141,26 +157,20 @@
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_015saf35tyasf.jpg" alt="">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_016gdsdgsafxx.jpg" alt="">
     </div>
+
+    <!-- أزرار التنقل -->
+    <div class="chapter-nav">
+      <a href="chapter1160.html">⟵ Previous Chapter</a>
+      <a href="chapter1162.html">Next Chapter ⟶</a>
+    </div>
   </main>
 
-  <!-- الفوتر -->
-<footer>
-  <a href="onepiecemanga.html">Back to Chapters</a> |
-  <a href="TermsofService.html">Terms of Service</a> |
-  <a href="DigitalMillenniumCopyrightAct.html">Digital Millennium Copyright Act</a> |
-  <a href="PrivacyPolicy.html">Privacy Policy</a>
-</footer>
+  <footer>
+    <a href="onepiecemanga.html">Back to Chapters</a> |
+    <a href="TermsofService.html">Terms of Service</a> |
+    <a href="DigitalMillenniumCopyrightAct.html">Digital Millennium Copyright Act</a> |
+    <a href="PrivacyPolicy.html">Privacy Policy</a>
+  </footer>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-

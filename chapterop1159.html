@@ -2,32 +2,31 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, minimum-scale=0.5">
   <title>One Piece - Chapter 1159</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #444;
+      background: #000;
       color: white;
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      scroll-behavior: smooth;
+      touch-action: pan-x pan-y;
     }
 
     header {
-      background: #111;
+      background: #000;
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #222;
     }
 
     .logo {
@@ -59,105 +58,285 @@
       font-weight: bold;
     }
 
-    main {
-      flex: 1;
-      padding: 20px;
+    .chapter-toolbar {
+      background: #111;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 50px;
+      z-index: 9;
+      border-bottom: 1px solid #222;
+      flex-wrap: nowrap;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .chapter-toolbar::-webkit-scrollbar { display: none; }
+
+    .chapter-toolbar a {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+      transition: background 0.3s, transform 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .chapter-toolbar a:hover {
+      background: #333;
+      transform: scale(1.05);
+    }
+
+    .zoom-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .zoom-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #1a1a1a;
+      padding: 8px 12px;
+      border-radius: 10px;
+      justify-content: center;
+    }
+
+    .zoom-controls button {
+      background: #222;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .zoom-controls button:hover {
+      background: #444;
+    }
+
+    #zoomLevel {
+      font-size: 15px;
+      min-width: 50px;
       text-align: center;
     }
 
+    main {
+      flex: 1;
+      text-align: center;
+      background: #000;
+      padding-bottom: 40px;
+    }
+
     h2 {
-      margin-bottom: 20px;
+      margin: 25px 0;
+      font-size: 26px;
+      color: #f5f5f5;
     }
 
     .chapter-pages {
       display: flex;
       flex-direction: column;
-      gap: 20px;
       align-items: center;
+      gap: 25px;
+      position: relative;
     }
 
-    .chapter-pages img {
-      max-width: 90%;
+    .page {
+      position: relative;
+      width: 90%;
+      overflow: hidden;
+      border-radius: 5px;
+    }
+
+    .page img {
+      width: 100%;
       height: auto;
-      border: 2px solid white;
-      border-radius: 8px;
-    }
-
-    /* أزرار التنقل */
-    .chapter-nav {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .chapter-nav a {
-      background: #222;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .chapter-nav a:hover {
-      background: #666;
+      display: block;
+      transition: transform 0.25s ease, z-index 0.25s ease;
+      cursor: pointer;
+      border-radius: 5px;
+      position: relative;
+      z-index: 1;
     }
 
     footer {
-      background: #111;
+      background: #000;
       text-align: center;
       padding: 10px;
       font-size: 14px;
-      margin-top: auto;
+      border-top: 1px solid #222;
     }
 
     footer a {
-      color: white;
+      color: #aaa;
       margin: 0 10px;
       text-decoration: none;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    @media (max-width: 700px) {
+      .chapter-pages .page { width: 98%; }
+      header { padding: 10px 12px; }
+      .chapter-toolbar { padding: 10px; gap: 8px; }
+      .zoom-controls button { font-size: 18px; padding: 8px 10px; }
+      #zoomLevel { font-size: 17px; }
+      .chapter-toolbar a { font-size: 15px; padding: 7px 12px; }
     }
   </style>
 </head>
 <body>
 
   <header>
+    <div class="logo">
+      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
+      <span>lufy manga</span>
+    </div>
     <nav>
-      <div class="logo">
-        <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
-        <span>lufy manga</span>
-      </div>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-      </ul>
+      <ul><li><a href="index.html">Home</a></li></ul>
     </nav>
   </header>
 
-  <main>
-    <h2>One Piece - Chapter 1159</h2>
-    <div class="chapter-pages">
-      <!-- صور الفصل -->
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1159mangaen/op_1159_ins_001.png" alt="">
+  <div class="chapter-toolbar">
+    <a href="chapterop1158.html">← Previous Chapter</a>
+
+    <div class="zoom-area">
+      <a href="#" id="firstPageBtn">Jump to First Page</a>
+      <div class="zoom-controls">
+        <button id="zoomOut">−</button>
+        <span id="zoomLevel">100%</span>
+        <button id="zoomIn">+</button>
+        <button id="resetZoom">Reset</button>
+      </div>
+      <a href="#" id="lastPageBtn">Jump to Last Page</a>
     </div>
 
-    <!-- أزرار التنقل -->
-    <div class="chapter-nav">
-      <a href="chapterop1158.html">⟵ Previous Chapter</a>
-      <a href="chapterop1160.html">Next Chapter ⟶</a>
+    <a href="chapterop1160.html">Next Chapter →</a>
+  </div>
+
+  <main>
+    <h2>One Piece - Chapter 1159</h2>
+    <div class="chapter-pages" id="chapterPages">
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1159mangaen/op_1159_ins_001.png" alt=""></div>
     </div>
   </main>
 
   <footer>
     <a href="onepiecemanga.html">Back to Chapters</a> |
-    <a href="TermsofService.html">Terms of Service</a> |
-    <a href="DigitalMillenniumCopyrightAct.html">Digital Millennium Copyright Act</a> |
     <a href="PrivacyPolicy.html">Privacy Policy</a>
   </footer>
 
+  <script>
+  const zoomLevelDisplay = document.getElementById('zoomLevel');
+  const images = document.querySelectorAll('.chapter-pages img');
+  let zoom = 1;
+  let activeImage = null;
+
+  function getCenterImage() {
+    let middleY = window.scrollY + window.innerHeight / 2;
+    let closest = images[0];
+    let minDiff = Infinity;
+    images.forEach(img => {
+      const rect = img.getBoundingClientRect();
+      const center = rect.top + window.scrollY + rect.height / 2;
+      const diff = Math.abs(center - middleY);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closest = img;
+      }
+    });
+    return closest;
+  }
+
+  function updateZoom() {
+    if (!activeImage) activeImage = getCenterImage();
+
+    images.forEach(img => {
+      if (img === activeImage) {
+        img.style.zIndex = 5; // أقل من الهيدر
+        img.style.position = 'relative';
+        img.style.transformOrigin = 'center center';
+        img.style.transform = `scale(${zoom})`;
+      } else {
+        img.style.transform = 'scale(1)';
+        img.style.zIndex = 1;
+        img.style.position = 'relative';
+      }
+    });
+
+    zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
+  }
+
+  document.getElementById('zoomIn').onclick = () => { 
+    activeImage = getCenterImage();
+    zoom = Math.min(2.5, zoom + 0.1); 
+    updateZoom(); 
+  };
+
+  document.getElementById('zoomOut').onclick = () => { 
+    activeImage = getCenterImage();
+    zoom = Math.max(0.5, zoom - 0.1); 
+    updateZoom(); 
+  };
+
+  document.getElementById('resetZoom').onclick = () => { 
+    zoom = 1; 
+    activeImage = null;
+    updateZoom(); 
+  };
+
+  function smoothScrollTo(targetY, duration = 800) {
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    let start;
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const percent = Math.min(progress / duration, 1);
+      window.scrollTo(0, startY + diff * (percent < 0.5 ? 2*percent*percent : -1+(4-2*percent)*percent));
+      if (percent < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  images.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      const next = images[i + 1];
+      if (next) {
+        const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
+        smoothScrollTo(nextY, 700);
+        zoom = 1;
+        activeImage = null;
+        updateZoom();
+      }
+    });
+  });
+
+  document.getElementById('firstPageBtn').onclick = e => {
+    e.preventDefault();
+    smoothScrollTo(0, 1000);
+    zoom = 1;
+    activeImage = null;
+    updateZoom();
+  };
+
+  document.getElementById('lastPageBtn').onclick = e => {
+    e.preventDefault();
+    smoothScrollTo(document.body.scrollHeight, 1000);
+    zoom = 1;
+    activeImage = null;
+    updateZoom();
+  };
+  </script>
 </body>
 </html>

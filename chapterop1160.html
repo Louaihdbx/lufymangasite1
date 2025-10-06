@@ -58,7 +58,6 @@
       font-weight: bold;
     }
 
-    /* ====== شريط الأدوات ====== */
     .chapter-toolbar {
       background: #111;
       padding: 10px 20px;
@@ -151,15 +150,25 @@
       flex-direction: column;
       align-items: center;
       gap: 25px;
+      position: relative;
     }
 
-    .chapter-pages img {
+    .page {
+      position: relative;
       width: 90%;
-      height: auto;
+      overflow: hidden;
       border-radius: 5px;
+    }
+
+    .page img {
+      width: 100%;
+      height: auto;
       display: block;
+      transition: transform 0.25s ease, z-index 0.25s ease;
       cursor: pointer;
-      transition: transform 0.25s ease;
+      border-radius: 5px;
+      position: relative;
+      z-index: 1;
     }
 
     footer {
@@ -177,12 +186,12 @@
     }
 
     @media (max-width: 700px) {
+      .chapter-pages .page { width: 98%; }
       header { padding: 10px 12px; }
-      .chapter-toolbar { padding: 10px; overflow-x: auto; gap: 8px; }
+      .chapter-toolbar { padding: 10px; gap: 8px; }
       .zoom-controls button { font-size: 18px; padding: 8px 10px; }
       #zoomLevel { font-size: 17px; }
       .chapter-toolbar a { font-size: 15px; padding: 7px 12px; }
-      .chapter-pages img { width: 98%; }
     }
   </style>
 </head>
@@ -218,19 +227,19 @@
   <main>
     <h2>One Piece - Chapter 1160</h2>
     <div class="chapter-pages" id="chapterPages">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page0.png" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page1.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page2.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page3.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page4.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page5.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page6.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page7.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page8.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page9.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page10.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page11.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page12.jpg" alt="">
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page0.png"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page1.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page2.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page3.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page4.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page5.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page6.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page7.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page8.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page9.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page10.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page11.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page12.jpg"></div>
     </div>
   </main>
 
@@ -263,15 +272,20 @@
 
   function updateZoom() {
     if (!activeImage) activeImage = getCenterImage();
+
     images.forEach(img => {
       if (img === activeImage) {
-        img.style.transition = 'transform 0.25s ease';
+        img.style.zIndex = 5; // أقل من الهيدر
+        img.style.position = 'relative';
         img.style.transformOrigin = 'center center';
         img.style.transform = `scale(${zoom})`;
       } else {
         img.style.transform = 'scale(1)';
+        img.style.zIndex = 1;
+        img.style.position = 'relative';
       }
     });
+
     zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
   }
 

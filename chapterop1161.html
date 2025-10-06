@@ -15,38 +15,76 @@
       min-height: 100vh;
     }
 
-    /* ====== الهيدر ====== */
-    header {
-      background: #000;
-      padding: 10px 20px;
+    /* ====== حاوية الأزرار العلوية ====== */
+    .top-bar {
+      background: #111;
+      padding: 8px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       border-bottom: 1px solid #222;
     }
 
-    .logo {
+    /* يسار الشريط */
+    .left-controls {
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: bold;
-      font-size: 18px;
-      color: white;
+      color: #fff;
     }
 
-    .logo img {
+    .left-controls img {
       width: 35px;
       height: 35px;
       border-radius: 50%;
     }
 
-    nav {
+    /* يمين الشريط */
+    .zoom-controls {
       display: flex;
       align-items: center;
-      gap: 25px;
+      gap: 8px;
+      background: #1a1a1a;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .zoom-controls button {
+      background: #222;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .zoom-controls button:hover {
+      background: #444;
+    }
+
+    #zoomLevel {
+      font-size: 14px;
+      width: 45px;
+      text-align: center;
+    }
+
+    /* ====== الهيدر ====== */
+    header {
+      background: #000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: sticky;
+      top: 48px;
+      z-index: 10;
+      border-bottom: 1px solid #222;
     }
 
     nav ul {
@@ -63,40 +101,6 @@
       font-weight: bold;
     }
 
-    /* ====== أزرار الزوم داخل الهيدر ====== */
-    .zoom-controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      user-select: none;
-      background: #111;
-      padding: 5px 12px;
-      border-radius: 8px;
-    }
-
-    .zoom-controls button {
-      background: #222;
-      color: white;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .zoom-controls button:hover {
-      background: #555;
-    }
-
-    #zoomLevel {
-      font-size: 14px;
-      width: 45px;
-      display: inline-block;
-      text-align: center;
-    }
-
     /* ====== المحتوى ====== */
     main {
       flex: 1;
@@ -106,7 +110,7 @@
     }
 
     h2 {
-      margin-top: 30px;
+      margin-top: 25px;
       font-size: 26px;
       color: #f5f5f5;
       text-align: center;
@@ -130,7 +134,7 @@
       image-rendering: -webkit-optimize-contrast;
     }
 
-    /* ====== التنقل بين الفصول (ستايل الصورة) ====== */
+    /* ====== التنقل بين الفصول ====== */
     .chapter-nav {
       margin-top: 50px;
       display: flex;
@@ -156,6 +160,7 @@
       transform: scale(1.05);
     }
 
+    /* ====== الفوتر ====== */
     footer {
       background: #000;
       text-align: center;
@@ -177,21 +182,23 @@
 </head>
 <body>
 
-  <!-- ====== الشريط العلوي ====== -->
-  <header>
-    <div class="logo">
+  <!-- ====== الشريط العلوي (يسار شعار / يمين تحكم الزوم) ====== -->
+  <div class="top-bar">
+    <div class="left-controls">
       <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
       <span>lufy manga</span>
     </div>
 
-    <!-- أزرار الزوم بالنص -->
     <div class="zoom-controls">
       <button id="zoomOut">−</button>
       <span id="zoomLevel">100%</span>
       <button id="zoomIn">+</button>
       <button id="resetZoom">Reset</button>
     </div>
+  </div>
 
+  <!-- ====== الشريط الثاني ====== -->
+  <header>
     <nav>
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -221,7 +228,6 @@
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_016gdsdgsafxx.jpg" alt="">
     </div>
 
-    <!-- ====== أزرار الفصول ====== -->
     <div class="chapter-nav">
       <a href="chapterop1160.html">← Previous Chapter</a>
       <a href="chapterop1162.html">Next Chapter →</a>

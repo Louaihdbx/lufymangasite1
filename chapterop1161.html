@@ -13,9 +13,9 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      scroll-behavior: smooth; /* سلاسة عامة */
     }
 
-    /* ====== الهيدر ====== */
     header {
       background: #000;
       padding: 10px 20px;
@@ -125,7 +125,6 @@
       text-align: center;
     }
 
-    /* ====== الصور ====== */
     main {
       flex: 1;
       text-align: center;
@@ -139,6 +138,7 @@
       color: #f5f5f5;
     }
 
+    /* ====== الصور ====== */
     .chapter-pages {
       display: flex;
       flex-direction: column;
@@ -160,7 +160,6 @@
       transform: scale(0.99);
     }
 
-    /* ====== الفوتر ====== */
     footer {
       background: #000;
       text-align: center;
@@ -246,15 +245,17 @@
     <a href="PrivacyPolicy.html">Privacy Policy</a>
   </footer>
 
-  <!-- ====== سكربت الزوم والتنقل ====== -->
   <script>
     const zoomLevelDisplay = document.getElementById('zoomLevel');
     const images = document.querySelectorAll('.chapter-pages img');
     let zoom = 1;
 
+    // ====== تحديث الزوم بدون تحريك الصفحة ======
     function updateZoom() {
+      const currentScroll = window.scrollY; // حفظ موضع الصفحة
       images.forEach(img => img.style.width = `${90 * zoom}%`);
       zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
+      window.scrollTo(0, currentScroll); // استرجاع نفس الموضع
     }
 
     document.getElementById('zoomIn').onclick = () => {
@@ -272,7 +273,17 @@
       updateZoom();
     };
 
-    // Jump to first/last page
+    // ====== تمرير سلس للصورة التالية ======
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        const nextImg = images[index + 1];
+        if (nextImg) {
+          nextImg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ====== الانتقال لأول وآخر صفحة ======
     document.getElementById('firstPageBtn').onclick = (e) => {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -282,16 +293,6 @@
       e.preventDefault();
       window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     };
-
-    // ====== عند الضغط على الصورة تنزل شوي ======
-    images.forEach((img, index) => {
-      img.addEventListener('click', () => {
-        const nextImg = images[index + 1];
-        if (nextImg) {
-          nextImg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      });
-    });
   </script>
 
 </body>

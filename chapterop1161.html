@@ -130,29 +130,32 @@
       image-rendering: -webkit-optimize-contrast;
     }
 
-    /* ====== التنقل بين الفصول ====== */
+    /* ====== التنقل بين الفصول (ستايل الصورة) ====== */
     .chapter-nav {
-      margin-top: 40px;
+      margin-top: 50px;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 25px;
     }
 
     .chapter-nav a {
-      background: #222;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 8px;
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: bold;
-      transition: 0.3s;
+      font-size: 15px;
+      transition: background 0.3s, transform 0.2s;
+      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
     }
 
     .chapter-nav a:hover {
-      background: #555;
+      background: #333;
+      transform: scale(1.05);
     }
 
-    /* ====== الفوتر ====== */
     footer {
       background: #000;
       text-align: center;
@@ -218,9 +221,10 @@
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_016gdsdgsafxx.jpg" alt="">
     </div>
 
+    <!-- ====== أزرار الفصول ====== -->
     <div class="chapter-nav">
-      <a href="chapterop1160.html">⟵ Previous Chapter</a>
-      <a href="chapterop1162.html">Next Chapter ⟶</a>
+      <a href="chapterop1160.html">← Previous Chapter</a>
+      <a href="chapterop1162.html">Next Chapter →</a>
     </div>
   </main>
 

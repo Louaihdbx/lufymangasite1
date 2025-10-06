@@ -56,7 +56,6 @@
       font-weight: bold;
     }
 
-    /* ====== شريط التحكم ====== */
     .chapter-toolbar {
       background: #111;
       padding: 8px 20px;
@@ -137,7 +136,6 @@
       color: #f5f5f5;
     }
 
-    /* ====== الصور ====== */
     .chapter-pages {
       display: flex;
       flex-direction: column;
@@ -244,38 +242,40 @@
     const images = document.querySelectorAll('.chapter-pages img');
     let zoom = 1;
 
-    // ====== تحديث الزوم مع الحفاظ على الموضع الحقيقي ======
-    function updateZoom(keepPosition = true) {
-      let ratio = 0;
-      if (keepPosition) {
-        const currentScroll = window.scrollY;
-        ratio = currentScroll / (document.body.scrollHeight - window.innerHeight);
-      }
+    // تحديث الزوم مع تثبيت العنصر في منتصف الشاشة
+    function updateZoom() {
+      // نحسب العنصر في المنتصف قبل التغيير
+      const centerY = window.innerHeight / 2;
+      const centerElement = document.elementFromPoint(window.innerWidth / 2, centerY);
+      const oldCenterTop = centerElement ? centerElement.getBoundingClientRect().top : 0;
 
       images.forEach(img => img.style.width = `${90 * zoom}%`);
       zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
 
-      if (keepPosition) {
-        const newScroll = ratio * (document.body.scrollHeight - window.innerHeight);
-        window.scrollTo({ top: newScroll });
+      // نرجع نفس العنصر لنفس موضعه بالضبط
+      if (centerElement) {
+        const newCenterTop = centerElement.getBoundingClientRect().top;
+        const diff = newCenterTop - oldCenterTop;
+        window.scrollBy(0, diff);
       }
     }
 
-    // ====== أزرار الزوم ======
     document.getElementById('zoomIn').onclick = () => {
       zoom = Math.min(2, zoom + 0.1);
       updateZoom();
     };
+
     document.getElementById('zoomOut').onclick = () => {
       zoom = Math.max(0.4, zoom - 0.1);
       updateZoom();
     };
+
     document.getElementById('resetZoom').onclick = () => {
       zoom = 1;
       updateZoom();
     };
 
-    // ====== تمرير ناعم ======
+    // تمرير ناعم
     function smoothScrollTo(targetY, duration = 800) {
       const startY = window.scrollY;
       const diff = targetY - startY;
@@ -293,7 +293,7 @@
       requestAnimationFrame(step);
     }
 
-    // ====== عند الضغط على الصورة ======
+    // الضغط على الصورة
     images.forEach((img, i) => {
       img.addEventListener('click', () => {
         const next = images[i + 1];
@@ -304,7 +304,7 @@
       });
     });
 
-    // ====== الانتقال لأول وآخر صفحة ======
+    // الانتقال لأول وآخر صفحة
     document.getElementById('firstPageBtn').onclick = e => {
       e.preventDefault();
       smoothScrollTo(0, 1000);

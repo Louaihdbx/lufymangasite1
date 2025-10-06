@@ -73,14 +73,18 @@
     /* ====== المحتوى ====== */
     main {
       flex: 1;
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
       position: relative;
       z-index: 2;
     }
 
     h2 {
-      margin-bottom: 20px;
+      margin-bottom: 30px;
+      font-size: 32px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: bold;
     }
 
     .chapters {
@@ -97,16 +101,18 @@
       text-align: center;
       width: 320px;
       height: 500px;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
       color: white;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      box-shadow: 0 0 10px rgba(255,255,255,0.08);
     }
 
     .chapter-card:hover {
       transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255,255,255,0.15);
     }
 
     .chapter-card img {
@@ -119,12 +125,14 @@
 
     .chapter-card h3 {
       margin: 10px 0 4px;
-      font-size: 17px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
     }
 
     .chapter-card p {
-      font-size: 14px;
-      color: #ccc;
+      font-size: 16px;
+      color: #d3d3d3;
       margin-bottom: 10px;
     }
 
@@ -151,6 +159,9 @@
 
     /* ====== تحسين العرض للجوال ====== */
     @media (max-width: 480px) {
+      h2 {
+        font-size: 26px;
+      }
       .chapters {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px;
@@ -163,13 +174,12 @@
         height: 330px;
       }
       .chapter-card h3 {
-        font-size: 15px;
+        font-size: 18px;
       }
       .chapter-card p {
-        font-size: 13px;
+        font-size: 15px;
       }
     }
-
   </style>
 </head>
 <body>

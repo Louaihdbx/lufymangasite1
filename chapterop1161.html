@@ -1,311 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>One Piece - Chapter 1161</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
+<script>
+  const zoomLevelDisplay = document.getElementById('zoomLevel');
+  const images = document.querySelectorAll('.chapter-pages img');
+  let zoom = 1;
+
+  // ====== تحديث الزوم مع الحفاظ على الموضع الحقيقي ======
+  function updateZoom(keepPosition = true) {
+    let ratio = 0;
+    if (keepPosition) {
+      const currentScroll = window.scrollY;
+      ratio = currentScroll / (document.body.scrollHeight - window.innerHeight);
     }
 
-    header {
-      background: #000;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 1px solid #222;
+    images.forEach(img => img.style.width = `${90 * zoom}%`);
+    zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
+
+    if (keepPosition) {
+      const newScroll = ratio * (document.body.scrollHeight - window.innerHeight);
+      window.scrollTo({ top: newScroll });
     }
+  }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
-      font-size: 18px;
-      color: white;
+  // ====== أزرار الزوم ======
+  document.getElementById('zoomIn').onclick = () => {
+    zoom = Math.min(2, zoom + 0.1);
+    updateZoom();
+  };
+  document.getElementById('zoomOut').onclick = () => {
+    zoom = Math.max(0.4, zoom - 0.1);
+    updateZoom();
+  };
+  document.getElementById('resetZoom').onclick = () => {
+    zoom = 1;
+    updateZoom();
+  };
+
+  // ====== تمرير ناعم مخصص ======
+  function smoothScrollTo(targetY, duration = 800) {
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    let start;
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const percent = Math.min(progress / duration, 1);
+      window.scrollTo(0, startY + diff * easeInOutQuad(percent));
+      if (percent < 1) requestAnimationFrame(step);
     }
-
-    .logo img {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
+    function easeInOutQuad(t) {
+      return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
     }
+    requestAnimationFrame(step);
+  }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* ====== شريط التحكم ====== */
-    .chapter-toolbar {
-      background: #111;
-      padding: 8px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 50px;
-      z-index: 9;
-      border-bottom: 1px solid #222;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .chapter-toolbar a {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 8px 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 15px;
-      transition: background 0.3s, transform 0.2s;
-      white-space: nowrap;
-    }
-
-    .chapter-toolbar a:hover {
-      background: #333;
-      transform: scale(1.05);
-    }
-
-    .zoom-area {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .zoom-controls {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: #1a1a1a;
-      padding: 6px 10px;
-      border-radius: 8px;
-    }
-
-    .zoom-controls button {
-      background: #222;
-      color: white;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .zoom-controls button:hover {
-      background: #444;
-    }
-
-    #zoomLevel {
-      font-size: 14px;
-      width: 45px;
-      text-align: center;
-    }
-
-    main {
-      flex: 1;
-      text-align: center;
-      background: #000;
-      padding-bottom: 40px;
-    }
-
-    h2 {
-      margin: 25px 0;
-      font-size: 26px;
-      color: #f5f5f5;
-    }
-
-    /* ====== الصور ====== */
-    .chapter-pages {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .chapter-pages img {
-      width: 90%;
-      height: auto;
-      border-radius: 5px;
-      display: block;
-      transition: transform 0.15s ease, width 0.3s ease;
-      cursor: pointer;
-      image-rendering: -webkit-optimize-contrast;
-    }
-
-    .chapter-pages img:active {
-      transform: scale(0.99);
-    }
-
-    footer {
-      background: #000;
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-      border-top: 1px solid #222;
-    }
-
-    footer a {
-      color: #aaa;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <div class="logo">
-      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
-      <span>lufy manga</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <div class="chapter-toolbar">
-    <a href="chapterop1160.html">← Previous Chapter</a>
-
-    <div class="zoom-area">
-      <a href="#" id="firstPageBtn">Jump to First Page</a>
-
-      <div class="zoom-controls">
-        <button id="zoomOut">−</button>
-        <span id="zoomLevel">100%</span>
-        <button id="zoomIn">+</button>
-        <button id="resetZoom">Reset</button>
-      </div>
-
-      <a href="#" id="lastPageBtn">Jump to Last Page</a>
-    </div>
-
-    <a href="chapterop1162.html">Next Chapter →</a>
-  </div>
-
-  <main>
-    <h2>One Piece - Chapter 1161</h2>
-    <div class="chapter-pages" id="chapterPages">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/G1xcWpKWsAA2c6I (1).jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/saf2345rthgy.png" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/sdfg546y7tuikjolsaf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/ojidsuhf98we4yugobcfvsaf3.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/adsgdsh345t6yruhjsaf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/grtyhgujkvcghn.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/gdsg34r5etyuhjgksaf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/op_1161_n_008safgasgfasgf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/edws34e5rtyghujasfg.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/11sflkjhsaioufhdrfgasfa.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/dsfgdfgkjfdoigjdfg2354.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/safsdz2345rt6yuhjk.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/asfgas3254tyhj.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_015saf35tyasf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_016gdsdgsafxx.jpg" alt="">
-    </div>
-  </main>
-
-  <footer>
-    <a href="onepiecemanga.html">Back to Chapters</a> |
-    <a href="TermsofService.html">Terms of Service</a> |
-    <a href="DigitalMillenniumCopyrightAct.html">Digital Millennium Copyright Act</a> |
-    <a href="PrivacyPolicy.html">Privacy Policy</a>
-  </footer>
-
-  <script>
-    const zoomLevelDisplay = document.getElementById('zoomLevel');
-    const images = document.querySelectorAll('.chapter-pages img');
-    let zoom = 1;
-
-    // ====== زوم ثابت بدون تحريك الصفحة ======
-    function updateZoom() {
-      const current = window.scrollY;
-      images.forEach(img => img.style.width = `${90 * zoom}%`);
-      zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
-      window.scrollTo({ top: current }); // يثبت موضع الصفحة
-    }
-
-    document.getElementById('zoomIn').onclick = () => {
-      zoom = Math.min(2, zoom + 0.1);
-      updateZoom();
-    };
-    document.getElementById('zoomOut').onclick = () => {
-      zoom = Math.max(0.5, zoom - 0.1);
-      updateZoom();
-    };
-    document.getElementById('resetZoom').onclick = () => {
-      zoom = 1;
-      updateZoom();
-    };
-
-    // ====== تمرير سلس مخصص ======
-    function smoothScrollTo(targetY, duration = 800) {
-      const startY = window.scrollY;
-      const diff = targetY - startY;
-      let start;
-
-      function step(timestamp) {
-        if (!start) start = timestamp;
-        const progress = timestamp - start;
-        const percent = Math.min(progress / duration, 1);
-        window.scrollTo(0, startY + diff * easeInOutQuad(percent));
-        if (percent < 1) requestAnimationFrame(step);
+  // ====== الضغط على الصورة ======
+  images.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      const next = images[i + 1];
+      if (next) {
+        const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
+        smoothScrollTo(nextY, 700);
       }
-
-      function easeInOutQuad(t) {
-        return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
-      }
-
-      requestAnimationFrame(step);
-    }
-
-    // ====== عند الضغط على الصورة ======
-    images.forEach((img, i) => {
-      img.addEventListener('click', () => {
-        const next = images[i + 1];
-        if (next) {
-          const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
-          smoothScrollTo(nextY, 700);
-        }
-      });
     });
+  });
 
-    // ====== الانتقال لأول وآخر صفحة ======
-    document.getElementById('firstPageBtn').onclick = e => {
-      e.preventDefault();
-      smoothScrollTo(0, 1000);
-    };
-    document.getElementById('lastPageBtn').onclick = e => {
-      e.preventDefault();
-      smoothScrollTo(document.body.scrollHeight, 1000);
-    };
-  </script>
-</body>
-</html>
+  // ====== الانتقال لأول وآخر صفحة ======
+  document.getElementById('firstPageBtn').onclick = e => {
+    e.preventDefault();
+    smoothScrollTo(0, 1000);
+  };
+  document.getElementById('lastPageBtn').onclick = e => {
+    e.preventDefault();
+    smoothScrollTo(document.body.scrollHeight, 1000);
+  };
+</script>

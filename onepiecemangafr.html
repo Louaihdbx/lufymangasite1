@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>One Piece Manga - Français</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow: hidden;
+    }
 
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    header {
+      background: rgba(17,17,17,0.85);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      color: white;
+    }
+
+    .logo img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .chapter-card {
+      background: rgba(20,20,20,0.95);
+      border-radius: 15px;
+      width: 300px;
+      height: 450px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 0 25px rgba(255,255,255,0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-decoration: none;
+      color: white;
+    }
+
+    .chapter-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255,255,255,0.3);
+    }
+
+    .chapter-card h3 {
+      margin: 20px 0 0;
+      font-size: 22px;
+    }
+
+    .chapter-card p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      color: #ddd;
+    }
+
+    footer {
+      text-align: center;
+      background: rgba(17,17,17,0.85);
+      padding: 10px;
+      font-size: 14px;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="space"></canvas>
+
+  <header>
+    <div class="logo">
+      <img src="mangafile/dstf234retyghj.jpg" alt="logo">
+      <span>lufy manga</span>
+    </div>
+    <nav>
+      <a href="onepiecelang.html">Langue</a>
+    </nav>
+  </header>
+
+  <main>
+    <a href="chapterop1162fr.html" class="chapter-card">
+      <h3>Chapitre 1162</h3>
+      <p>Bientôt disponible...</p>
+    </a>
+  </main>
+
+  <footer>
+    © 2025 lufy manga - Version Française
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('space');
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    const stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        brightness: Math.random(),
+        speed: (Math.random() - 0.5) * 0.2
+      });
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const s of stars) {
+        s.x += s.speed;
+        if (s.x < 0) s.x = canvas.width;
+        if (s.x > canvas.width) s.x = 0;
+        ctx.fillStyle = '#fff';
+        ctx.globalAlpha = s.brightness;
+        ctx.fillRect(s.x, s.y, s.size, s.size);
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(drawStars);
+    }
+
+    drawStars();
+  </script>
+</body>
+</html>

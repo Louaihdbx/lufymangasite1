@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #111;
+      background: #000;
       color: white;
       display: flex;
       flex-direction: column;
@@ -24,13 +24,6 @@
       position: sticky;
       top: 0;
       z-index: 10;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      align-items: center;
     }
 
     .logo {
@@ -74,29 +67,54 @@
       color: #f5f5f5;
     }
 
+    /* ====== أزرار الزوم ====== */
+    .zoom-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+      user-select: none;
+    }
+
+    .zoom-controls button {
+      background: #222;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .zoom-controls button:hover {
+      background: #555;
+    }
+
     /* ====== الصور ====== */
     .chapter-pages {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
+      gap: 20px;
       padding: 0;
       margin: 0;
     }
 
     .chapter-pages img {
-      width: 100%;
+      width: 90%;
       height: auto;
       display: block;
       border: none;
-      margin: 0;
+      border-radius: 5px;
       image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
+      transition: transform 0.2s ease;
     }
 
     /* ====== التنقل بين الفصول ====== */
     .chapter-nav {
-      margin: 30px 0;
+      margin: 40px 0;
       display: flex;
       justify-content: center;
       gap: 20px;
@@ -116,7 +134,6 @@
       background: #555;
     }
 
-    /* ====== الفوتر ====== */
     footer {
       background: #000;
       text-align: center;
@@ -151,7 +168,16 @@
 
   <main>
     <h2>One Piece - Chapter 1161</h2>
-    <div class="chapter-pages">
+
+    <!-- أزرار الزوم -->
+    <div class="zoom-controls">
+      <button id="zoomOut">−</button>
+      <span id="zoomLevel">100%</span>
+      <button id="zoomIn">+</button>
+      <button id="resetZoom">Reset</button>
+    </div>
+
+    <div class="chapter-pages" id="chapterPages">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/G1xcWpKWsAA2c6I (1).jpg" alt="">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/saf2345rthgy.png" alt="">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/sdfg546y7tuikjolsaf.jpg" alt="">
@@ -181,6 +207,33 @@
     <a href="DigitalMillenniumCopyrightAct.html">Digital Millennium Copyright Act</a> |
     <a href="PrivacyPolicy.html">Privacy Policy</a>
   </footer>
+
+  <script>
+    const zoomLevelDisplay = document.getElementById('zoomLevel');
+    const chapterPages = document.getElementById('chapterPages');
+    let zoom = 1;
+
+    function updateZoom() {
+      chapterPages.style.transform = `scale(${zoom})`;
+      chapterPages.style.transformOrigin = "top center";
+      zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
+    }
+
+    document.getElementById('zoomIn').onclick = () => {
+      zoom += 0.1;
+      updateZoom();
+    };
+
+    document.getElementById('zoomOut').onclick = () => {
+      zoom = Math.max(0.5, zoom - 0.1);
+      updateZoom();
+    };
+
+    document.getElementById('resetZoom').onclick = () => {
+      zoom = 1;
+      updateZoom();
+    };
+  </script>
 
 </body>
 </html>

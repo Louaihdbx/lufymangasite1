@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuenta regresiva para el próximo capítulo</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
 
+    h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+      color: #ffffff;
+      text-shadow: 0 0 12px #ffffff88;
+    }
+
+    #timer {
+      font-size: 42px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 0 0 10px #ffffff55;
+      margin-bottom: 25px;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 14px;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>⏳ Cuenta regresiva para el próximo capítulo de One Piece ⏳</h1>
+  <div id="timer">Cargando...</div>
+
+  <footer>lufy manga © 2025</footer>
+
+  <script>
+    function getNextFriday() {
+      const now = new Date();
+      const result = new Date(now);
+      result.setDate(now.getDate() + ((5 - now.getDay() + 7) % 7 || 7));
+      result.setHours(12, 0, 0, 0);
+      return result;
+    }
+
+    const countdownElement = document.getElementById("timer");
+
+    function updateCountdown() {
+      const now = new Date();
+      const friday = getNextFriday();
+      const diff = friday - now;
+
+      if (diff <= 0) {
+        countdownElement.textContent = "🎉 ¡El nuevo capítulo ya está disponible! 🎉";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownElement.textContent =
+        `${days} días ${hours} horas ${minutes} minutos ${seconds} segundos`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>

@@ -15,76 +15,31 @@
       min-height: 100vh;
     }
 
-    /* ====== حاوية الأزرار العلوية ====== */
-    .top-bar {
-      background: #111;
-      padding: 8px 20px;
+    header {
+      background: #000;
+      padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 10;
       border-bottom: 1px solid #222;
     }
 
-    /* يسار الشريط */
-    .left-controls {
+    .logo {
       display: flex;
       align-items: center;
       gap: 10px;
       font-weight: bold;
-      color: #fff;
+      font-size: 18px;
+      color: white;
     }
 
-    .left-controls img {
+    .logo img {
       width: 35px;
       height: 35px;
       border-radius: 50%;
-    }
-
-    /* يمين الشريط */
-    .zoom-controls {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: #1a1a1a;
-      padding: 6px 10px;
-      border-radius: 8px;
-    }
-
-    .zoom-controls button {
-      background: #222;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 6px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .zoom-controls button:hover {
-      background: #444;
-    }
-
-    #zoomLevel {
-      font-size: 14px;
-      width: 45px;
-      text-align: center;
-    }
-
-    /* ====== الهيدر ====== */
-    header {
-      background: #000;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      position: sticky;
-      top: 48px;
-      z-index: 10;
-      border-bottom: 1px solid #222;
     }
 
     nav ul {
@@ -101,6 +56,66 @@
       font-weight: bold;
     }
 
+    /* ====== المنطقة العليا للفصل ====== */
+    .chapter-toolbar {
+      background: #111;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid #222;
+    }
+
+    /* أزرار الفصول */
+    .chapter-toolbar a {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .chapter-toolbar a:hover {
+      background: #333;
+      transform: scale(1.05);
+    }
+
+    /* أزرار الزوم في المنتصف */
+    .zoom-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #1a1a1a;
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    .zoom-controls button {
+      background: #222;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .zoom-controls button:hover {
+      background: #444;
+    }
+
+    #zoomLevel {
+      font-size: 14px;
+      width: 45px;
+      text-align: center;
+    }
+
     /* ====== المحتوى ====== */
     main {
       flex: 1;
@@ -110,7 +125,7 @@
     }
 
     h2 {
-      margin-top: 25px;
+      margin: 25px 0;
       font-size: 26px;
       color: #f5f5f5;
       text-align: center;
@@ -122,7 +137,6 @@
       flex-direction: column;
       align-items: center;
       gap: 25px;
-      margin: 0;
     }
 
     .chapter-pages img {
@@ -134,33 +148,6 @@
       image-rendering: -webkit-optimize-contrast;
     }
 
-    /* ====== التنقل بين الفصول ====== */
-    .chapter-nav {
-      margin-top: 50px;
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-    }
-
-    .chapter-nav a {
-      display: inline-block;
-      background: #1a1a1a;
-      color: #fff;
-      padding: 12px 25px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 15px;
-      transition: background 0.3s, transform 0.2s;
-      box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
-    }
-
-    .chapter-nav a:hover {
-      background: #333;
-      transform: scale(1.05);
-    }
-
-    /* ====== الفوتر ====== */
     footer {
       background: #000;
       text-align: center;
@@ -182,12 +169,22 @@
 </head>
 <body>
 
-  <!-- ====== الشريط العلوي (يسار شعار / يمين تحكم الزوم) ====== -->
-  <div class="top-bar">
-    <div class="left-controls">
+  <!-- ====== الهيدر ====== -->
+  <header>
+    <div class="logo">
       <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
       <span>lufy manga</span>
     </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ====== شريط التنقل + الزوم ====== -->
+  <div class="chapter-toolbar">
+    <a href="chapterop1160.html">← Previous Chapter</a>
 
     <div class="zoom-controls">
       <button id="zoomOut">−</button>
@@ -195,16 +192,9 @@
       <button id="zoomIn">+</button>
       <button id="resetZoom">Reset</button>
     </div>
-  </div>
 
-  <!-- ====== الشريط الثاني ====== -->
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-      </ul>
-    </nav>
-  </header>
+    <a href="chapterop1162.html">Next Chapter →</a>
+  </div>
 
   <!-- ====== المحتوى ====== -->
   <main>
@@ -227,11 +217,6 @@
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_015saf35tyasf.jpg" alt="">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_016gdsdgsafxx.jpg" alt="">
     </div>
-
-    <div class="chapter-nav">
-      <a href="chapterop1160.html">← Previous Chapter</a>
-      <a href="chapterop1162.html">Next Chapter →</a>
-    </div>
   </main>
 
   <!-- ====== الفوتر ====== -->
@@ -242,6 +227,7 @@
     <a href="PrivacyPolicy.html">Privacy Policy</a>
   </footer>
 
+  <!-- ====== سكربت الزوم ====== -->
   <script>
     const zoomLevelDisplay = document.getElementById('zoomLevel');
     const images = document.querySelectorAll('.chapter-pages img');

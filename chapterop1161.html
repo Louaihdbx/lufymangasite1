@@ -58,7 +58,6 @@
       font-weight: bold;
     }
 
-    /* ====== شريط الأدوات ====== */
     .chapter-toolbar {
       background: #111;
       padding: 10px 20px;
@@ -151,15 +150,25 @@
       flex-direction: column;
       align-items: center;
       gap: 25px;
+      position: relative;
     }
 
-    .chapter-pages img {
+    .page {
+      position: relative;
       width: 90%;
-      height: auto;
+      overflow: hidden;
       border-radius: 5px;
+    }
+
+    .page img {
+      width: 100%;
+      height: auto;
       display: block;
+      transition: transform 0.25s ease, z-index 0.25s ease;
       cursor: pointer;
-      transition: transform 0.25s ease;
+      border-radius: 5px;
+      position: relative;
+      z-index: 1;
     }
 
     footer {
@@ -177,12 +186,12 @@
     }
 
     @media (max-width: 700px) {
+      .chapter-pages .page { width: 98%; }
       header { padding: 10px 12px; }
-      .chapter-toolbar { padding: 10px; overflow-x: auto; gap: 8px; }
+      .chapter-toolbar { padding: 10px; gap: 8px; }
       .zoom-controls button { font-size: 18px; padding: 8px 10px; }
       #zoomLevel { font-size: 17px; }
       .chapter-toolbar a { font-size: 15px; padding: 7px 12px; }
-      .chapter-pages img { width: 98%; }
     }
   </style>
 </head>
@@ -218,21 +227,21 @@
   <main>
     <h2>One Piece - Chapter 1161</h2>
     <div class="chapter-pages" id="chapterPages">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/G1xcWpKWsAA2c6I (1).jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/saf2345rthgy.png">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/sdfg546y7tuikjolsaf.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/ojidsuhf98we4yugobcfvsaf3.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/adsgdsh345t6yruhjsaf.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/grtyhgujkvcghn.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/gdsg34r5etyuhjgksaf.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/op_1161_n_008safgasgfasgf.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/edws34e5rtyghujasfg.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/11sflkjhsaioufhdrfgasfa.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/dsfgdfgkjfdoigjdfg2354.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/safsdz2345rt6yuhjk.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/asfgas3254tyhj.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_015saf35tyasf.jpg">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_016gdsdgsafxx.jpg">
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/G1xcWpKWsAA2c6I (1).jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/saf2345rthgy.png"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/sdfg546y7tuikjolsaf.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/ojidsuhf98we4yugobcfvsaf3.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/adsgdsh345t6yruhjsaf.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/grtyhgujkvcghn.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/gdsg34r5etyuhjgksaf.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/op_1161_n_008safgasgfasgf.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/edws34e5rtyghujasfg.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/11sflkjhsaioufhdrfgasfa.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/dsfgdfgkjfdoigjdfg2354.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/safsdz2345rt6yuhjk.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/asfgas3254tyhj.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_015saf35tyasf.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_016gdsdgsafxx.jpg"></div>
     </div>
   </main>
 
@@ -245,9 +254,8 @@
   const zoomLevelDisplay = document.getElementById('zoomLevel');
   const images = document.querySelectorAll('.chapter-pages img');
   let zoom = 1;
-  let activeImage = null; // الصورة اللي عليها الزوم
+  let activeImage = null;
 
-  // 🔍 ترجع الصورة الأقرب لمركز الشاشة
   function getCenterImage() {
     let middleY = window.scrollY + window.innerHeight / 2;
     let closest = images[0];
@@ -264,22 +272,25 @@
     return closest;
   }
 
-  // ✅ تكبير الصورة المحددة فقط
   function updateZoom() {
     if (!activeImage) activeImage = getCenterImage();
+
     images.forEach(img => {
       if (img === activeImage) {
-        img.style.transition = 'transform 0.25s ease';
+        img.style.zIndex = 5; // أقل من الهيدر
+        img.style.position = 'relative';
         img.style.transformOrigin = 'center center';
         img.style.transform = `scale(${zoom})`;
       } else {
         img.style.transform = 'scale(1)';
+        img.style.zIndex = 1;
+        img.style.position = 'relative';
       }
     });
+
     zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
   }
 
-  // ✅ أزرار التحكم
   document.getElementById('zoomIn').onclick = () => { 
     activeImage = getCenterImage();
     zoom = Math.min(2.5, zoom + 0.1); 
@@ -298,7 +309,6 @@
     updateZoom(); 
   };
 
-  // ✅ تمرير ناعم بين الصور
   function smoothScrollTo(targetY, duration = 800) {
     const startY = window.scrollY;
     const diff = targetY - startY;
@@ -313,21 +323,19 @@
     requestAnimationFrame(step);
   }
 
-  // ✅ عند الضغط على الصورة، تنقلك للي بعدها
   images.forEach((img, i) => {
     img.addEventListener('click', () => {
       const next = images[i + 1];
       if (next) {
         const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
         smoothScrollTo(nextY, 700);
-        zoom = 1; // ترجع الزوم طبيعي بعد الانتقال
+        zoom = 1;
         activeImage = null;
         updateZoom();
       }
     });
   });
 
-  // ✅ الانتقال لأول وآخر صفحة
   document.getElementById('firstPageBtn').onclick = e => {
     e.preventDefault();
     smoothScrollTo(0, 1000);

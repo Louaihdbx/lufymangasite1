@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- ✅ تفعيل زوم قوقل واللمس -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, minimum-scale=0.5">
   <title>One Piece - Chapter 1161</title>
   <style>
     body {
@@ -13,6 +14,8 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      scroll-behavior: smooth;
+      touch-action: pan-x pan-y; /* ✅ يسمح بتكبير pinch */
     }
 
     header {
@@ -72,9 +75,7 @@
       overflow-x: auto;
       scrollbar-width: none;
     }
-    .chapter-toolbar::-webkit-scrollbar {
-      display: none;
-    }
+    .chapter-toolbar::-webkit-scrollbar { display: none; }
 
     .chapter-toolbar a {
       background: #1a1a1a;
@@ -160,13 +161,8 @@
       height: auto;
       border-radius: 5px;
       display: block;
-      transition: transform 0.15s ease, width 0.3s ease;
+      transition: width 0.3s ease;
       cursor: pointer;
-      image-rendering: -webkit-optimize-contrast;
-    }
-
-    .chapter-pages img:active {
-      transform: scale(0.99);
     }
 
     footer {
@@ -183,20 +179,9 @@
       text-decoration: none;
     }
 
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* ====== تصميم الجوال ====== */
     @media (max-width: 700px) {
       header { padding: 10px 12px; }
-      .logo span { font-size: 16px; }
-      .chapter-toolbar {
-        justify-content: flex-start;
-        overflow-x: auto;
-        gap: 8px;
-        padding: 10px;
-      }
+      .chapter-toolbar { padding: 10px; overflow-x: auto; gap: 8px; }
       .zoom-controls button { font-size: 18px; padding: 8px 10px; }
       #zoomLevel { font-size: 17px; }
       .chapter-toolbar a { font-size: 15px; padding: 7px 12px; }
@@ -212,9 +197,7 @@
       <span>lufy manga</span>
     </div>
     <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-      </ul>
+      <ul><li><a href="index.html">Home</a></li></ul>
     </nav>
   </header>
 
@@ -223,14 +206,12 @@
 
     <div class="zoom-area">
       <a href="#" id="firstPageBtn">Jump to First Page</a>
-
       <div class="zoom-controls">
         <button id="zoomOut">−</button>
         <span id="zoomLevel">100%</span>
         <button id="zoomIn">+</button>
         <button id="resetZoom">Reset</button>
       </div>
-
       <a href="#" id="lastPageBtn">Jump to Last Page</a>
     </div>
 
@@ -240,21 +221,21 @@
   <main>
     <h2>One Piece - Chapter 1161</h2>
     <div class="chapter-pages" id="chapterPages">
-          <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/G1xcWpKWsAA2c6I (1).jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/saf2345rthgy.png" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/sdfg546y7tuikjolsaf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/ojidsuhf98we4yugobcfvsaf3.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/adsgdsh345t6yruhjsaf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/grtyhgujkvcghn.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/gdsg34r5etyuhjgksaf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/op_1161_n_008safgasgfasgf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/edws34e5rtyghujasfg.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/11sflkjhsaioufhdrfgasfa.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/dsfgdfgkjfdoigjdfg2354.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/safsdz2345rt6yuhjk.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/asfgas3254tyhj.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_015saf35tyasf.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_016gdsdgsafxx.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/G1xcWpKWsAA2c6I (1).jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/saf2345rthgy.png">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/sdfg546y7tuikjolsaf.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/ojidsuhf98we4yugobcfvsaf3.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/adsgdsh345t6yruhjsaf.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/grtyhgujkvcghn.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/gdsg34r5etyuhjgksaf.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/op_1161_n_008safgasgfasgf.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/edws34e5rtyghujasfg.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/11sflkjhsaioufhdrfgasfa.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/dsfgdfgkjfdoigjdfg2354.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/safsdz2345rt6yuhjk.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/asfgas3254tyhj.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_015saf35tyasf.jpg">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1161manga/op_1161_n_016gdsdgsafxx.jpg">
     </div>
   </main>
 
@@ -268,34 +249,35 @@
     const images = document.querySelectorAll('.chapter-pages img');
     let zoom = 1;
 
-    // 🔥 تحديث الزوم بدون تحريك الصفحة
+    function getCenterImage() {
+      let middleY = window.scrollY + window.innerHeight / 2;
+      let closest = images[0];
+      let minDiff = Infinity;
+      images.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const center = rect.top + window.scrollY + rect.height / 2;
+        const diff = Math.abs(center - middleY);
+        if (diff < minDiff) { minDiff = diff; closest = img; }
+      });
+      return closest;
+    }
+
     function updateZoom() {
-      // حفظ موضعك كنسبة
-      const ratio = (window.scrollY + window.innerHeight / 2) / document.body.scrollHeight;
-      
-      // تطبيق الزوم
+      const target = getCenterImage();
+      const targetCenterBefore = target.getBoundingClientRect().top + target.offsetHeight / 2;
+
       images.forEach(img => img.style.width = `${90 * zoom}%`);
       zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
 
-      // إرجاعك لنفس المكان
-      const newScroll = ratio * document.body.scrollHeight - window.innerHeight / 2;
-      window.scrollTo({ top: newScroll });
+      const targetCenterAfter = target.getBoundingClientRect().top + target.offsetHeight / 2;
+      const diff = targetCenterAfter - targetCenterBefore;
+      window.scrollBy(0, diff);
     }
 
-    document.getElementById('zoomIn').onclick = () => {
-      zoom = Math.min(2, zoom + 0.1);
-      updateZoom();
-    };
-    document.getElementById('zoomOut').onclick = () => {
-      zoom = Math.max(0.4, zoom - 0.1);
-      updateZoom();
-    };
-    document.getElementById('resetZoom').onclick = () => {
-      zoom = 1;
-      updateZoom();
-    };
+    document.getElementById('zoomIn').onclick = () => { zoom = Math.min(2.5, zoom + 0.1); updateZoom(); };
+    document.getElementById('zoomOut').onclick = () => { zoom = Math.max(0.4, zoom - 0.1); updateZoom(); };
+    document.getElementById('resetZoom').onclick = () => { zoom = 1; updateZoom(); };
 
-    // تمرير ناعم للصور
     function smoothScrollTo(targetY, duration = 800) {
       const startY = window.scrollY;
       const diff = targetY - startY;
@@ -310,7 +292,6 @@
       requestAnimationFrame(step);
     }
 
-    // الانتقال بالصورة التالية
     images.forEach((img, i) => {
       img.addEventListener('click', () => {
         const next = images[i + 1];
@@ -321,16 +302,8 @@
       });
     });
 
-    // أول وآخر صفحة
-    document.getElementById('firstPageBtn').onclick = e => {
-      e.preventDefault();
-      smoothScrollTo(0, 1000);
-    };
-    document.getElementById('lastPageBtn').onclick = e => {
-      e.preventDefault();
-      smoothScrollTo(document.body.scrollHeight, 1000);
-    };
+    document.getElementById('firstPageBtn').onclick = e => { e.preventDefault(); smoothScrollTo(0, 1000); };
+    document.getElementById('lastPageBtn').onclick = e => { e.preventDefault(); smoothScrollTo(document.body.scrollHeight, 1000); };
   </script>
 </body>
 </html>
-

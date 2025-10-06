@@ -242,40 +242,33 @@
     const images = document.querySelectorAll('.chapter-pages img');
     let zoom = 1;
 
-    // تحديث الزوم مع تثبيت العنصر في منتصف الشاشة
-    function updateZoom() {
-      // نحسب العنصر في المنتصف قبل التغيير
-      const centerY = window.innerHeight / 2;
-      const centerElement = document.elementFromPoint(window.innerWidth / 2, centerY);
-      const oldCenterTop = centerElement ? centerElement.getBoundingClientRect().top : 0;
-
+    // ====== تحديث الزوم (يصعد الصفحة لأعلى قليلاً لتفادي النزول) ======
+    function updateZoom(scrollUp = true) {
       images.forEach(img => img.style.width = `${90 * zoom}%`);
       zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
 
-      // نرجع نفس العنصر لنفس موضعه بالضبط
-      if (centerElement) {
-        const newCenterTop = centerElement.getBoundingClientRect().top;
-        const diff = newCenterTop - oldCenterTop;
-        window.scrollBy(0, diff);
+      if (scrollUp) {
+        // يصعد شوي لفوق عشان ما يحس المستخدم بالنزول
+        window.scrollBy({ top: -window.innerHeight * 0.25, behavior: "smooth" });
       }
     }
 
     document.getElementById('zoomIn').onclick = () => {
       zoom = Math.min(2, zoom + 0.1);
-      updateZoom();
+      updateZoom(true);
     };
 
     document.getElementById('zoomOut').onclick = () => {
       zoom = Math.max(0.4, zoom - 0.1);
-      updateZoom();
+      updateZoom(true);
     };
 
     document.getElementById('resetZoom').onclick = () => {
       zoom = 1;
-      updateZoom();
+      updateZoom(false);
     };
 
-    // تمرير ناعم
+    // ====== تمرير ناعم ======
     function smoothScrollTo(targetY, duration = 800) {
       const startY = window.scrollY;
       const diff = targetY - startY;
@@ -284,16 +277,13 @@
         if (!start) start = timestamp;
         const progress = timestamp - start;
         const percent = Math.min(progress / duration, 1);
-        window.scrollTo(0, startY + diff * easeInOutQuad(percent));
+        window.scrollTo(0, startY + diff * (percent < 0.5 ? 2 * percent * percent : -1 + (4 - 2 * percent) * percent));
         if (percent < 1) requestAnimationFrame(step);
-      }
-      function easeInOutQuad(t) {
-        return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
       }
       requestAnimationFrame(step);
     }
 
-    // الضغط على الصورة
+    // ====== عند الضغط على الصورة ======
     images.forEach((img, i) => {
       img.addEventListener('click', () => {
         const next = images[i + 1];
@@ -304,7 +294,7 @@
       });
     });
 
-    // الانتقال لأول وآخر صفحة
+    // ====== الانتقال لأول وآخر صفحة ======
     document.getElementById('firstPageBtn').onclick = e => {
       e.preventDefault();
       smoothScrollTo(0, 1000);

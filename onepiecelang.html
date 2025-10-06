@@ -92,36 +92,35 @@
     }
 
     .lang-card {
-      width: 220px;
-      height: 280px;
-      background: rgba(25, 25, 25, 0.9);
-      border-radius: 14px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      width: 240px;
+      height: 340px;
+      border-radius: 15px;
+      overflow: hidden;
       text-decoration: none;
-      color: #fff;
-      font-size: 20px;
+      color: white;
       font-weight: bold;
-      border: 1px solid #333;
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      border: 1px solid #333;
     }
 
     .lang-card:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
     }
 
-    .lang-card img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin-bottom: 15px;
-      border: 2px solid #555;
-      background: #111;
-      object-fit: cover;
+    .lang-card span {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      text-align: center;
+      padding: 12px 0;
+      font-size: 20px;
+      letter-spacing: 0.5px;
     }
 
     footer {
@@ -141,12 +140,11 @@
 
     @media (max-width: 600px) {
       .lang-card {
-        width: 160px;
-        height: 220px;
+        width: 180px;
+        height: 260px;
       }
-      .lang-card img {
-        width: 70px;
-        height: 70px;
+      .lang-card span {
+        font-size: 18px;
       }
       h2 {
         font-size: 26px;
@@ -172,21 +170,24 @@
     <h2>Select Your Language</h2>
     <div class="lang-options">
       <!-- English -->
-      <a href="onepiecemanga.html" class="lang-card">
-        <img src="https://flagcdn.com/w80/gb.png" alt="English Flag">
-        English
+      <a href="onepiecemanga.html" 
+         class="lang-card" 
+         style="background-image: url('https://flagcdn.com/w320/gb.png');">
+        <span>English</span>
       </a>
 
       <!-- French -->
-      <a href="#" class="lang-card">
-        <img src="https://flagcdn.com/w80/fr.png" alt="French Flag">
-        Français
+      <a href="#" 
+         class="lang-card" 
+         style="background-image: url('https://flagcdn.com/w320/fr.png');">
+        <span>Français</span>
       </a>
 
       <!-- Spanish -->
-      <a href="#" class="lang-card">
-        <img src="https://flagcdn.com/w80/es.png" alt="Spanish Flag">
-        Español
+      <a href="#" 
+         class="lang-card" 
+         style="background-image: url('https://flagcdn.com/w320/es.png');">
+        <span>Español</span>
       </a>
     </div>
   </main>

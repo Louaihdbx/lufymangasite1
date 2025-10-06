@@ -68,9 +68,11 @@
       top: 50px;
       z-index: 9;
       border-bottom: 1px solid #222;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    /* أزرار Previous / Next */
+    /* أزرار الفصول */
     .chapter-toolbar a {
       background: #1a1a1a;
       color: #fff;
@@ -88,7 +90,13 @@
       transform: scale(1.05);
     }
 
-    /* أزرار الزوم */
+    /* أزرار الزوم والانتقال */
+    .zoom-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
     .zoom-controls {
       display: flex;
       align-items: center;
@@ -186,15 +194,21 @@
     </nav>
   </header>
 
-  <!-- ====== شريط الزوم والفصول ====== -->
+  <!-- ====== شريط التحكم ====== -->
   <div class="chapter-toolbar">
     <a href="chapterop1160.html">← Previous Chapter</a>
 
-    <div class="zoom-controls">
-      <button id="zoomOut">−</button>
-      <span id="zoomLevel">100%</span>
-      <button id="zoomIn">+</button>
-      <button id="resetZoom">Reset</button>
+    <div class="zoom-area">
+      <a href="#" id="firstPageBtn">Jump to First Page</a>
+
+      <div class="zoom-controls">
+        <button id="zoomOut">−</button>
+        <span id="zoomLevel">100%</span>
+        <button id="zoomIn">+</button>
+        <button id="resetZoom">Reset</button>
+      </div>
+
+      <a href="#" id="lastPageBtn">Jump to Last Page</a>
     </div>
 
     <a href="chapterop1162.html">Next Chapter →</a>
@@ -231,7 +245,7 @@
     <a href="PrivacyPolicy.html">Privacy Policy</a>
   </footer>
 
-  <!-- ====== سكربت الزوم ====== -->
+  <!-- ====== سكربت الزوم والتنقل ====== -->
   <script>
     const zoomLevelDisplay = document.getElementById('zoomLevel');
     const images = document.querySelectorAll('.chapter-pages img');
@@ -255,6 +269,18 @@
     document.getElementById('resetZoom').onclick = () => {
       zoom = 1;
       updateZoom();
+    };
+
+    // Jump to first page
+    document.getElementById('firstPageBtn').onclick = (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Jump to last page
+    document.getElementById('lastPageBtn').onclick = (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     };
   </script>
 

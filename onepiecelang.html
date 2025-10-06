@@ -115,10 +115,13 @@
     }
 
     .lang-card img {
-      width: 90px;
-      height: 90px;
-      border-radius: 10px;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
       margin-bottom: 15px;
+      border: 2px solid #555;
+      background: #111;
+      object-fit: cover;
     }
 
     footer {
@@ -170,19 +173,19 @@
     <div class="lang-options">
       <!-- English -->
       <a href="onepiecemanga.html" class="lang-card">
-        <img src="flags/english.png" alt="English">
+        <img src="https://flagcdn.com/w80/gb.png" alt="English Flag">
         English
       </a>
 
       <!-- French -->
       <a href="#" class="lang-card">
-        <img src="flags/french.png" alt="French">
+        <img src="https://flagcdn.com/w80/fr.png" alt="French Flag">
         Français
       </a>
 
       <!-- Spanish -->
       <a href="#" class="lang-card">
-        <img src="flags/spanish.png" alt="Spanish">
+        <img src="https://flagcdn.com/w80/es.png" alt="Spanish Flag">
         Español
       </a>
     </div>
@@ -193,7 +196,7 @@
   </footer>
 
   <script>
-    // نجوم الخلفية
+    // خلفية النجوم
     const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');
     canvas.width = innerWidth;

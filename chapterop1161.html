@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!-- ✅ تفعيل زوم قوقل واللمس -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, minimum-scale=0.5">
   <title>One Piece - Chapter 1161</title>
   <style>
@@ -15,7 +14,7 @@
       flex-direction: column;
       min-height: 100vh;
       scroll-behavior: smooth;
-      touch-action: pan-x pan-y; /* ✅ يسمح بتكبير pinch */
+      touch-action: pan-x pan-y;
     }
 
     header {
@@ -59,7 +58,7 @@
       font-weight: bold;
     }
 
-    /* ====== الشريط ====== */
+    /* ====== شريط الأدوات ====== */
     .chapter-toolbar {
       background: #111;
       padding: 10px 20px;
@@ -99,7 +98,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      flex-wrap: nowrap;
       justify-content: center;
       flex-shrink: 0;
     }
@@ -112,7 +110,6 @@
       padding: 8px 12px;
       border-radius: 10px;
       justify-content: center;
-      flex-shrink: 0;
     }
 
     .zoom-controls button {
@@ -161,8 +158,8 @@
       height: auto;
       border-radius: 5px;
       display: block;
-      transition: width 0.3s ease;
       cursor: pointer;
+      transition: transform 0.25s ease;
     }
 
     footer {
@@ -245,65 +242,107 @@
   </footer>
 
   <script>
-    const zoomLevelDisplay = document.getElementById('zoomLevel');
-    const images = document.querySelectorAll('.chapter-pages img');
-    let zoom = 1;
+  const zoomLevelDisplay = document.getElementById('zoomLevel');
+  const images = document.querySelectorAll('.chapter-pages img');
+  let zoom = 1;
+  let activeImage = null; // الصورة اللي عليها الزوم
 
-    function getCenterImage() {
-      let middleY = window.scrollY + window.innerHeight / 2;
-      let closest = images[0];
-      let minDiff = Infinity;
-      images.forEach(img => {
-        const rect = img.getBoundingClientRect();
-        const center = rect.top + window.scrollY + rect.height / 2;
-        const diff = Math.abs(center - middleY);
-        if (diff < minDiff) { minDiff = diff; closest = img; }
-      });
-      return closest;
-    }
-
-    function updateZoom() {
-      const target = getCenterImage();
-      const targetCenterBefore = target.getBoundingClientRect().top + target.offsetHeight / 2;
-
-      images.forEach(img => img.style.width = `${90 * zoom}%`);
-      zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
-
-      const targetCenterAfter = target.getBoundingClientRect().top + target.offsetHeight / 2;
-      const diff = targetCenterAfter - targetCenterBefore;
-      window.scrollBy(0, diff);
-    }
-
-    document.getElementById('zoomIn').onclick = () => { zoom = Math.min(2.5, zoom + 0.1); updateZoom(); };
-    document.getElementById('zoomOut').onclick = () => { zoom = Math.max(0.4, zoom - 0.1); updateZoom(); };
-    document.getElementById('resetZoom').onclick = () => { zoom = 1; updateZoom(); };
-
-    function smoothScrollTo(targetY, duration = 800) {
-      const startY = window.scrollY;
-      const diff = targetY - startY;
-      let start;
-      function step(timestamp) {
-        if (!start) start = timestamp;
-        const progress = timestamp - start;
-        const percent = Math.min(progress / duration, 1);
-        window.scrollTo(0, startY + diff * (percent < 0.5 ? 2*percent*percent : -1+(4-2*percent)*percent));
-        if (percent < 1) requestAnimationFrame(step);
+  // 🔍 ترجع الصورة الأقرب لمركز الشاشة
+  function getCenterImage() {
+    let middleY = window.scrollY + window.innerHeight / 2;
+    let closest = images[0];
+    let minDiff = Infinity;
+    images.forEach(img => {
+      const rect = img.getBoundingClientRect();
+      const center = rect.top + window.scrollY + rect.height / 2;
+      const diff = Math.abs(center - middleY);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closest = img;
       }
-      requestAnimationFrame(step);
-    }
-
-    images.forEach((img, i) => {
-      img.addEventListener('click', () => {
-        const next = images[i + 1];
-        if (next) {
-          const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
-          smoothScrollTo(nextY, 700);
-        }
-      });
     });
+    return closest;
+  }
 
-    document.getElementById('firstPageBtn').onclick = e => { e.preventDefault(); smoothScrollTo(0, 1000); };
-    document.getElementById('lastPageBtn').onclick = e => { e.preventDefault(); smoothScrollTo(document.body.scrollHeight, 1000); };
+  // ✅ تكبير الصورة المحددة فقط
+  function updateZoom() {
+    if (!activeImage) activeImage = getCenterImage();
+    images.forEach(img => {
+      if (img === activeImage) {
+        img.style.transition = 'transform 0.25s ease';
+        img.style.transformOrigin = 'center center';
+        img.style.transform = `scale(${zoom})`;
+      } else {
+        img.style.transform = 'scale(1)';
+      }
+    });
+    zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
+  }
+
+  // ✅ أزرار التحكم
+  document.getElementById('zoomIn').onclick = () => { 
+    activeImage = getCenterImage();
+    zoom = Math.min(2.5, zoom + 0.1); 
+    updateZoom(); 
+  };
+
+  document.getElementById('zoomOut').onclick = () => { 
+    activeImage = getCenterImage();
+    zoom = Math.max(0.5, zoom - 0.1); 
+    updateZoom(); 
+  };
+
+  document.getElementById('resetZoom').onclick = () => { 
+    zoom = 1; 
+    activeImage = null;
+    updateZoom(); 
+  };
+
+  // ✅ تمرير ناعم بين الصور
+  function smoothScrollTo(targetY, duration = 800) {
+    const startY = window.scrollY;
+    const diff = targetY - startY;
+    let start;
+    function step(timestamp) {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const percent = Math.min(progress / duration, 1);
+      window.scrollTo(0, startY + diff * (percent < 0.5 ? 2*percent*percent : -1+(4-2*percent)*percent));
+      if (percent < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  // ✅ عند الضغط على الصورة، تنقلك للي بعدها
+  images.forEach((img, i) => {
+    img.addEventListener('click', () => {
+      const next = images[i + 1];
+      if (next) {
+        const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
+        smoothScrollTo(nextY, 700);
+        zoom = 1; // ترجع الزوم طبيعي بعد الانتقال
+        activeImage = null;
+        updateZoom();
+      }
+    });
+  });
+
+  // ✅ الانتقال لأول وآخر صفحة
+  document.getElementById('firstPageBtn').onclick = e => {
+    e.preventDefault();
+    smoothScrollTo(0, 1000);
+    zoom = 1;
+    activeImage = null;
+    updateZoom();
+  };
+
+  document.getElementById('lastPageBtn').onclick = e => {
+    e.preventDefault();
+    smoothScrollTo(document.body.scrollHeight, 1000);
+    zoom = 1;
+    activeImage = null;
+    updateZoom();
+  };
   </script>
 </body>
 </html>

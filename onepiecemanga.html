@@ -20,7 +20,7 @@
       top: 0; left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1; /* يخلي النجوم ورا المحتوى */
+      z-index: -1;
     }
 
     /* ====== الشريط العلوي ====== */
@@ -84,48 +84,26 @@
     }
 
     .chapters {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      justify-items: center;
     }
 
-.chapters {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  justify-items: center;
-}
-
-.chapter-card {
-  background: rgba(28,28,28,0.9);
-  border-radius: 15px;
-  overflow: hidden;
-  text-align: center;
-  width: 100%;
-  max-width: 300px;
-  transition: transform 0.3s ease;
-  text-decoration: none;
-  color: white;
-  display: block;
-}
-
-.chapter-card img {
-  width: 100%;
-  height: 320px;
-  object-fit: contain;
-  background: #000;
-  border-bottom: 2px solid white;
-}
-
-.chapter-card h3 {
-  margin: 12px 0 6px;
-  font-size: 18px;
-}
-
-.chapter-card p {
-  font-size: 15px;
-}
+    .chapter-card {
+      background: rgba(28,28,28,0.9);
+      border-radius: 15px;
+      overflow: hidden;
+      text-align: center;
+      width: 320px;
+      height: 500px;
+      transition: transform 0.3s ease;
+      text-decoration: none;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
 
     .chapter-card:hover {
       transform: scale(1.05);
@@ -133,22 +111,21 @@
 
     .chapter-card img {
       width: 100%;
-      height: 240px;
-      object-fit: contain;
+      height: 400px;
+      object-fit: cover;
       background: #000;
       border-bottom: 2px solid white;
     }
 
     .chapter-card h3 {
-      margin: 10px 0 5px;
-      font-size: 15px;
-      color: white;
+      margin: 10px 0 4px;
+      font-size: 17px;
     }
 
     .chapter-card p {
-      font-size: 13px;
+      font-size: 14px;
       color: #ccc;
-      margin: 0 0 10px;
+      margin-bottom: 10px;
     }
 
     /* ====== الفوتر ====== */
@@ -171,10 +148,32 @@
     footer a:hover {
       text-decoration: underline;
     }
+
+    /* ====== تحسين العرض للجوال ====== */
+    @media (max-width: 480px) {
+      .chapters {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+      .chapter-card {
+        width: 100%;
+        height: 420px;
+      }
+      .chapter-card img {
+        height: 330px;
+      }
+      .chapter-card h3 {
+        font-size: 15px;
+      }
+      .chapter-card p {
+        font-size: 13px;
+      }
+    }
+
   </style>
 </head>
 <body>
-  <!-- النجوم -->
+  <!-- الخلفية -->
   <canvas id="space"></canvas>
 
   <!-- الشريط العلوي -->
@@ -194,26 +193,23 @@
   <main>
     <h2>LIST OF CHAPTERS</h2>
     <div class="chapters">
-      <!-- الفصل 1162 -->
       <a href="chapterop1162.html" class="chapter-card">
         <h3>Chapter 1162</h3>
         <p>coming soon...</p>
       </a>
 
-      <!-- الفصل 1161 -->
       <a href="chapterop1161.html" class="chapter-card">
         <img src="1161/saf2345rthgy.png" alt="One Piece Chapter 1161 Cover">
         <h3>Chapter 1161</h3>
         <p>a love ballad in a hail of arrows</p>
       </a>
 
-      <!-- الفصل 1160 -->
       <a href="chapterop1160.html" class="chapter-card">
         <img src="1160/sdg45rtyghjdjg.png" alt="One Piece Chapter 1160 Cover">
         <h3>Chapter 1160</h3>
         <p>the god valley incident</p>
       </a>
-            <!-- الفصل 1159 -->
+
       <a href="chapterop1159.html" class="chapter-card">
         <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1159mangaen/op_1159_ins_001.png" alt="One Piece Chapter 1159 Cover">
         <h3>Chapter 1159</h3>
@@ -229,14 +225,13 @@
     <a href="PrivacyPolicy.html">Privacy Policy</a>
   </footer>
 
-  <!-- سكربت النجوم + النيازك -->
+  <!-- سكربت النجوم -->
   <script>
     const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');
     canvas.width = innerWidth;
     canvas.height = innerHeight;
 
-    /* -------- النجوم -------- */
     const stars = [];
     for (let i = 0; i < 150; i++) {
       stars.push({
@@ -252,9 +247,7 @@
     function drawStars() {
       for (const s of stars) {
         s.brightness += s.pulse * (Math.random() > 0.5 ? 1 : -1);
-        if (s.brightness < 0.2) s.brightness = 0.2;
-        if (s.brightness > 1) s.brightness = 1;
-
+        s.brightness = Math.min(1, Math.max(0.2, s.brightness));
         s.x += s.speed;
         if (s.x < 0) s.x = canvas.width;
         if (s.x > canvas.width) s.x = 0;
@@ -266,7 +259,6 @@
       ctx.globalAlpha = 1;
     }
 
-    /* -------- النيازك -------- */
     class Meteor {
       constructor() {
         this.x = Math.random() * canvas.width;
@@ -328,8 +320,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-

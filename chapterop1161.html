@@ -68,8 +68,14 @@
       top: 50px;
       z-index: 9;
       border-bottom: 1px solid #222;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* يمنع تكسير الأزرار */
       gap: 10px;
+      overflow-x: auto; /* يسمح بالتمرير في حال العرض ضيق */
+      scrollbar-width: none; /* يخفي شريط التمرير */
+    }
+
+    .chapter-toolbar::-webkit-scrollbar {
+      display: none; /* يخفي شريط التمرير على كروم */
     }
 
     .chapter-toolbar a {
@@ -82,6 +88,7 @@
       font-size: 15px;
       transition: background 0.3s, transform 0.2s;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .chapter-toolbar a:hover {
@@ -93,8 +100,9 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .zoom-controls {
@@ -105,6 +113,7 @@
       padding: 8px 12px;
       border-radius: 10px;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .zoom-controls button {
@@ -182,7 +191,7 @@
       text-decoration: underline;
     }
 
-    /* ====== تعديلات الجوال ====== */
+    /* ====== تصميم الجوال ====== */
     @media (max-width: 700px) {
       header {
         padding: 10px 12px;
@@ -193,22 +202,20 @@
       }
 
       .chapter-toolbar {
-        flex-direction: column;
-        align-items: center;
+        justify-content: flex-start;
+        overflow-x: auto;
         gap: 8px;
         padding: 10px;
       }
 
       .zoom-controls {
-        width: 95%;
-        justify-content: space-around;
-        padding: 10px 0;
+        padding: 8px;
+        border-radius: 10px;
       }
 
       .zoom-controls button {
         font-size: 18px;
-        padding: 10px 16px;
-        border-radius: 8px;
+        padding: 8px 10px;
       }
 
       #zoomLevel {
@@ -216,13 +223,8 @@
       }
 
       .chapter-toolbar a {
-        width: 95%;
-        text-align: center;
-        font-size: 16px;
-      }
-
-      h2 {
-        font-size: 22px;
+        font-size: 15px;
+        padding: 7px 12px;
       }
 
       .chapter-pages img {

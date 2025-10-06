@@ -13,7 +13,6 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      scroll-behavior: smooth; /* سلاسة عامة */
     }
 
     header {
@@ -57,7 +56,7 @@
       font-weight: bold;
     }
 
-    /* ====== شريط الفصول + الزوم ====== */
+    /* ====== شريط التحكم ====== */
     .chapter-toolbar {
       background: #111;
       padding: 8px 20px;
@@ -181,7 +180,6 @@
 </head>
 <body>
 
-  <!-- ====== الهيدر ====== -->
   <header>
     <div class="logo">
       <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
@@ -194,7 +192,6 @@
     </nav>
   </header>
 
-  <!-- ====== شريط الأدوات ====== -->
   <div class="chapter-toolbar">
     <a href="chapterop1160.html">← Previous Chapter</a>
 
@@ -214,10 +211,8 @@
     <a href="chapterop1162.html">Next Chapter →</a>
   </div>
 
-  <!-- ====== المحتوى ====== -->
   <main>
     <h2>One Piece - Chapter 1161</h2>
-
     <div class="chapter-pages" id="chapterPages">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/G1xcWpKWsAA2c6I (1).jpg" alt="">
       <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/onepiecemanga/saf2345rthgy.png" alt="">
@@ -237,7 +232,6 @@
     </div>
   </main>
 
-  <!-- ====== الفوتر ====== -->
   <footer>
     <a href="onepiecemanga.html">Back to Chapters</a> |
     <a href="TermsofService.html">Terms of Service</a> |
@@ -250,50 +244,68 @@
     const images = document.querySelectorAll('.chapter-pages img');
     let zoom = 1;
 
-    // ====== تحديث الزوم بدون تحريك الصفحة ======
+    // ====== زوم ثابت بدون تحريك الصفحة ======
     function updateZoom() {
-      const currentScroll = window.scrollY; // حفظ موضع الصفحة
+      const current = window.scrollY;
       images.forEach(img => img.style.width = `${90 * zoom}%`);
       zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
-      window.scrollTo(0, currentScroll); // استرجاع نفس الموضع
+      window.scrollTo({ top: current }); // يثبت موضع الصفحة
     }
 
     document.getElementById('zoomIn').onclick = () => {
       zoom = Math.min(2, zoom + 0.1);
       updateZoom();
     };
-
     document.getElementById('zoomOut').onclick = () => {
       zoom = Math.max(0.5, zoom - 0.1);
       updateZoom();
     };
-
     document.getElementById('resetZoom').onclick = () => {
       zoom = 1;
       updateZoom();
     };
 
-    // ====== تمرير سلس للصورة التالية ======
-    images.forEach((img, index) => {
+    // ====== تمرير سلس مخصص ======
+    function smoothScrollTo(targetY, duration = 800) {
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      let start;
+
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const percent = Math.min(progress / duration, 1);
+        window.scrollTo(0, startY + diff * easeInOutQuad(percent));
+        if (percent < 1) requestAnimationFrame(step);
+      }
+
+      function easeInOutQuad(t) {
+        return t < 0.5 ? 2*t*t : -1+(4-2*t)*t;
+      }
+
+      requestAnimationFrame(step);
+    }
+
+    // ====== عند الضغط على الصورة ======
+    images.forEach((img, i) => {
       img.addEventListener('click', () => {
-        const nextImg = images[index + 1];
-        if (nextImg) {
-          nextImg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const next = images[i + 1];
+        if (next) {
+          const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
+          smoothScrollTo(nextY, 700);
         }
       });
     });
 
     // ====== الانتقال لأول وآخر صفحة ======
-    document.getElementById('firstPageBtn').onclick = (e) => {
+    document.getElementById('firstPageBtn').onclick = e => {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      smoothScrollTo(0, 1000);
     };
-
-    document.getElementById('lastPageBtn').onclick = (e) => {
+    document.getElementById('lastPageBtn').onclick = e => {
       e.preventDefault();
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+      smoothScrollTo(document.body.scrollHeight, 1000);
     };
   </script>
-
 </body>
 </html>

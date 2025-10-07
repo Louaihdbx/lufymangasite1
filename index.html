@@ -1,90 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Instagram Button | Lufy Style</title>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, minimum-scale=0.5">
+  <title>One Piece - Chapter 1160</title>
+
   <style>
     body {
-      background-color: #000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
+      background: #000;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      touch-action: pan-x pan-y;
     }
 
-    /* زر إنستغرام بعد التعديل */
-    .insta-btn {
-      background: transparent;
-      position: relative;
-      padding: 10px 25px;
+    header {
+      background: #000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
       display: flex;
       align-items: center;
-      justify-content: center;
       gap: 10px;
+      font-weight: bold;
       font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      border: 1px solid rgb(255, 0, 0);
-      border-radius: 25px;
-      color: rgb(255, 0, 0);
-      transition: all 0.3s ease-out;
-      text-align: center;
-      outline: none;
-      overflow: hidden;
+      color: white;
     }
 
-    .insta-btn svg {
-      height: 20px;
-      width: 20px;
-      fill: rgb(255, 0, 0);
-      transition: fill 0.3s ease;
-    }
-
-    .insta-btn span {
-      letter-spacing: 0.5px;
-    }
-
-    .insta-btn::before {
-      position: absolute;
-      content: '';
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+    .logo img {
+      width: 35px;
+      height: 35px;
       border-radius: 50%;
-      width: 20em;
-      height: 20em;
-      left: -5em;
-      margin: auto;
-      transition: box-shadow 0.5s ease-out;
-      z-index: -1;
     }
 
-    .insta-btn:hover {
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* ====== شريط الأدوات ====== */
+    .chapter-toolbar {
+      background: #111;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 50px;
+      z-index: 9;
+      border-bottom: 1px solid #222;
+      flex-wrap: nowrap;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .chapter-toolbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chapter-toolbar a {
+      background: #1a1a1a;
       color: #fff;
-      border: 1px solid rgb(255, 0, 0);
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+      transition: background 0.3s, transform 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .insta-btn:hover svg {
-      fill: #fff;
+    .chapter-toolbar a:hover {
+      background: #333;
+      transform: scale(1.05);
     }
 
-    .insta-btn:hover::before {
-      box-shadow: inset 0 0 0 10em rgb(255, 0, 0);
+    .zoom-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .zoom-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #1a1a1a;
+      padding: 8px 12px;
+      border-radius: 10px;
+      justify-content: center;
+    }
+
+    .zoom-controls button {
+      background: #222;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .zoom-controls button:hover {
+      background: #444;
+    }
+
+    #zoomLevel {
+      font-size: 15px;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      text-align: center;
+      background: #000;
+      padding-bottom: 40px;
+    }
+
+    h2 {
+      margin: 25px 0;
+      font-size: 26px;
+      color: #f5f5f5;
+    }
+
+    .chapter-pages {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .chapter-pages img {
+      width: 90%;
+      height: auto;
+      border-radius: 5px;
+      display: block;
+      cursor: pointer;
+      transition: transform 0.25s ease;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      border-top: 1px solid #222;
+    }
+
+    footer a {
+      color: #aaa;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding: 10px 12px;
+      }
+
+      .chapter-toolbar {
+        padding: 10px;
+        overflow-x: auto;
+        gap: 8px;
+      }
+
+      .zoom-controls button {
+        font-size: 18px;
+        padding: 8px 10px;
+      }
+
+      #zoomLevel {
+        font-size: 17px;
+      }
+
+      .chapter-toolbar a {
+        font-size: 15px;
+        padding: 7px 12px;
+      }
+
+      .chapter-pages img {
+        width: 98%;
+      }
     }
   </style>
 </head>
+
 <body>
+  <header>
+    <div class="logo">
+      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
+      <span>lufy manga</span>
+    </div>
+    <nav>
+      <ul><li><a href="index.html">Home</a></li></ul>
+    </nav>
+  </header>
 
-  <!-- زر إنستغرام -->
-  <button class="insta-btn">
-    <svg viewBox="0 0 16 16" class="bi bi-instagram" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-      <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
-    </svg>
-    <span>Instagram</span>
-  </button>
+  <div class="chapter-toolbar">
+    <a href="chapterop1159.html">← Previous Chapter</a>
+    <div class="zoom-area">
+      <a href="#" id="firstPageBtn">Jump to First Page</a>
+      <div class="zoom-controls">
+        <button id="zoomOut">−</button>
+        <span id="zoomLevel">100%</span>
+        <button id="zoomIn">+</button>
+        <button id="resetZoom">Reset</button>
+      </div>
+      <a href="#" id="lastPageBtn">Jump to Last Page</a>
+    </div>
+    <a href="chapterop1161.html">Next Chapter →</a>
+  </div>
 
+  <main>
+    <h2>One Piece - Chapter 1160</h2>
+    <div class="chapter-pages" id="chapterPages">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page0.png" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page1.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page2.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page3.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page4.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page5.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page6.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page7.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page8.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page9.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page10.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page11.jpg" alt="">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page12.jpg" alt="">
+    </div>
+  </main>
+
+  <footer>
+    <a href="onepiecemanga.html">Back to Chapters</a> |
+    <a href="PrivacyPolicy.html">Privacy Policy</a>
+  </footer>
+
+  <script>
+    const zoomLevelDisplay = document.getElementById('zoomLevel');
+    const images = document.querySelectorAll('.chapter-pages img');
+    let zoom = 1;
+    let activeImage = null;
+
+    // 🔍 احصل على الصورة الأقرب لمركز الشاشة
+    function getCenterImage() {
+      let middleY = window.scrollY + window.innerHeight / 2;
+      let closest = images[0];
+      let minDiff = Infinity;
+
+      images.forEach(img => {
+        const rect = img.getBoundingClientRect();
+        const center = rect.top + window.scrollY + rect.height / 2;
+        const diff = Math.abs(center - middleY);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closest = img;
+        }
+      });
+      return closest;
+    }
+
+    // ✅ تحديث مستوى الزوم
+    function updateZoom() {
+      if (!activeImage) activeImage = getCenterImage();
+      images.forEach(img => {
+        if (img === activeImage) {
+          img.style.transition = 'transform 0.25s ease';
+          img.style.transformOrigin = 'center center';
+          img.style.transform = `scale(${zoom})`;
+        } else {
+          img.style.transform = 'scale(1)';
+        }
+      });
+      zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
+    }
+
+    // ✅ أزرار التحكم
+    document.getElementById('zoomIn').onclick = () => {
+      activeImage = getCenterImage();
+      zoom = Math.min(2.5, zoom + 0.1);
+      updateZoom();
+    };
+
+    document.getElementById('zoomOut').onclick = () => {
+      activeImage = getCenterImage();
+      zoom = Math.max(0.5, zoom - 0.1);
+      updateZoom();
+    };
+
+    document.getElementById('resetZoom').onclick = () => {
+      zoom = 1;
+      activeImage = null;
+      updateZoom();
+    };
+
+    // ✅ تمرير ناعم
+    function smoothScrollTo(targetY, duration = 800) {
+      const startY = window.scrollY;
+      const diff = targetY - startY;
+      let start;
+
+      function step(timestamp) {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const percent = Math.min(progress / duration, 1);
+        window.scrollTo(
+          0,
+          startY +
+            diff *
+              (percent < 0.5
+                ? 2 * percent * percent
+                : -1 + (4 - 2 * percent) * percent)
+        );
+        if (percent < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+
+    // ✅ عند الضغط على الصورة → للصفحة التالية
+    images.forEach((img, i) => {
+      img.addEventListener('click', () => {
+        const next = images[i + 1];
+        if (next) {
+          const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
+          smoothScrollTo(nextY, 700);
+          zoom = 1;
+          activeImage = null;
+          updateZoom();
+        }
+      });
+    });
+
+    // ✅ أول وآخر صفحة
+    document.getElementById('firstPageBtn').onclick = e => {
+      e.preventDefault();
+      smoothScrollTo(0, 1000);
+      zoom = 1;
+      activeImage = null;
+      updateZoom();
+    };
+
+    document.getElementById('lastPageBtn').onclick = e => {
+      e.preventDefault();
+      smoothScrollTo(document.body.scrollHeight, 1000);
+      zoom = 1;
+      activeImage = null;
+      updateZoom();
+    };
+  </script>
 </body>
 </html>

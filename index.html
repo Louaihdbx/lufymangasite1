@@ -2,308 +2,219 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>lufysite</title>
+  <title>Lufy Site</title>
   <meta name="google-adsense-account" content="ca-pub-1329100449548971">
 
   <style>
     body {
       margin: 0;
-      overflow: hidden;
       background: #000;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #fff;
+      overflow-x: hidden;
     }
 
+    /* خلفية النجوم */
     canvas {
-      display: block;
-      position: relative;
-      z-index: 1;
-    }
-
-    #centerText {
       position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 1200;
-      width: 100%;
-      padding: 0 10px;
+      inset: 0;
+      z-index: 0;
+      display: block;
     }
 
-    /* الحاوية العامة للكروت */
+    /* ===== الحاوية للكروت ===== */
     .cards-container {
+      position: relative;
+      z-index: 10;
       display: flex;
       justify-content: center;
       align-items: flex-start;
       gap: 40px;
       flex-wrap: wrap;
-      margin-top: 30px;
-      transition: all 0.3s ease;
+      margin-top: 100px;
     }
 
-    /* ======= أنيميشن عند التحويم ======= */
-    .card:hover, .info-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.25);
-      transition: all 0.4s ease;
-    }
-
-    /* ================== LUFY CARD ================== */
+    /* ===== كرت لوفي ===== */
     .card {
-      --main-color: #fff;
-      --submain-color: #ccc;
-      --bg-color: #000;
-      width: 300px;
-      height: 400px;
+      width: 360px;
+      height: 480px;
+      border-radius: 25px;
+      background: #000;
       display: flex;
       flex-direction: column;
       align-items: center;
-      border-radius: 20px;
-      background: var(--bg-color);
-      overflow: hidden;
       position: relative;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 25px rgba(255,255,255,0.15);
+      overflow: hidden;
       transition: all 0.4s ease;
     }
+    .card:hover { transform: translateY(-8px); box-shadow: 0 0 35px rgba(255,255,255,0.25); }
 
-    /* الخلفية العلوية (رمادي مائل للأسود) */
+    /* الخلفية: الصورة من CDN */
     .card__img {
-      height: 190px;
       width: 100%;
-      background: linear-gradient(180deg, #2b2b2b, #1a1a1a);
-      border-radius: 20px 20px 0 0;
-      position: relative;
+      height: 220px;
+      border-radius: 25px 25px 0 0;
+      background: url('https://cdn.jsdelivr.net/gh/Louaihdbx/lufymangasite1/saf32o9urfjodpsgdshg%20(1).jpg') center / cover no-repeat;
     }
 
-    /* الأفاتار */
+    /* الأفاتار: صورة لوفي القديمة */
     .card__avatar {
       position: absolute;
-      top: 120px;
-      width: 110px;
-      height: 110px;
+      top: 150px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
-      border: 4px solid #fff;
+      border: 4px solid #000;          /* إطار أسود كما طلبت */
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-      background-color: #000;
+      background: #000;
+      box-shadow: 0 0 25px rgba(0,0,0,0.8);
     }
+    .card__avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-    .card__avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .card__title { margin-top: 100px; font-size: 22px; font-weight: 700; text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+    .card__subtitle { margin-top: 10px; font-size: 16px; color: #ccc; width: 80%; line-height: 1.6; text-align: center; }
 
-    .card__title {
-      margin-top: 80px;
-      font-weight: 600;
-      font-size: 20px;
-      color: var(--main-color);
-    }
-
-    .card__subtitle {
-      margin-top: 10px;
-      font-size: 15px;
-      color: var(--submain-color);
-      width: 80%;
-      text-align: center;
-    }
-
-    /* ================== MANGA INFO CARD ================== */
+    /* ===== كرت المانجا ===== */
     .info-card {
-      width: 300px;
-      height: 400px;
+      width: 360px;
+      height: 480px;
       background-color: #111;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(255,255,255,0.15);
-      padding: 20px;
+      border-radius: 25px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.15);
+      padding: 25px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       transition: all 0.4s ease;
     }
+    .info-card:hover { transform: translateY(-8px); box-shadow: 0 0 35px rgba(255,255,255,0.25); }
 
-    .info-card .card_title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #fff;
-    }
-
-    .info-card .card_paragraph {
-      font-size: 0.9rem;
-      color: #ccc;
-      margin-top: 0.5rem;
-    }
-
-    .info-card .card__list {
-      list-style: none;
-      padding: 0;
-      color: #fff;
-      margin-top: 10px;
-    }
-
-    .info-card .card__list li {
-      margin: 0.4rem 0;
-    }
-
+    .info-card .card_title { font-size: 1.3rem; font-weight: 700; color: #fff; }
+    .info-card .card_paragraph { font-size: 0.95rem; color: #ccc; margin-top: 0.5rem; }
+    .info-card .card__list { list-style: none; padding: 0; color: #fff; margin-top: 10px; }
+    .info-card .card__list li { margin: 0.5rem 0; }
     .info-card .button {
-      cursor: pointer;
-      padding: 0.7rem;
-      font-weight: bold;
-      width: 100%;
-      font-size: 1rem;
-      color: #000;
-      border: none;
-      border-radius: 20px;
-      background-color: #fff;
-      transition: 0.3s;
+      cursor: pointer; padding: 0.7rem; font-weight: bold; width: 100%; font-size: 1rem;
+      color: #000; border: none; border-radius: 20px; background-color: #fff; transition: 0.3s;
     }
+    .info-card .button:hover { background: #000; color: #fff; border: 1px solid #fff; }
 
-    .info-card .button:hover {
-      background: #000;
-      color: #fff;
-      border: 1px solid #fff;
-    }
-
-    /* ================== SOCIAL BUTTONS ================== */
+    /* ===== الأزرار (أنيميشن القديم) ===== */
     .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      margin-top: 35px;
-      flex-wrap: wrap;
+      position: relative; z-index: 20;
+      display: flex; justify-content: center; gap: 25px; margin: 50px 0 80px; flex-wrap: wrap;
     }
 
     .insta-btn, .telegram, .manga-btn {
-      position: relative;
-      width: 190px;
-      height: 55px;
-      border: 2px solid #fff;
-      border-radius: 30px;
-      font-size: 18px;
-      font-weight: 600;
-      color: #fff;
       background: transparent;
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-      transition: all 0.4s ease;
+      position: relative;
+      padding: 12px 30px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 600; cursor: pointer;
+      border: 2px solid #fff; border-radius: 30px; color: #fff;
+      overflow: hidden; transition: color 0.3s ease-out; width: 190px; height: 55px;
+      box-shadow: 0 0 15px rgba(255,255,255,0.4);
     }
-
-    .insta-btn:hover, .telegram:hover, .manga-btn:hover {
-      background: #fff;
-      color: #000;
-      transform: translateY(-4px);
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+    .insta-btn::before, .telegram::before, .manga-btn::before {
+      content: ""; position: absolute; inset: 0; margin: auto;
+      border-radius: 50%; width: 20em; height: 20em; left: -5em; z-index: -1;
+      transition: box-shadow 0.5s ease-out;
     }
+    .insta-btn:hover, .telegram:hover, .manga-btn:hover { color: #000; border-color: #fff; box-shadow: 0 0 25px rgba(255,255,255,0.8); }
+    .insta-btn:hover::before, .telegram:hover::before, .manga-btn:hover::before { box-shadow: inset 0 0 0 10em #fff; }
 
-    .insta-btn svg, .telegram svg {
-      margin-right: 8px;
-    }
+    .insta-btn span, .telegram span { margin-left: 10px; }
+    .telegram svg, .insta-btn svg { fill: currentColor; transition: fill 0.3s ease; }
+    a { text-decoration: none !important; }
 
-    /* ================== RESPONSIVE ================== */
+    /* ===== ريسبونسيف ===== */
     @media (max-width: 768px) {
-      .cards-container {
-        flex-direction: column;
-        align-items: center;
-      }
-      .social-links {
-        margin-top: 20px;
-      }
+      .cards-container { flex-direction: column; align-items: center; gap: 30px; }
+      .social-links { flex-direction: column; align-items: center; gap: 15px; }
+      .insta-btn, .telegram, .manga-btn { width: 240px; }
     }
-
   </style>
 </head>
 <body>
+  <!-- خلفية النجوم -->
   <canvas id="space"></canvas>
 
-  <div id="centerText">
-
-    <div class="cards-container">
-      <!-- LUFY CARD -->
-      <div class="card">
-        <div class="card__img"></div>
-        <div class="card__avatar">
-          <img src="characters/dstf234retyghj.jpg" alt="Luffy">
-        </div>
-        <div class="card__title">Lufy</div>
-        <div class="card__subtitle">
-          Adventure lover ⚓ | Sharing the latest One Piece manga news & chapters 🌊<br>
-          Join the crew and sail into the Grand Line with us!
-        </div>
+  <div class="cards-container">
+    <!-- كرت لوفي -->
+    <div class="card">
+      <div class="card__img"></div>
+      <div class="card__avatar">
+        <!-- صورة لوفي القديمة داخل الأفاتار -->
+        <img src="characters/dstf234retyghj.jpg" alt="Luffy">
       </div>
-
-      <!-- MANGA INFO CARD -->
-      <div class="info-card">
-        <div>
-          <div class="card_title">One Piece Manga Access</div>
-          <p class="card_paragraph">
-            Enjoy the latest manga with smooth translations and multiple languages.
-          </p>
-          <ul class="card__list">
-            <li>✔ English translation available</li>
-            <li>✔ French translation available</li>
-            <li>✔ Spanish translation available</li>
-            <li>✔ Updated weekly with high-quality visuals</li>
-          </ul>
-        </div>
-        <a href="manga.html"><button class="button">Read Manga</button></a>
+      <div class="card__title">Lufy</div>
+      <div class="card__subtitle">
+        Sharing One Piece adventures 🌊<br>
+        Join the crew and sail the Grand Line!
       </div>
     </div>
 
-    <!-- SOCIAL BUTTONS -->
-    <div class="social-links">
-      <a href="https://instagram.com/lufy" target="_blank">
-        <button class="insta-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 0C5.829 0 5.556.01 4.703.048C3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7C.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297c.04.852.174 1.433.372 1.942c.205.526.478.972.923 1.417c.444.445.89.719 1.416.923c.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417c.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003z"/>
-          </svg>
-          <span>Instagram</span>
-        </button>
-      </a>
-
-      <a href="https://t.me/lufy" target="_blank">
-        <button class="telegram">
-          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 26 26">
-            <path d="M2.14753 11.8099C7.3949 9.52374 10.894 8.01654 12.6447 7.28833C17.6435 5.20916 18.6822 4.84799 19.3592 4.83606C19.5081 4.83344 19.8411 4.87034 20.0567 5.04534C20.2388 5.1931 20.2889 5.39271 20.3129 5.5328C20.3369 5.6729 20.3667 5.99204 20.343 6.2414C20.0721 9.08763 18.9 15.9947 18.3037 19.1825C18.0514 20.5314 17.5546 20.9836 17.0736 21.0279C16.0283 21.1241 15.2345 20.3371 14.2221 19.6735C12.6379 18.635 11.7429 17.9885 10.2051 16.9751C8.42795 15.804 9.58001 15.1603 10.5928 14.1084C10.8579 13.8331 15.4635 9.64397 15.5526 9.26395C15.5637 9.21642 15.5741 9.03926 15.4688 8.94571C15.3636 8.85216 15.2083 8.88415 15.0962 8.9096C14.9373 8.94566 12.4064 10.6184 7.50365 13.928C6.78528 14.4212 6.13461 14.6616 5.55163 14.649C4.90893 14.6351 3.67265 14.2856 2.7536 13.9869C1.62635 13.6204 0.730432 13.4267 0.808447 12.8044C0.849081 12.4803 1.29544 12.1488 2.14753 11.8099Z"></path>
-          </svg>
-          <span>Telegram</span>
-        </button>
-      </a>
-
-      <a href="manga.html">
-        <button class="manga-btn">
-          <span>MANGA</span>
-        </button>
-      </a>
+    <!-- كرت المانجا -->
+    <div class="info-card">
+      <div>
+        <div class="card_title">One Piece Manga Access</div>
+        <p class="card_paragraph">
+          Enjoy the latest manga with smooth translations and vivid colors.
+        </p>
+        <ul class="card__list">
+          <li>✔ English, French & Spanish available</li>
+          <li>✔ Updated weekly with high-quality visuals</li>
+        </ul>
+      </div>
+      <a href="manga.html"><button class="button">Read Manga</button></a>
     </div>
   </div>
 
-  <footer>lufy © 2025</footer>
+  <!-- أزرار السوشيال (بالأنيميشن القديم) -->
+  <div class="social-links">
+    <a href="https://instagram.com/lufy" target="_blank" rel="noopener">
+      <button class="insta-btn">
+        <!-- أيقونة إنستغرام رجعت -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 16 16">
+          <path d="M8 0c2.164 0 2.438.01 3.291.048.852.04 1.433.174 1.942.372.526.205.972.478 1.417.923.445.444.719.89.923 1.416.198.51.333 1.09.372 1.942.038.853.048 1.127.048 3.299s-.01 2.446-.048 3.298c-.04.852-.174 1.434-.372 1.943a3.916 3.916 0 0 1-.923 1.416 3.916 3.916 0 0 1-1.417.923c-.509.198-1.09.332-1.942.372-.853.038-1.127.048-3.299.048s-2.446-.01-3.298-.048c-.852-.04-1.434-.174-1.943-.372a3.916 3.916 0 0 1-1.416-.923 3.916 3.916 0 0 1-.923-1.417c-.198-.509-.333-1.09-.372-1.942C0 10.445 0 10.171 0 8.001s.01-2.446.048-3.298c.04-.852.174-1.434.372-1.943.205-.526.478-.972.923-1.416A3.916 3.916 0 0 1 2.76.42c.509-.198 1.09-.333 1.942-.372C5.555.01 5.829 0 7.999 0h.001zM8 1.533c-2.127 0-2.381.008-3.224.047-.78.036-1.204.166-1.485.276a2.478 2.478 0 0 0-.92.598c-.28.28-.453.546-.599.92-.11.281-.24.705-.276 1.485-.039.843-.047 1.096-.047 3.231s.008 2.389.047 3.232c.036.78.166 1.203.276 1.485.146.373.319.64.599.92.28.28.546.453.92.598.281.11.705.24 1.485.276.843.039 1.097.047 3.224.047s2.381-.008 3.224-.047c.78-.036 1.203-.166 1.485-.276.373-.145.64-.319.92-.598.28-.28.453-.546.598-.92.11-.281.24-.705.276-1.485.039-.843.047-1.096.047-3.232s-.008-2.389-.047-3.231c-.036-.78-.166-1.204-.276-1.485a2.478 2.478 0 0 0-.598-.92 2.478 2.478 0 0 0-.92-.599c-.281-.109-.705-.24-1.485-.276-.843-.038-1.097-.046-3.224-.046zM12.053 3.77a.96.96 0 1 1 0 1.92.96.96 0 0 1 0-1.92zM8 4.8a3.2 3.2 0 1 1 0 6.4 3.2 3.2 0 0 1 0-6.4zm0 1.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/>
+        </svg>
+        <span>Instagram</span>
+      </button>
+    </a>
 
+    <a href="https://t.me/lufy" target="_blank" rel="noopener">
+      <button class="telegram">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 26 26">
+          <path d="M2.14753 11.8099C7.3949 9.52374 10.894 8.01654 12.6447 7.28833C17.6435 5.20916 18.6822 4.84799 19.3592 4.83606C19.5081 4.83344 19.8411 4.87034 20.0567 5.04534C20.2388 5.1931 20.2889 5.39271 20.3129 5.5328C20.3369 5.6729 20.3667 5.99204 20.343 6.2414C20.0721 9.08763 18.9 15.9947 18.3037 19.1825C18.0514 20.5314 17.5546 20.9836 17.0736 21.0279C16.0283 21.1241 15.2345 20.3371 14.2221 19.6735C12.6379 18.635 11.7429 17.9885 10.2051 16.9751C8.42795 15.804 9.58001 15.1603 10.5928 14.1084C10.8579 13.8331 15.4635 9.64397 15.5526 9.26395C15.5637 9.21642 15.5741 9.03926 15.4688 8.94571C15.3636 8.85216 15.2083 8.88415 15.0962 8.9096C14.9373 8.94566 12.4064 10.6184 7.50365 13.928C6.78528 14.4212 6.13461 14.6616 5.55163 14.649C4.90893 14.6351 3.67265 14.2856 2.7536 13.9869C1.62635 13.6204 0.730432 13.4267 0.808447 12.8044C0.849081 12.4803 1.29544 12.1488 2.14753 11.8099Z"/>
+        </svg>
+        <span>Telegram</span>
+      </button>
+    </a>
+
+    <a href="manga.html" rel="noopener">
+      <button class="manga-btn"><span>MANGA</span></button>
+    </a>
+  </div>
+
+  <!-- نجوم الخلفية -->
   <script>
     const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
+    function size() { canvas.width = innerWidth; canvas.height = innerHeight; }
+    size(); addEventListener('resize', size);
 
-    const stars = [];
-    for (let i = 0; i < 150; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2,
-        brightness: Math.random(),
-        speed: (Math.random() - 0.5) * 0.2,
-        pulse: Math.random() * 0.05
-      });
-    }
+    const stars = Array.from({length: 150}, () => ({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      size: Math.random() * 2,
+      brightness: Math.random(),
+      speed: (Math.random() - 0.5) * 0.2,
+      pulse: Math.random() * 0.05
+    }));
 
     function drawStars() {
+      ctx.clearRect(0,0,canvas.width,canvas.height);
       for (const s of stars) {
         s.brightness += s.pulse * (Math.random() > 0.5 ? 1 : -1);
         if (s.brightness < 0.2) s.brightness = 0.2;
@@ -316,19 +227,9 @@
         ctx.fillRect(s.x, s.y, s.size, s.size);
       }
       ctx.globalAlpha = 1;
+      requestAnimationFrame(drawStars);
     }
-
-    function animate(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      drawStars();
-      requestAnimationFrame(animate);
-    }
-    animate();
-
-    addEventListener('resize', ()=>{
-      canvas.width = innerWidth;
-      canvas.height = innerHeight;
-    });
+    drawStars();
   </script>
 </body>
 </html>

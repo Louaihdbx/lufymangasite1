@@ -1,196 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Select Language • One Piece</title>
+  <meta charset="UTF-8" />
+  <title>lufysite</title>
+
+  <meta name="google-adsense-account" content="ca-pub-1329100449548971">
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HJHRNZ31H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8HJHRNZ31H');
+  </script>
+
+  <link rel="icon" type="image/png" href="characters/dstf234retyghj.jpg">
+
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
-    }
-
-    /* خلفية النجوم */
-    canvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    /* الهيدر */
-    header {
-      background: rgba(17,17,17,0.85);
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #222;
-      position: relative;
-      z-index: 2;
-    }
-    .logo { display:flex; align-items:center; gap:10px; font-weight:700; }
-    .logo img { width:35px; height:35px; border-radius:50%; }
-    nav ul { list-style:none; display:flex; gap:15px; margin:0; padding:0; }
-    nav a { color:#fff; text-decoration:none; font-weight:700; }
-
-    /* المحتوى */
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-      padding: 34px 12px 40px;
-      position: relative;
-      z-index: 2;
-    }
-
-    h2 {
-      margin: 0 0 12px;
-      font-size: clamp(22px, 3.5vw, 32px);
-      text-shadow: 0 0 10px #ffffff33;
-    }
-
-    /* شبكة اللغات: 3 أعمدة دائماً حتى على الجوال */
-    .lang-options {
-      width: 100%;
-      max-width: 1100px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      align-items: stretch;
-      justify-items: center;
-    }
-
-    /* البطاقة تتقلّص تلقائياً لتناسب ثلث الشاشة */
-    .lang-card {
-      width: 100%;
-      max-width: 320px;             /* يمنعها تكبر زيادة على الكمبيوتر */
-      aspect-ratio: 3 / 4;          /* يحافظ على التناسُب وتقلّص على الجوال */
-      border-radius: 14px;
       overflow: hidden;
-      background: rgba(28,28,28,0.9);
-      border: 1px solid #333;
-      box-shadow: 0 0 15px rgba(255,255,255,0.1);
-      color: #fff;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      transition: transform .25s, box-shadow .25s;
+      background: #000;
+      font-family: Arial, sans-serif;
     }
-    .lang-card:hover { transform: scale(1.04); box-shadow: 0 0 24px rgba(255,255,255,0.25); }
 
-    /* الصورة تملأ الجزء العلوي، والنص شريط سفلي */
-    .lang-card img {
-      width: 100%;
-      height: calc(100% - 50px); /* يترك مساحة للشريط السفلي */
-      object-fit: cover;
+    canvas {
       display: block;
-      border-bottom: 2px solid #222;
+      position: relative;
+      z-index: 1;
     }
-    .lang-card p {
-      height: 50px;
+
+    #moonBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 120px;
+      height: 120px;
+      z-index: 2000;
+      pointer-events: none;
+    }
+
+    #centerText {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1200;
+      pointer-events: none; 
+      width: 100%;
+      padding: 0 10px;
+    }
+
+    #centerText .logo {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 8px solid #000;
+      box-shadow: 0 0 22px rgba(0, 150, 255, 0.5);
+    }
+
+    #centerText h1 {
       margin: 0;
-      display: grid;
-      place-items: center;
-      background: #111;
+      font-weight: 900;
+      font-size: 42px;
+      color: #fff;
+      letter-spacing: 1.5px;
+      text-shadow: 0 4px 10px rgba(0,150,255,0.5);
+    }
+
+    #centerText p {
+      margin: 14px 0 0;
+      font-size: 20px;
+      color: #87CEFA;
+      text-shadow: 0 2px 6px rgba(135,206,250,0.45);
+      font-weight: 400;
+      max-width: 600px;
+      line-height: 1.8;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 28px;
+      gap: 18px;
+      pointer-events: auto;
+      flex-wrap: wrap;
+    }
+
+    /* الأزرار العامة */
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 26px;
+      border-radius: 25px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(128,128,128,0.15);
+      color: #fff;
+      font-size: 20px;
       font-weight: 700;
-      font-size: clamp(12px, 2.6vw, 18px); /* يصغّر الخط على الجوال */
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      background: rgba(128,128,128,0.3);
+      transform: translateY(-4px);
+    }
+
+    .social-btn .icon {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) invert(1);
+    }
+
+    .social-btn.contact:hover {
+      background: rgba(0, 136, 204, 0.4);
+      box-shadow: 0 0 10px rgba(0, 150, 255, 0.6);
+    }
+
+    /* زر Instagram الأبيض */
+    .instagram-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 28px;
+      border: 1px solid #fff;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .instagram-btn::before {
+      content: "📷"; /* أيقونة بسيطة بدون صورة */
+      font-size: 22px;
+    }
+
+    .instagram-btn:hover {
+      background: #fff;
+      color: #000;
+      border: 1px solid #000;
     }
 
     footer {
-      background: rgba(17,17,17,0.85);
+      position: fixed;
+      bottom: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-size: 18px;
+      font-weight: 500;
       text-align: center;
-      padding: 10px;
-      font-size: 14px;
-      border-top: 1px solid #222;
-      position: relative;
-      z-index: 2;
+      pointer-events: none;
+    }
+
+    /* للجوال */
+    @media (max-width: 768px) {
+      #moonBtn { width: 150px; height: 150px; }
+      #centerText .logo { width: 300px; height: 300px; margin-bottom: 28px; }
+      #centerText h1 { font-size: 64px; }
+      #centerText p { font-size: 36px; line-height: 2; max-width: 95%; color: #ffffff; }
+      .social-links { flex-direction: column; gap: 28px; margin-top: 40px; }
+      .social-btn, .instagram-btn { width: 100%; justify-content: center; font-size: 38px; padding: 24px 36px; border-radius: 22px; }
+      footer { font-size: 32px; }
     }
   </style>
 </head>
-<body>
 
+<body>
   <canvas id="space"></canvas>
 
-  <header>
-    <div class="logo">
-      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
-      <span>lufy manga</span>
-    </div>
-    <nav>
-      <ul><li><a href="index.html">Home</a></li></ul>
-    </nav>
-  </header>
+  <img id="moonBtn" src="characters/moon.webp" alt="Moon" />
 
-  <main>
-    <h2>Select Your Language</h2>
+  <div id="centerText">
+    <img src="characters/dstf234retyghj.jpg" alt="Luffy" class="logo" />
+    <h1>Welcome to lufy site</h1>
+    <p>
+      We provide the latest <strong>One Piece</strong> manga chapters, fully translated to English, 
+      delivered in the highest quality and as fast as possible. Our goal is to make sure fans 
+      enjoy the story with clear visuals, accurate translations, and quick updates every week.
+    </p>
 
-    <div class="lang-options">
-      <!-- English -->
-      <a href="onepiecemanga.html" class="lang-card">
-        <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/lufymangasite1/Flag_of_the_United_Kingdomsaf.png" alt="English Flag">
-        <p>English</p>
+    <div class="social-links">
+      <!-- زر Instagram الجديد -->
+      <a href="https://instagram.com/lufy" target="_blank" class="instagram-btn">Instagram</a>
+
+      <!-- باقي الأزرار -->
+      <a href="manga.html" class="social-btn manga">
+        <img src="characters/4860886.png" alt="Manga Icon" class="icon" />
+        <span>Manga</span>
       </a>
-
-      <!-- French -->
-      <a href="onepiecemangafr.html" class="lang-card">
-        <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/lufymangasite1/FR-2.5x1sdaf.png" alt="French Flag">
-        <p>Français</p>
-      </a>
-
-      <!-- Spanish -->
-      <a href="onepiecemangaes.html" class="lang-card">
-        <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/lufymangasite1/Flag_of_Spaindsggdds.png" alt="Spanish Flag">
-        <p>Español</p>
+      <a href="https://t.me/ff2ff" target="_blank" class="social-btn contact">
+        <span>Contact Me</span>
       </a>
     </div>
-  </main>
+  </div>
 
   <footer>
-    lufy manga © 2025
+    lufy © 2025
   </footer>
 
   <script>
-    // نجوم الخلفية
     const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');
-    function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
-    resize(); addEventListener('resize', resize);
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
 
-    const stars = Array.from({length:150}, () => ({
-      x: Math.random()*canvas.width,
-      y: Math.random()*canvas.height,
-      s: Math.random()*2,
-      b: Math.random(),
-      v: (Math.random()-0.5)*0.2,
-      p: Math.random()*0.05
-    }));
+    const stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        brightness: Math.random(),
+        speed: (Math.random() - 0.5) * 0.2,
+        pulse: Math.random() * 0.05
+      });
+    }
 
-    (function loop(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      for(const st of stars){
-        st.b += st.p*(Math.random()>0.5?1:-1);
-        st.b = Math.max(0.2, Math.min(1, st.b));
-        st.x += st.v;
-        if(st.x<0) st.x = canvas.width;
-        if(st.x>canvas.width) st.x = 0;
-        ctx.fillStyle='#fff';
-        ctx.globalAlpha=st.b;
-        ctx.fillRect(st.x, st.y, st.s, st.s);
+    function drawStars() {
+      for (const s of stars) {
+        s.brightness += s.pulse * (Math.random() > 0.5 ? 1 : -1);
+        if (s.brightness < 0.2) s.brightness = 0.2;
+        if (s.brightness > 1) s.brightness = 1;
+        s.x += s.speed;
+        if (s.x < 0) s.x = canvas.width;
+        if (s.x > canvas.width) s.x = 0;
+        ctx.fillStyle = '#fff';
+        ctx.globalAlpha = s.brightness;
+        ctx.fillRect(s.x, s.y, s.size, s.size);
       }
-      ctx.globalAlpha=1;
-      requestAnimationFrame(loop);
-    })();
-  </script>
+      ctx.globalAlpha = 1;
+    }
 
+    class Meteor {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = -50;
+        this.length = 120;
+        this.speed = 8;
+        this.opacity = 1;
+      }
+      update() {
+        this.x += this.speed;
+        this.y += this.speed;
+        this.opacity -= 0.01;
+      }
+      draw() {
+        const grad = ctx.createLinearGradient(this.x, this.y, this.x - this.length, this.y - this.length);
+        grad.addColorStop(0, `rgba(255,255,255,${this.opacity})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x - this.length, this.y - this.length);
+        ctx.stroke();
+      }
+      isDead() { return this.opacity <= 0; }
+    }
+
+    const meteors = [];
+    setInterval(() => {
+      const count = 2 + Math.floor(Math.random() * 2);
+      for (let i = 0; i < count; i++) {
+        meteors.push(new Meteor());
+      }
+    }, 10000);
+
+    function drawMeteors() {
+      for (let i = meteors.length - 1; i >= 0; i--) {
+        const m = meteors[i];
+        m.update();
+        m.draw();
+        if (m.isDead()) meteors.splice(i, 1);
+      }
+    }
+
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawStars();
+      drawMeteors();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    addEventListener('resize', ()=>{
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    });
+  </script>
 </body>
 </html>

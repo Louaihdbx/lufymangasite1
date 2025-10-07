@@ -124,78 +124,99 @@
       box-shadow: inset 0 0 0 10em #fff;
     }
 
-    /* ================= TELEGRAM BUTTON ================= */
+    /* ================= TELEGRAM BUTTON (WHITE FILL ANIMATION) ================= */
     .telegram {
-      transition: none 0.5s ease;
+      background: transparent;
+      position: relative;
+      padding: 12px 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      position: relative;
-      gap: 10px;
-      border: 2px solid #fff;
-      background: transparent;
-      color: #fff;
-      border-radius: 30px;
-      cursor: pointer;
-      width: 190px;
-      height: 55px;
       font-size: 18px;
       font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid #fff; /* الإطار الأبيض */
+      border-radius: 30px;
+      outline: none;
+      overflow: hidden;
+      color: #fff; /* النص والأيقونة باللون الأبيض */
+      transition: color 0.3s 0.1s ease-out;
+      text-align: center;
+      width: 190px;
+      height: 55px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
     }
 
-    .telegram-text {
-      transition: none 0.3s ease;
-      font-weight: bold;
+    .telegram span {
+      margin-left: 10px;
     }
 
-    .telegram:hover .telegram-text {
-      display: none;
-    }
-
-    .telegram-svg {
-      width: 22px;
-      height: 22px;
-      transition: 0.8s;
-      fill: #fff;
-    }
-
-    .telegram:hover .telegram-svg {
-      margin-left: 40px;
-      transform: rotate(50deg);
-      fill: #000;
+    .telegram::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      content: "";
+      border-radius: 50%;
+      display: block;
+      width: 20em;
+      height: 20em;
+      left: -5em;
+      text-align: center;
+      transition: box-shadow 0.5s ease-out;
+      z-index: -1;
     }
 
     .telegram:hover {
-      background-color: #fff;
-      color: #000;
+      color: #000; /* النص يصير أسود عند التحويم */
+      border: 2px solid #fff; /* الإطار يظل أبيض */
+    }
+
+    .telegram:hover::before {
+      box-shadow: inset 0 0 0 10em #fff; /* التعبئة البيضاء */
+    }
+
+    .telegram svg {
+      fill: currentColor;
+      transition: fill 0.3s ease;
+    }
+
+    .telegram:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    a {
+      text-decoration: none !important;
     }
 
     /* ================= MANGA BUTTON ================= */
-    /* ================= MANGA BUTTON ================= */
-.manga-btn {
-  position: relative;
-  cursor: pointer;
-  padding: 12px 30px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #fff;
-  border-radius: 30px;
-  font-weight: 700;
-  border: 2px solid #fff;
-  background: transparent;
-  width: 190px;
-  height: 55px;
-  font-size: 20px; /* زودناها من 18px إلى 20px */
-  letter-spacing: 1.5px; /* يعطيها مظهر أنيق ومتناسق */
-  transition: all 0.4s ease;
-}
+    .manga-btn {
+      position: relative;
+      cursor: pointer;
+      padding: 12px 30px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #fff;
+      border-radius: 30px;
+      font-weight: 700;
+      border: 2px solid #fff;
+      background: transparent;
+      width: 190px;
+      height: 55px;
+      font-size: 20px;
+      letter-spacing: 1.5px;
+      transition: all 0.4s ease;
+    }
 
-.manga-btn:hover {
-  background: #fff;
-  color: #000;
-  box-shadow: 0 0 15px #fff;
-}
-
+    .manga-btn:hover {
+      background: #fff;
+      color: #000;
+      box-shadow: 0 0 15px #fff;
+    }
   </style>
 </head>
 <body>
@@ -227,18 +248,10 @@
       <!-- Telegram -->
       <a href="https://t.me/lufy" target="_blank">
         <button class="telegram">
-          <svg
-            class="telegram-svg"
-            viewBox="0,0,256,256"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g transform="scale(5.12,5.12)">
-              <path
-                d="M46.137,6.552c-0.75,-0.636 -1.928,-0.727 -3.146,-0.238h-0.002c-1.281,0.514 -36.261,15.518 -37.685,16.131c-0.259,0.09 -2.521,0.934 -2.288,2.814c0.208,1.695 2.026,2.397 2.248,2.478l8.893,3.045c0.59,1.964 2.765,9.21 3.246,10.758c0.3,0.965 0.789,2.233 1.646,2.494c0.752,0.29 1.5,0.025 1.984,-0.355l5.437,-5.043l8.777,6.845l0.209,0.125c0.596,0.264 1.167,0.396 1.712,0.396c0.421,0 0.825,-0.079 1.211,-0.237c1.315,-0.54 1.841,-1.793 1.896,-1.935l6.556,-34.077c0.4,-1.82 -0.156,-2.746 -0.694,-3.201zM22,32l-3,8l-3,-10l23,-17z"
-              ></path>
-            </g>
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 26 26">
+            <path d="M2.14753 11.8099C7.3949 9.52374 10.894 8.01654 12.6447 7.28833C17.6435 5.20916 18.6822 4.84799 19.3592 4.83606C19.5081 4.83344 19.8411 4.87034 20.0567 5.04534C20.2388 5.1931 20.2889 5.39271 20.3129 5.5328C20.3369 5.6729 20.3667 5.99204 20.343 6.2414C20.0721 9.08763 18.9 15.9947 18.3037 19.1825C18.0514 20.5314 17.5546 20.9836 17.0736 21.0279C16.0283 21.1241 15.2345 20.3371 14.2221 19.6735C12.6379 18.635 11.7429 17.9885 10.2051 16.9751C8.42795 15.804 9.58001 15.1603 10.5928 14.1084C10.8579 13.8331 15.4635 9.64397 15.5526 9.26395C15.5637 9.21642 15.5741 9.03926 15.4688 8.94571C15.3636 8.85216 15.2083 8.88415 15.0962 8.9096C14.9373 8.94566 12.4064 10.6184 7.50365 13.928C6.78528 14.4212 6.13461 14.6616 5.55163 14.649C4.90893 14.6351 3.67265 14.2856 2.7536 13.9869C1.62635 13.6204 0.730432 13.4267 0.808447 12.8044C0.849081 12.4803 1.29544 12.1488 2.14753 11.8099Z"></path>
           </svg>
-          <span class="telegram-text">Telegram</span>
+          <span>Telegram</span>
         </button>
       </a>
 

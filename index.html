@@ -95,31 +95,7 @@
       pointer-events: auto;
     }
 
-    .social-btn {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      padding: 20px 40px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: rgba(128,128,128,0.15);
-      color: #fff;
-      font-size: 26px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.3s ease;
-    }
-    .social-btn:hover {
-      background: rgba(128,128,128,0.3);
-      transform: translateY(-4px);
-    }
-    .social-btn .icon {
-      width: 36px;
-      height: 36px;
-      filter: brightness(0) invert(1);
-    }
-
-    /* Instagram Uiverse Button */
+    /* Instagram button */
     .uiverse-btn {
       background: transparent;
       position: relative;
@@ -165,6 +141,98 @@
       box-shadow: inset 0 0 0 10em #fff;
     }
 
+    /* Manga button (new Uiverse design by tirth_5172) */
+    .manga-btn {
+      position: relative;
+      cursor: pointer;
+      padding: 16px 40px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #fff;
+      border-radius: 10px;
+      font-weight: 600;
+      border: none;
+      background: transparent;
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .manga-btn span {
+      position: relative;
+      z-index: 20;
+    }
+
+    .manga-btn::before {
+      content: "";
+      position: absolute;
+      left: -75%;
+      top: 0;
+      height: 100%;
+      width: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(12deg);
+      z-index: 10;
+      filter: blur(10px);
+      transition: all 1s ease-in-out;
+    }
+
+    .manga-btn:hover::before {
+      left: 125%;
+    }
+
+    .manga-btn span.border {
+      position: absolute;
+      display: block;
+      border-color: #D4EDF9;
+      filter: drop-shadow(0 0 5px #D4EDF9);
+      transition: all 0.3s ease-in-out;
+    }
+
+    .manga-btn .top-left {
+      width: 50%;
+      height: 20%;
+      top: 0;
+      left: 0;
+      border-left: 2px solid;
+      border-top: 2px solid;
+      border-radius: 8px 0 0 0;
+    }
+
+    .manga-btn .top-right {
+      width: 50%;
+      height: 60%;
+      top: 0;
+      right: 0;
+      border-right: 2px solid;
+      border-top: 2px solid;
+      border-radius: 0 8px 0 0;
+    }
+
+    .manga-btn .bottom-left {
+      width: 50%;
+      height: 60%;
+      bottom: 0;
+      left: 0;
+      border-left: 2px solid;
+      border-bottom: 2px solid;
+      border-radius: 0 0 0 8px;
+    }
+
+    .manga-btn .bottom-right {
+      width: 50%;
+      height: 20%;
+      bottom: 0;
+      right: 0;
+      border-right: 2px solid;
+      border-bottom: 2px solid;
+      border-radius: 0 0 8px 0;
+    }
+
+    .manga-btn:hover .top-right,
+    .manga-btn:hover .bottom-left {
+      height: 90%;
+    }
+
     footer {
       position: fixed;
       bottom: 18px;
@@ -183,8 +251,7 @@
       #centerText h1 { font-size: 90px; line-height: 1.4; }
       #centerText p { font-size: 48px; line-height: 2.2; max-width: 95%; color: #ffffff; }
       .social-links { flex-direction: column; gap: 36px; margin-top: 48px; }
-      .social-btn { width: 100%; justify-content: center; font-size: 48px; padding: 28px 40px; border-radius: 24px; }
-      .social-btn .icon { width: 64px; height: 64px; }
+      .uiverse-btn, .manga-btn { font-size: 48px; padding: 28px 40px; border-radius: 24px; }
       footer { font-size: 36px; }
     }
   </style>
@@ -213,9 +280,14 @@
         </button>
       </a>
 
-      <a href="manga.html" class="social-btn manga">
-        <img src="characters/4860886.png" alt="Manga Icon" class="icon" />
-        <span>Manga</span>
+      <a href="manga.html">
+        <button class="manga-btn">
+          <span class="relative z-20">Manga</span>
+          <span class="border top-left"></span>
+          <span class="border top-right"></span>
+          <span class="border bottom-left"></span>
+          <span class="border bottom-right"></span>
+        </button>
       </a>
     </div>
   </div>

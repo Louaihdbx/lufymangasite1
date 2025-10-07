@@ -112,12 +112,6 @@
       transform: translateY(-4px);
     }
 
-    .social-btn .icon {
-      width: 28px;
-      height: 28px;
-      filter: brightness(0) invert(1);
-    }
-
     .social-btn.contact:hover {
       background: rgba(0, 136, 204, 0.4);
       box-shadow: 0 0 10px rgba(0, 150, 255, 0.6);
@@ -143,17 +137,14 @@
       #centerText p { font-size: 36px; line-height: 2; max-width: 95%; color: #ffffff; }
       .social-links { flex-direction: column; gap: 28px; margin-top: 40px; }
       .social-btn { width: 100%; justify-content: center; font-size: 38px; padding: 24px 36px; border-radius: 22px; }
-      .social-btn .icon { width: 56px; height: 56px; }
       footer { font-size: 32px; }
     }
 
-    /* زر Instagram الأبيض */
+    /* زر Instagram الأبيض بدون أيقونة */
     .insta-btn {
       background: transparent;
       position: relative;
-      padding: 10px 25px;
-      display: flex;
-      align-items: center;
+      padding: 10px 40px;
       font-size: 18px;
       font-weight: 600;
       text-decoration: none;
@@ -165,10 +156,6 @@
       color: #fff;
       transition: color 0.3s 0.1s ease-out, border 0.3s ease-out;
       text-align: center;
-    }
-
-    .insta-btn span {
-      margin-left: 10px;
     }
 
     .insta-btn::before {
@@ -214,12 +201,9 @@
     </p>
 
     <div class="social-links">
-      <!-- زر Instagram الجديد -->
+      <!-- زر Instagram بدون أيقونة -->
       <a href="https://instagram.com/lufy" target="_blank" style="text-decoration:none;">
-        <button class="insta-btn">
-          <img src="characters/4922972.png" alt="Instagram Icon" width="28" height="28">
-          <span>Instagram</span>
-        </button>
+        <button class="insta-btn">Instagram</button>
       </a>
 
       <!-- باقي الأزرار -->
@@ -329,3 +313,4 @@
   </script>
 </body>
 </html>
+

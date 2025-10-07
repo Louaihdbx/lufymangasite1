@@ -4,10 +4,9 @@
   <meta charset="UTF-8" />
   <title>lufysite</title>
 
-  <!-- إثبات ملكية Google AdSense -->
   <meta name="google-adsense-account" content="ca-pub-1329100449548971">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HJHRNZ31H"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -16,7 +15,6 @@
     gtag('config', 'G-8HJHRNZ31H');
   </script>
 
-  <!-- أيقونة التبويب -->
   <link rel="icon" type="image/png" href="characters/dstf234retyghj.jpg">
 
   <style>
@@ -24,7 +22,8 @@
       margin: 0;
       overflow: hidden;
       background: #000;
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
     }
 
     canvas {
@@ -50,171 +49,82 @@
       transform: translate(-50%, -50%);
       text-align: center;
       z-index: 1200;
-      pointer-events: none; 
+      pointer-events: none;
       width: 100%;
       padding: 0 10px;
     }
 
     #centerText .logo {
-      width: 280px;
-      height: 280px;
-      margin-bottom: 28px;
+      width: 250px;
+      height: 250px;
+      margin-bottom: 25px;
       border-radius: 50%;
       object-fit: cover;
       border: 10px solid #000;
       box-shadow: 0 0 28px rgba(0, 150, 255, 0.5);
     }
 
-    #centerText h1 {
-      margin: 0;
-      font-weight: 900;
-      font-size: 60px;
-      color: #fff;
-      letter-spacing: 2px;
-      text-shadow: 0 6px 12px rgba(0,150,255,0.5);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* الكارد الجديد */
+    .card {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 30px 40px;
+      background: #1b1b1b;
+      border-radius: 25px;
+      box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.6),
+                  -5px -5px 25px rgba(255, 255, 255, 0.05);
+      text-align: center;
+      pointer-events: auto;
+      transition: all 0.3s ease;
     }
 
-    #centerText p {
-      margin: 18px 0 0;
-      font-size: 28px;
-      color: #87CEFA;
-      text-shadow: 0 3px 8px rgba(135,206,250,0.45);
-      font-weight: 400;
-      max-width: 700px;
-      line-height: 2;
-      margin-left: auto;
-      margin-right: auto;
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 10px 10px 25px rgba(0, 0, 0, 0.7),
+                  -5px -5px 20px rgba(255, 255, 255, 0.07);
+    }
+
+    .card h1 {
+      margin: 0;
+      font-size: 44px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 0 12px rgba(0, 150, 255, 0.6);
+    }
+
+    .card p {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #c9e8ff;
+      line-height: 1.8;
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      margin-top: 32px;
       gap: 24px;
+      margin-top: 32px;
       pointer-events: auto;
       flex-wrap: wrap;
     }
 
-    /* Instagram button */
-    .uiverse-btn {
-      background: transparent;
-      position: relative;
-      padding: 12px 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      font-weight: 600;
-      cursor: pointer;
-      border: 2px solid #fff;
-      border-radius: 30px;
-      color: white;
-      overflow: hidden;
-      transition: color 0.3s ease-out;
-      width: 180px;
-      height: 55px;
-    }
-
-    .uiverse-btn span {
-      margin-left: 10px;
-    }
-
-    .uiverse-btn svg {
-      fill: #fff;
-      width: 22px;
-      height: 22px;
-    }
-
-    .uiverse-btn::before {
-      position: absolute;
-      content: "";
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: 50%;
-      width: 20em;
-      height: 20em;
-      left: -5em;
-      margin: auto;
-      transition: box-shadow 0.5s ease-out;
-      z-index: -1;
-    }
-
-    .uiverse-btn:hover {
-      color: #000;
-      border-color: #fff;
-    }
-
-    .uiverse-btn:hover::before {
-      box-shadow: inset 0 0 0 10em #fff;
-    }
-
-    /* زر التليجرام (أسود بإطار أبيض) */
-    .telegram {
-      transition: none 0.5s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      padding-left: 10px;
-      padding-right: 10px;
-      width: 180px;
-      height: 55px;
-      gap: 10px;
-      border: 2px solid #fff;
-      background-color: #000;
-      color: white;
-      border-radius: 30px;
-      cursor: pointer;
-    }
-
-    .telegram-text {
-      transition: none 0.3s ease;
-      font-weight: bold;
-      font-size: 1rem;
-    }
-
-    .telegram:hover .telegram-text {
-      display: none;
-      position: absolute;
-    }
-
-    .telegram-svg {
-      width: 23px;
-      height: 23px;
-      transition: 0.8s;
-      fill: #fff;
-    }
-
-    .telegram:hover .telegram-svg {
-      margin-left: 40px;
-      display: block;
-      transform: rotate(50deg);
-    }
-
-    /* Manga button */
+    .telegram,
     .manga-btn {
-      position: relative;
-      cursor: pointer;
-      padding: 12px 35px;
-      text-align: center;
-      text-transform: uppercase;
-      color: #fff;
-      border-radius: 30px;
-      font-weight: 700;
-      font-size: 20px; /* صغّر شوي */
-      border: 2px solid #fff;
-      background: transparent;
-      overflow: hidden;
-      transition: transform 0.3s ease-in-out;
       width: 180px;
       height: 55px;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 18px;
+      color: #fff;
+      background: transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
+    .telegram:hover,
     .manga-btn:hover {
-      background-color: #fff;
+      background: #fff;
       color: #000;
     }
 
@@ -224,10 +134,7 @@
       left: 50%;
       transform: translateX(-50%);
       color: rgba(255,255,255,0.6);
-      font-size: 22px;
-      font-weight: 500;
-      text-align: center;
-      pointer-events: none;
+      font-size: 18px;
     }
   </style>
 </head>
@@ -238,52 +145,23 @@
 
   <div id="centerText">
     <img src="characters/dstf234retyghj.jpg" alt="Luffy" class="logo" />
-    <h1>Welcome to lufy site</h1>
-    <p>
-      We provide the latest <strong>One Piece</strong> manga chapters, fully translated to English, 
-      delivered in the highest quality and as fast as possible. Our goal is to make sure fans 
-      enjoy the story with clear visuals, accurate translations, and quick updates every week.
-    </p>
+
+    <div class="card">
+      <h1>Welcome to lufy site</h1>
+      <p>
+        We provide the latest <strong>One Piece</strong> manga chapters, fully translated to English, 
+        delivered in the highest quality and as fast as possible. Our goal is to make sure fans 
+        enjoy the story with clear visuals, accurate translations, and quick updates every week.
+      </p>
+    </div>
 
     <div class="social-links">
-      <!-- Instagram -->
-      <a href="https://instagram.com/lufy" target="_blank">
-        <button class="uiverse-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M224,202.66A53.34,53.34,0,1,0,277.34,256,53.38,53.38,0,0,0,224,202.66ZM398.8,80A48,48,0,0,0,368,49.2C334.4,32,224,32,224,32S113.6,32,80,49.2A48,48,0,0,0,49.2,80C32,113.6,32,224,32,224s0,110.4,17.2,144A48,48,0,0,0,80,398.8C113.6,416,224,416,224,416s110.4,0,144-17.2a48,48,0,0,0,30.8-30.8C416,334.4,416,224,416,224S416,113.6,398.8,80ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.4-148.6a19.2,19.2,0,1,1,19.2-19.2A19.2,19.2,0,0,1,309.4,189.4Z"/>
-          </svg>
-          <span>Instagram</span>
-        </button>
-      </a>
-
-      <!-- Telegram -->
-      <a href="https://t.me/lufy" target="_blank">
-        <button class="telegram">
-          <svg
-            class="telegram-svg"
-            viewBox="0,0,256,256"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <g transform="scale(5.12,5.12)">
-              <path d="M46.137,6.552c-0.75,-0.636 -1.928,-0.727 -3.146,-0.238h-0.002c-1.281,0.514 -36.261,15.518 -37.685,16.131c-0.259,0.09 -2.521,0.934 -2.288,2.814c0.208,1.695 2.026,2.397 2.248,2.478l8.893,3.045c0.59,1.964 2.765,9.21 3.246,10.758c0.3,0.965 0.789,2.233 1.646,2.494c0.752,0.29 1.5,0.025 1.984,-0.355l5.437,-5.043l8.777,6.845l0.209,0.125c0.596,0.264 1.167,0.396 1.712,0.396c0.421,0 0.825,-0.079 1.211,-0.237c1.315,-0.54 1.841,-1.793 1.896,-1.935l6.556,-34.077c0.4,-1.82 -0.156,-2.746 -0.694,-3.201zM22,32l-3,8l-3,-10l23,-17z"></path>
-            </g>
-          </svg>
-          <span class="telegram-text">Telegram</span>
-        </button>
-      </a>
-
-      <!-- Manga -->
-      <a href="manga.html">
-        <button class="manga-btn">
-          <span>MANGA</span>
-        </button>
-      </a>
+      <button class="telegram">Telegram</button>
+      <button class="manga-btn">MANGA</button>
     </div>
   </div>
 
-  <footer>
-    lufy © 2025
-  </footer>
+  <footer>lufy © 2025</footer>
 
   <script>
     const canvas = document.getElementById('space');

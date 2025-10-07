@@ -120,6 +120,12 @@
       margin-left: 10px;
     }
 
+    .uiverse-btn svg {
+      fill: #fff;
+      width: 22px;
+      height: 22px;
+    }
+
     .uiverse-btn::before {
       position: absolute;
       content: "";
@@ -145,7 +151,7 @@
       box-shadow: inset 0 0 0 10em #fff;
     }
 
-    /* زر التليجرام (أسود) */
+    /* زر التليجرام (أسود بإطار أبيض) */
     .telegram {
       transition: none 0.5s ease;
       display: flex;
@@ -157,10 +163,10 @@
       width: 180px;
       height: 55px;
       gap: 10px;
-      border: none;
+      border: 2px solid #fff;
       background-color: #000;
       color: white;
-      border-radius: 15px;
+      border-radius: 30px;
       cursor: pointer;
     }
 
@@ -179,6 +185,7 @@
       width: 23px;
       height: 23px;
       transition: 0.8s;
+      fill: #fff;
     }
 
     .telegram:hover .telegram-svg {
@@ -197,7 +204,7 @@
       color: #fff;
       border-radius: 30px;
       font-weight: 700;
-      font-size: 24px; /* تكبير حجم الكتابة */
+      font-size: 20px; /* صغّر شوي */
       border: 2px solid #fff;
       background: transparent;
       overflow: hidden;
@@ -206,27 +213,9 @@
       height: 55px;
     }
 
-    .manga-btn span {
-      position: relative;
-      z-index: 20;
-    }
-
-    .manga-btn::before {
-      content: "";
-      position: absolute;
-      left: -75%;
-      top: 0;
-      height: 100%;
-      width: 50%;
-      background: rgba(255, 255, 255, 0.2);
-      transform: rotate(12deg);
-      z-index: 10;
-      filter: blur(10px);
-      transition: all 1s ease-in-out;
-    }
-
-    .manga-btn:hover::before {
-      left: 125%;
+    .manga-btn:hover {
+      background-color: #fff;
+      color: #000;
     }
 
     footer {
@@ -257,19 +246,20 @@
     </p>
 
     <div class="social-links">
+      <!-- Instagram -->
       <a href="https://instagram.com/lufy" target="_blank">
         <button class="uiverse-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M224,202.66A53.34,53.34,0,1,0,277.34,256,53.38,53.38,0,0,0,224,202.66ZM398.8,80A48,48,0,0,0,368,49.2C334.4,32,224,32,224,32S113.6,32,80,49.2A48,48,0,0,0,49.2,80C32,113.6,32,224,32,224s0,110.4,17.2,144A48,48,0,0,0,80,398.8C113.6,416,224,416,224,416s110.4,0,144-17.2a48,48,0,0,0,30.8-30.8C416,334.4,416,224,416,224S416,113.6,398.8,80ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.4-148.6a19.2,19.2,0,1,1,19.2-19.2A19.2,19.2,0,0,1,309.4,189.4Z"/>
           </svg>
           <span>Instagram</span>
         </button>
       </a>
 
+      <!-- Telegram -->
       <a href="https://t.me/lufy" target="_blank">
         <button class="telegram">
           <svg
-            style="fill:#FFFFFF;"
             class="telegram-svg"
             viewBox="0,0,256,256"
             xmlns="http://www.w3.org/2000/svg"
@@ -282,6 +272,7 @@
         </button>
       </a>
 
+      <!-- Manga -->
       <a href="manga.html">
         <button class="manga-btn">
           <span>MANGA</span>

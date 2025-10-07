@@ -1,379 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, minimum-scale=0.5">
-  <title>One Piece - Chapter 1160</title>
+  <meta charset="UTF-8" />
+  <title>lufysite</title>
+
+  <!-- إثبات ملكية Google AdSense -->
+  <meta name="google-adsense-account" content="ca-pub-1329100449548971">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8HJHRNZ31H"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8HJHRNZ31H');
+  </script>
+
+  <!-- أيقونة التبويب (Favicon) -->
+  <link rel="icon" type="image/png" href="characters/dstf234retyghj.jpg">
 
   <style>
     body {
       margin: 0;
+      overflow: hidden;
+      background: #000;
       font-family: Arial, sans-serif;
-      background: #000;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-      scroll-behavior: smooth;
-      touch-action: pan-x pan-y;
     }
 
-    header {
-      background: #000;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 1px solid #222;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
-      font-size: 18px;
-      color: white;
-    }
-
-    .logo img {
-      width: 35px;
-      height: 35px;
-      border-radius: 50%;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
-      margin: 0;
-      padding: 0;
-    }
-
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    /* ====== شريط الأدوات ====== */
-    .chapter-toolbar {
-      background: #111;
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 50px;
-      z-index: 9;
-      border-bottom: 1px solid #222;
-      flex-wrap: nowrap;
-      gap: 10px;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .chapter-toolbar::-webkit-scrollbar {
-      display: none;
-    }
-
-    .chapter-toolbar a {
-      background: #1a1a1a;
-      color: #fff;
-      padding: 8px 16px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 15px;
-      transition: background 0.3s, transform 0.2s;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-
-    .chapter-toolbar a:hover {
-      background: #333;
-      transform: scale(1.05);
-    }
-
-    .zoom-area {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .zoom-controls {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: #1a1a1a;
-      padding: 8px 12px;
-      border-radius: 10px;
-      justify-content: center;
-    }
-
-    .zoom-controls button {
-      background: #222;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .zoom-controls button:hover {
-      background: #444;
-    }
-
-    #zoomLevel {
-      font-size: 15px;
-      min-width: 50px;
-      text-align: center;
-    }
-
-    main {
-      flex: 1;
-      text-align: center;
-      background: #000;
-      padding-bottom: 40px;
-    }
-
-    h2 {
-      margin: 25px 0;
-      font-size: 26px;
-      color: #f5f5f5;
-    }
-
-    .chapter-pages {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .chapter-pages img {
-      width: 90%;
-      height: auto;
-      border-radius: 5px;
+    canvas {
       display: block;
-      cursor: pointer;
-      transition: transform 0.25s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    #moonBtn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 150px;
+      height: 150px;
+      z-index: 2000;
+      pointer-events: none;
+    }
+
+    #centerText {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1200;
+      pointer-events: none; 
+      width: 100%;
+      padding: 0 10px;
+    }
+
+    #centerText .logo {
+      width: 280px;
+      height: 280px;
+      margin-bottom: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 10px solid #000;
+      box-shadow: 0 0 28px rgba(0, 150, 255, 0.5);
+    }
+
+    #centerText h1 {
+      margin: 0;
+      font-weight: 900;
+      font-size: 60px;
+      color: #fff;
+      letter-spacing: 2px;
+      text-shadow: 0 6px 12px rgba(0,150,255,0.5);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    #centerText p {
+      margin: 18px 0 0;
+      font-size: 28px;
+      color: #87CEFA;
+      text-shadow: 0 3px 8px rgba(135,206,250,0.45);
+      font-weight: 400;
+      max-width: 700px;
+      line-height: 2;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      margin-top: 32px;
+      gap: 24px;
+      pointer-events: auto;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 40px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(128,128,128,0.15);
+      color: #fff;
+      font-size: 26px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .social-btn:hover {
+      background: rgba(128,128,128,0.3);
+      transform: translateY(-4px);
+    }
+    .social-btn .icon {
+      width: 36px;
+      height: 36px;
+      filter: brightness(0) invert(1);
     }
 
     footer {
-      background: #000;
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-size: 22px;
+      font-weight: 500;
       text-align: center;
-      padding: 10px;
-      font-size: 14px;
-      border-top: 1px solid #222;
+      pointer-events: none;
     }
 
-    footer a {
-      color: #aaa;
-      margin: 0 10px;
-      text-decoration: none;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        padding: 10px 12px;
-      }
-
-      .chapter-toolbar {
-        padding: 10px;
-        overflow-x: auto;
-        gap: 8px;
-      }
-
-      .zoom-controls button {
-        font-size: 18px;
-        padding: 8px 10px;
-      }
-
-      #zoomLevel {
-        font-size: 17px;
-      }
-
-      .chapter-toolbar a {
-        font-size: 15px;
-        padding: 7px 12px;
-      }
-
-      .chapter-pages img {
-        width: 98%;
-      }
+    @media (max-width: 768px) {
+      #moonBtn { width: 200px; height: 200px; }
+      #centerText .logo { width: 400px; height: 400px; margin-bottom: 36px; }
+      #centerText h1 { font-size: 90px; line-height: 1.4; }
+      #centerText p { font-size: 48px; line-height: 2.2; max-width: 95%; color: #ffffff; }
+      .social-links { flex-direction: column; gap: 36px; margin-top: 48px; }
+      .social-btn { width: 100%; justify-content: center; font-size: 48px; padding: 28px 40px; border-radius: 24px; }
+      .social-btn .icon { width: 64px; height: 64px; }
+      footer { font-size: 36px; }
     }
   </style>
 </head>
-
 <body>
-  <header>
-    <div class="logo">
-      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
-      <span>lufy manga</span>
-    </div>
-    <nav>
-      <ul><li><a href="index.html">Home</a></li></ul>
-    </nav>
-  </header>
+  <canvas id="space"></canvas>
 
-  <div class="chapter-toolbar">
-    <a href="chapterop1159.html">← Previous Chapter</a>
-    <div class="zoom-area">
-      <a href="#" id="firstPageBtn">Jump to First Page</a>
-      <div class="zoom-controls">
-        <button id="zoomOut">−</button>
-        <span id="zoomLevel">100%</span>
-        <button id="zoomIn">+</button>
-        <button id="resetZoom">Reset</button>
-      </div>
-      <a href="#" id="lastPageBtn">Jump to Last Page</a>
+  <img id="moonBtn" src="characters/moon.webp" alt="Moon" />
+
+  <div id="centerText">
+    <img src="characters/dstf234retyghj.jpg" alt="Luffy" class="logo" />
+    <h1>Welcome to lufy site</h1>
+    <p>
+      We provide the latest <strong>One Piece</strong> manga chapters, fully translated to English, 
+      delivered in the highest quality and as fast as possible. Our goal is to make sure fans 
+      enjoy the story with clear visuals, accurate translations, and quick updates every week.
+    </p>
+
+    <div class="social-links">
+      <a href="https://instagram.com/lufy" target="_blank" class="social-btn instagram">
+        <img src="characters/4922972.png" alt="Instagram Icon" class="icon" />
+        <span>Instagram</span>
+      </a>
+      <a href="manga.html" class="social-btn manga">
+        <img src="characters/4860886.png" alt="Manga Icon" class="icon" />
+        <span>Manga</span>
+      </a>
     </div>
-    <a href="chapterop1161.html">Next Chapter →</a>
   </div>
 
-  <main>
-    <h2>One Piece - Chapter 1160</h2>
-    <div class="chapter-pages" id="chapterPages">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page0.png" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page1.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page2.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page3.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page4.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page5.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page6.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page7.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page8.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page9.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page10.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page11.jpg" alt="">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1160mangaen/page12.jpg" alt="">
-    </div>
-  </main>
-
   <footer>
-    <a href="onepiecemanga.html">Back to Chapters</a> |
-    <a href="PrivacyPolicy.html">Privacy Policy</a>
+    lufy © 2025
   </footer>
 
   <script>
-    const zoomLevelDisplay = document.getElementById('zoomLevel');
-    const images = document.querySelectorAll('.chapter-pages img');
-    let zoom = 1;
-    let activeImage = null;
+    const canvas = document.getElementById('space');
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
 
-    // 🔍 احصل على الصورة الأقرب لمركز الشاشة
-    function getCenterImage() {
-      let middleY = window.scrollY + window.innerHeight / 2;
-      let closest = images[0];
-      let minDiff = Infinity;
-
-      images.forEach(img => {
-        const rect = img.getBoundingClientRect();
-        const center = rect.top + window.scrollY + rect.height / 2;
-        const diff = Math.abs(center - middleY);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closest = img;
-        }
+    const stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        brightness: Math.random(),
+        speed: (Math.random() - 0.5) * 0.2,
+        pulse: Math.random() * 0.05
       });
-      return closest;
     }
 
-    // ✅ تحديث مستوى الزوم
-    function updateZoom() {
-      if (!activeImage) activeImage = getCenterImage();
-      images.forEach(img => {
-        if (img === activeImage) {
-          img.style.transition = 'transform 0.25s ease';
-          img.style.transformOrigin = 'center center';
-          img.style.transform = `scale(${zoom})`;
-        } else {
-          img.style.transform = 'scale(1)';
-        }
-      });
-      zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
-    }
+    function drawStars() {
+      for (const s of stars) {
+        s.brightness += s.pulse * (Math.random() > 0.5 ? 1 : -1);
+        if (s.brightness < 0.2) s.brightness = 0.2;
+        if (s.brightness > 1) s.brightness = 1;
 
-    // ✅ أزرار التحكم
-    document.getElementById('zoomIn').onclick = () => {
-      activeImage = getCenterImage();
-      zoom = Math.min(2.5, zoom + 0.1);
-      updateZoom();
-    };
+        s.x += s.speed;
+        if (s.x < 0) s.x = canvas.width;
+        if (s.x > canvas.width) s.x = 0;
 
-    document.getElementById('zoomOut').onclick = () => {
-      activeImage = getCenterImage();
-      zoom = Math.max(0.5, zoom - 0.1);
-      updateZoom();
-    };
-
-    document.getElementById('resetZoom').onclick = () => {
-      zoom = 1;
-      activeImage = null;
-      updateZoom();
-    };
-
-    // ✅ تمرير ناعم
-    function smoothScrollTo(targetY, duration = 800) {
-      const startY = window.scrollY;
-      const diff = targetY - startY;
-      let start;
-
-      function step(timestamp) {
-        if (!start) start = timestamp;
-        const progress = timestamp - start;
-        const percent = Math.min(progress / duration, 1);
-        window.scrollTo(
-          0,
-          startY +
-            diff *
-              (percent < 0.5
-                ? 2 * percent * percent
-                : -1 + (4 - 2 * percent) * percent)
-        );
-        if (percent < 1) requestAnimationFrame(step);
+        ctx.fillStyle = '#fff';
+        ctx.globalAlpha = s.brightness;
+        ctx.fillRect(s.x, s.y, s.size, s.size);
       }
-      requestAnimationFrame(step);
+      ctx.globalAlpha = 1;
     }
 
-    // ✅ عند الضغط على الصورة → للصفحة التالية
-    images.forEach((img, i) => {
-      img.addEventListener('click', () => {
-        const next = images[i + 1];
-        if (next) {
-          const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
-          smoothScrollTo(nextY, 700);
-          zoom = 1;
-          activeImage = null;
-          updateZoom();
-        }
-      });
+    class Meteor {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = -50;
+        this.length = 120;
+        this.speed = 8;
+        this.opacity = 1;
+      }
+      update() {
+        this.x += this.speed;
+        this.y += this.speed;
+        this.opacity -= 0.01;
+      }
+      draw() {
+        const grad = ctx.createLinearGradient(this.x, this.y, this.x - this.length, this.y - this.length);
+        grad.addColorStop(0, `rgba(255,255,255,${this.opacity})`);
+        grad.addColorStop(1, 'rgba(255,255,255,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(this.x, this.y);
+        ctx.lineTo(this.x - this.length, this.y - this.length);
+        ctx.stroke();
+      }
+      isDead() { return this.opacity <= 0; }
+    }
+
+    const meteors = [];
+    setInterval(() => {
+      const count = 2 + Math.floor(Math.random() * 2);
+      for (let i = 0; i < count; i++) {
+        meteors.push(new Meteor());
+      }
+    }, 10000);
+
+    function drawMeteors() {
+      for (let i = meteors.length - 1; i >= 0; i--) {
+        const m = meteors[i];
+        m.update();
+        m.draw();
+        if (m.isDead()) meteors.splice(i, 1);
+      }
+    }
+
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawStars();
+      drawMeteors();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    addEventListener('resize', ()=>{
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
     });
-
-    // ✅ أول وآخر صفحة
-    document.getElementById('firstPageBtn').onclick = e => {
-      e.preventDefault();
-      smoothScrollTo(0, 1000);
-      zoom = 1;
-      activeImage = null;
-      updateZoom();
-    };
-
-    document.getElementById('lastPageBtn').onclick = e => {
-      e.preventDefault();
-      smoothScrollTo(document.body.scrollHeight, 1000);
-      zoom = 1;
-      activeImage = null;
-      updateZoom();
-    };
   </script>
 </body>
 </html>

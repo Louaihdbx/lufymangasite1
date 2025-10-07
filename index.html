@@ -1,196 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Select Language • One Piece</title>
+  <meta charset="UTF-8" />
+  <title>Instagram Button | Lufy Style</title>
   <style>
     body {
+      background-color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      overflow-x: hidden;
     }
 
-    /* خلفية النجوم */
-    canvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
+    /* زر إنستغرام بعد التعديل */
+    .insta-btn {
+      background: transparent;
+      position: relative;
+      padding: 10px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid rgb(255, 0, 0);
+      border-radius: 25px;
+      color: rgb(255, 0, 0);
+      transition: all 0.3s ease-out;
+      text-align: center;
+      outline: none;
+      overflow: hidden;
+    }
+
+    .insta-btn svg {
+      height: 20px;
+      width: 20px;
+      fill: rgb(255, 0, 0);
+      transition: fill 0.3s ease;
+    }
+
+    .insta-btn span {
+      letter-spacing: 0.5px;
+    }
+
+    .insta-btn::before {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      width: 20em;
+      height: 20em;
+      left: -5em;
+      margin: auto;
+      transition: box-shadow 0.5s ease-out;
       z-index: -1;
     }
 
-    /* الهيدر */
-    header {
-      background: rgba(17,17,17,0.85);
-      padding: 10px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #222;
-      position: relative;
-      z-index: 2;
-    }
-    .logo { display:flex; align-items:center; gap:10px; font-weight:700; }
-    .logo img { width:35px; height:35px; border-radius:50%; }
-    nav ul { list-style:none; display:flex; gap:15px; margin:0; padding:0; }
-    nav a { color:#fff; text-decoration:none; font-weight:700; }
-
-    /* المحتوى */
-    main {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 24px;
-      padding: 34px 12px 40px;
-      position: relative;
-      z-index: 2;
-    }
-
-    h2 {
-      margin: 0 0 12px;
-      font-size: clamp(22px, 3.5vw, 32px);
-      text-shadow: 0 0 10px #ffffff33;
-    }
-
-    /* شبكة اللغات: 3 أعمدة دائماً حتى على الجوال */
-    .lang-options {
-      width: 100%;
-      max-width: 1100px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      align-items: stretch;
-      justify-items: center;
-    }
-
-    /* البطاقة تتقلّص تلقائياً لتناسب ثلث الشاشة */
-    .lang-card {
-      width: 100%;
-      max-width: 320px;             /* يمنعها تكبر زيادة على الكمبيوتر */
-      aspect-ratio: 3 / 4;          /* يحافظ على التناسُب وتقلّص على الجوال */
-      border-radius: 14px;
-      overflow: hidden;
-      background: rgba(28,28,28,0.9);
-      border: 1px solid #333;
-      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+    .insta-btn:hover {
       color: #fff;
-      text-decoration: none;
-      display: flex;
-      flex-direction: column;
-      transition: transform .25s, box-shadow .25s;
-    }
-    .lang-card:hover { transform: scale(1.04); box-shadow: 0 0 24px rgba(255,255,255,0.25); }
-
-    /* الصورة تملأ الجزء العلوي، والنص شريط سفلي */
-    .lang-card img {
-      width: 100%;
-      height: calc(100% - 50px); /* يترك مساحة للشريط السفلي */
-      object-fit: cover;
-      display: block;
-      border-bottom: 2px solid #222;
-    }
-    .lang-card p {
-      height: 50px;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      background: #111;
-      font-weight: 700;
-      font-size: clamp(12px, 2.6vw, 18px); /* يصغّر الخط على الجوال */
+      border: 1px solid rgb(255, 0, 0);
     }
 
-    footer {
-      background: rgba(17,17,17,0.85);
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-      border-top: 1px solid #222;
-      position: relative;
-      z-index: 2;
+    .insta-btn:hover svg {
+      fill: #fff;
+    }
+
+    .insta-btn:hover::before {
+      box-shadow: inset 0 0 0 10em rgb(255, 0, 0);
     }
   </style>
 </head>
 <body>
 
-  <canvas id="space"></canvas>
-
-  <header>
-    <div class="logo">
-      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
-      <span>lufy manga</span>
-    </div>
-    <nav>
-      <ul><li><a href="index.html">Home</a></li></ul>
-    </nav>
-  </header>
-
-  <main>
-    <h2>Select Your Language</h2>
-
-    <div class="lang-options">
-      <!-- English -->
-      <a href="onepiecemanga.html" class="lang-card">
-        <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/lufymangasite1/Flag_of_the_United_Kingdomsaf.png" alt="English Flag">
-        <p>English</p>
-      </a>
-
-      <!-- French -->
-      <a href="onepiecemangafr.html" class="lang-card">
-        <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/lufymangasite1/FR-2.5x1sdaf.png" alt="French Flag">
-        <p>Français</p>
-      </a>
-
-      <!-- Spanish -->
-      <a href="onepiecemangaes.html" class="lang-card">
-        <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/lufymangasite1/Flag_of_Spaindsggdds.png" alt="Spanish Flag">
-        <p>Español</p>
-      </a>
-    </div>
-  </main>
-
-  <footer>
-    lufy manga © 2025
-  </footer>
-
-  <script>
-    // نجوم الخلفية
-    const canvas = document.getElementById('space');
-    const ctx = canvas.getContext('2d');
-    function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }
-    resize(); addEventListener('resize', resize);
-
-    const stars = Array.from({length:150}, () => ({
-      x: Math.random()*canvas.width,
-      y: Math.random()*canvas.height,
-      s: Math.random()*2,
-      b: Math.random(),
-      v: (Math.random()-0.5)*0.2,
-      p: Math.random()*0.05
-    }));
-
-    (function loop(){
-      ctx.clearRect(0,0,canvas.width,canvas.height);
-      for(const st of stars){
-        st.b += st.p*(Math.random()>0.5?1:-1);
-        st.b = Math.max(0.2, Math.min(1, st.b));
-        st.x += st.v;
-        if(st.x<0) st.x = canvas.width;
-        if(st.x>canvas.width) st.x = 0;
-        ctx.fillStyle='#fff';
-        ctx.globalAlpha=st.b;
-        ctx.fillRect(st.x, st.y, st.s, st.s);
-      }
-      ctx.globalAlpha=1;
-      requestAnimationFrame(loop);
-    })();
-  </script>
+  <!-- زر إنستغرام -->
+  <button class="insta-btn">
+    <svg viewBox="0 0 16 16" class="bi bi-instagram" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+    </svg>
+    <span>Instagram</span>
+  </button>
 
 </body>
 </html>

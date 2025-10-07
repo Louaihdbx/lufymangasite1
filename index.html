@@ -146,8 +146,59 @@
       .social-btn .icon { width: 56px; height: 56px; }
       footer { font-size: 32px; }
     }
+
+    /* زر Instagram الجديد */
+    .insta-btn {
+      background: transparent;
+      position: relative;
+      padding: 10px 25px;
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 1px solid rgb(255, 0, 0);
+      border-radius: 25px;
+      outline: none;
+      overflow: hidden;
+      color: rgb(255, 0, 0);
+      transition: color 0.3s 0.1s ease-out;
+      text-align: center;
+    }
+
+    .insta-btn span {
+      margin-left: 10px;
+    }
+
+    .insta-btn::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      content: '';
+      border-radius: 50%;
+      display: block;
+      width: 20em;
+      height: 20em;
+      left: -5em;
+      transition: box-shadow 0.5s ease-out;
+      z-index: -1;
+    }
+
+    .insta-btn:hover {
+      color: #fff;
+      border: 1px solid rgb(255, 0, 0);
+    }
+
+    .insta-btn:hover::before {
+      box-shadow: inset 0 0 0 10em rgb(255, 0, 0);
+    }
   </style>
 </head>
+
 <body>
   <canvas id="space"></canvas>
 
@@ -163,10 +214,15 @@
     </p>
 
     <div class="social-links">
-      <a href="https://instagram.com/lufy" target="_blank" class="social-btn instagram">
-        <img src="characters/4922972.png" alt="Instagram Icon" class="icon" />
-        <span>Instagram</span>
+      <!-- زر Instagram الجديد -->
+      <a href="https://instagram.com/lufy" target="_blank" style="text-decoration:none;">
+        <button class="insta-btn">
+          <img src="characters/4922972.png" alt="Instagram Icon" width="28" height="28">
+          <span>Instagram</span>
+        </button>
       </a>
+
+      <!-- باقي الأزرار -->
       <a href="manga.html" class="social-btn manga">
         <img src="characters/4860886.png" alt="Manga Icon" class="icon" />
         <span>Manga</span>

@@ -196,7 +196,8 @@
       text-transform: uppercase;
       color: #fff;
       border-radius: 30px;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 24px; /* تكبير حجم الكتابة */
       border: 2px solid #fff;
       background: transparent;
       overflow: hidden;
@@ -283,11 +284,7 @@
 
       <a href="manga.html">
         <button class="manga-btn">
-          <span class="relative z-20">Manga</span>
-          <span class="border top-left"></span>
-          <span class="border top-right"></span>
-          <span class="border bottom-left"></span>
-          <span class="border bottom-right"></span>
+          <span>MANGA</span>
         </button>
       </a>
     </div>
@@ -330,54 +327,9 @@
       ctx.globalAlpha = 1;
     }
 
-    class Meteor {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = -50;
-        this.length = 120;
-        this.speed = 8;
-        this.opacity = 1;
-      }
-      update() {
-        this.x += this.speed;
-        this.y += this.speed;
-        this.opacity -= 0.01;
-      }
-      draw() {
-        const grad = ctx.createLinearGradient(this.x, this.y, this.x - this.length, this.y - this.length);
-        grad.addColorStop(0, `rgba(255,255,255,${this.opacity})`);
-        grad.addColorStop(1, 'rgba(255,255,255,0)');
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.x - this.length, this.y - this.length);
-        ctx.stroke();
-      }
-      isDead() { return this.opacity <= 0; }
-    }
-
-    const meteors = [];
-    setInterval(() => {
-      const count = 2 + Math.floor(Math.random() * 2);
-      for (let i = 0; i < count; i++) {
-        meteors.push(new Meteor());
-      }
-    }, 10000);
-
-    function drawMeteors() {
-      for (let i = meteors.length - 1; i >= 0; i--) {
-        const m = meteors[i];
-        m.update();
-        m.draw();
-        if (m.isDead()) meteors.splice(i, 1);
-      }
-    }
-
     function animate(){
       ctx.clearRect(0,0,canvas.width,canvas.height);
       drawStars();
-      drawMeteors();
       requestAnimationFrame(animate);
     }
     animate();

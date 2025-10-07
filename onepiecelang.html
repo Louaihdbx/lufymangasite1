@@ -84,19 +84,20 @@
       text-shadow: 0 0 10px #ffffff33;
     }
 
+    /* ======= اللغة ======= */
     .lang-options {
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-wrap: wrap;
       gap: 30px;
+      flex-wrap: wrap;
       width: 100%;
-      max-width: 1000px;
+      max-width: 1100px;
     }
 
     .lang-card {
-      width: 260px;
-      height: 370px;
+      width: 300px;
+      height: 400px;
       border-radius: 15px;
       overflow: hidden;
       text-decoration: none;
@@ -141,22 +142,23 @@
       z-index: 2;
     }
 
-    @media (max-width: 900px) {
-      .lang-card {
-        width: 220px;
-        height: 320px;
-      }
-    }
-
-    @media (max-width: 700px) {
+    /* ======= التصميم للجوال ======= */
+    @media (max-width: 768px) {
       .lang-options {
         flex-direction: column;
         gap: 25px;
       }
+
       .lang-card {
-        width: 230px;
-        height: 320px;
+        width: 90%;
+        max-width: 380px;
+        height: 350px;
       }
+
+      .lang-card p {
+        font-size: 20px;
+      }
+
       h2 {
         font-size: 26px;
       }

@@ -75,49 +75,82 @@
       flex-wrap: wrap;
     }
 
-    /* ================= GENERAL BUTTON STYLE (shared glow look) ================= */
-    button {
-      width: 190px;
-      height: 55px;
-      border-radius: 30px;
-      border: 2px solid #fff;
-      color: #fff;
-      background: transparent;
-      font-size: 18px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.4s ease;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-      text-align: center;
-    }
-
-    button:hover {
-      background: #fff;
-      color: #000;
-      box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    }
-
     /* ================= INSTAGRAM BUTTON ================= */
     .insta-btn {
+      background: transparent;
+      position: relative;
+      padding: 12px 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      color: white;
+      overflow: hidden;
+      transition: color 0.3s ease-out;
+      width: 190px;
+      height: 55px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
     }
 
-    .insta-btn svg {
-      fill: currentColor;
-      transition: fill 0.3s ease;
+    .insta-btn span {
+      margin-left: 10px;
+    }
+
+    .insta-btn::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      width: 20em;
+      height: 20em;
+      left: -5em;
+      margin: auto;
+      transition: box-shadow 0.5s ease-out;
+      z-index: -1;
+    }
+
+    .insta-btn:hover {
+      color: #000;
+      border-color: #fff;
+    }
+
+    .insta-btn:hover::before {
+      box-shadow: inset 0 0 0 10em #fff;
     }
 
     /* ================= TELEGRAM BUTTON ================= */
     .telegram {
+      background: transparent;
+      position: relative;
+      padding: 12px 30px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      position: relative;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      outline: none;
       overflow: hidden;
+      color: #fff;
+      transition: color 0.3s 0.1s ease-out;
+      text-align: center;
+      width: 190px;
+      height: 55px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    .telegram span {
+      margin-left: 10px;
     }
 
     .telegram::before {
@@ -138,6 +171,11 @@
       z-index: -1;
     }
 
+    .telegram:hover {
+      color: #000;
+      border: 2px solid #fff;
+    }
+
     .telegram:hover::before {
       box-shadow: inset 0 0 0 10em #fff;
     }
@@ -147,15 +185,29 @@
       transition: fill 0.3s ease;
     }
 
-    /* ================= MANGA BUTTON (animated hover) ================= */
+    /* ================= MANGA BUTTON (ANIMATED) ================= */
     .manga-btn {
       position: relative;
-      overflow: hidden;
+      display: inline-block;
+      width: 190px;
+      height: 55px;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 18px;
       font-weight: 700;
-      letter-spacing: 1px;
+      background: transparent;
+      overflow: hidden;
+      cursor: pointer;
       text-transform: uppercase;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-      transition: all 0.4s ease;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      transition: all 0.5s ease;
+    }
+
+    .manga-btn span:first-child {
+      position: relative;
+      z-index: 1;
     }
 
     .manga-btn span:last-child {
@@ -171,14 +223,9 @@
       transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    .manga-btn span:first-child {
-      position: relative;
-      z-index: 1;
-    }
-
     .manga-btn:hover {
       color: #000;
-      background-color: #fff;
+      background: #fff;
       box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
     }
 
@@ -191,7 +238,6 @@
     a {
       text-decoration: none !important;
     }
-
   </style>
 </head>
 <body>
@@ -213,8 +259,8 @@
       <!-- Instagram -->
       <a href="https://instagram.com/lufy" target="_blank">
         <button class="insta-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003z"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
           </svg>
           <span>Instagram</span>
         </button>
@@ -223,7 +269,344 @@
       <!-- Telegram -->
       <a href="https://t.me/lufy" target="_blank">
         <button class="telegram">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 26 26">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 26 26">
+            <path d="M2.14753 11.8099C7.3949 9.52374 10.894 8.01654 12.6447 7.28833C17.6435 5.20916 18.6822 4.84799 19.3592 4.83606C19.5081 4.83344 19.8411 4.87034 20.0567 5.04534C20.2388 5.1931 20.2889 5.39271 20.3129 5.5328C20.3369 5.6729 20.3667 5.99204 20.343 6.2414C20.0721 9.08763 18.9 15.9947 18.3037 19.1825C18.0514 20.5314 17.5546 20.9836 17.0736 21.0279C16.0283 21.1241 15.2345 20.3371 14.2221 19.6735C12.6379 18.635 11.7429 17.9885 10.2051 16.9751C8.42795 15.804 9.58001 15.1603 10.5928 14.1084C10.8579 13.8331 15.4635 9.64397 15.5526 9.26395C15.5637 9.21642 15.5741 9.03926 15.4688 8.94571C15.3636 8.85216 15.2083 8.88415 15.0962 8.9096C14.9373 8.94566 12.4064 10.6184 7.50365 13.928C6.78528 14.4212 6.13461 14.6616 5.55163 14.649C4.90893 14.6351 3.67265 14.2856 2.7536 13.9869C1.62635 13.6204 0.730432 13.4267 0.808447 12.8044C0.849081 12.4803 1.29544 12.1488 2.14753 11.8099Z"></path>
+          </svg>
+          <span>Telegram</span>
+        </button>
+      </a>
+
+      <!-- Manga -->
+      <a href="manga.html">
+        <button class="manga-btn">
+          <span>MANGA</span>
+          <span></span>
+        </button>
+      </a>
+    </div>
+  </div>
+
+  <footer>lufy © 2025</footer>
+
+  <script>
+    const canvas = document.getElementById('space');
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    const stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        brightness: Math.random(),
+        speed: (Math.random() - 0.5) * 0.2,
+        pulse: Math.random() * 0.05
+      });
+    }
+
+    function drawStars() {
+      for (const s of stars) {
+        s.brightness += s.pulse * (Math.random() > 0.5 ? 1 : -1);
+        if (s.brightness < 0.2) s.brightness = 0.2;
+        if (s.brightness > 1) s.brightness = 1;
+        s.x += s.speed;
+        if (s.x < 0) s.x = canvas.width;
+        if (s.x > canvas.width) s.x = 0;
+        ctx.fillStyle = '#fff';
+        ctx.globalAlpha = s.brightness;
+        ctx.fillRect(s.x, s.y, s.size, s.size);
+      }
+      ctx.globalAlpha = 1;
+    }
+
+    function animate(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      drawStars();
+      requestAnimationFrame(animate);
+    }
+    animate();
+
+    addEventListener('resize', ()=>{
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>lufysite</title>
+  <meta name="google-adsense-account" content="ca-pub-1329100449548971">
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    canvas {
+      display: block;
+      position: relative;
+      z-index: 1;
+    }
+
+    #centerText {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1200;
+      width: 100%;
+      padding: 0 10px;
+    }
+
+    #centerText .logo {
+      width: 250px;
+      height: 250px;
+      margin-bottom: 25px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 10px solid #000;
+      box-shadow: 0 0 28px rgba(0, 150, 255, 0.5);
+    }
+
+    .card {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 30px 40px;
+      background: #1b1b1b;
+      border-radius: 25px;
+      box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.6),
+                  -5px -5px 25px rgba(255, 255, 255, 0.05);
+      text-align: center;
+    }
+
+    .card h1 {
+      margin: 0;
+      font-size: 44px;
+      font-weight: 800;
+      color: #fff;
+      text-shadow: 0 0 12px rgba(0, 150, 255, 0.6);
+    }
+
+    .card p {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #c9e8ff;
+      line-height: 1.8;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin-top: 35px;
+      flex-wrap: wrap;
+    }
+
+    /* ================= INSTAGRAM BUTTON ================= */
+    .insta-btn {
+      background: transparent;
+      position: relative;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      color: white;
+      overflow: hidden;
+      transition: color 0.3s ease-out;
+      width: 190px;
+      height: 55px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    .insta-btn span {
+      margin-left: 10px;
+    }
+
+    .insta-btn::before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      width: 20em;
+      height: 20em;
+      left: -5em;
+      margin: auto;
+      transition: box-shadow 0.5s ease-out;
+      z-index: -1;
+    }
+
+    .insta-btn:hover {
+      color: #000;
+      border-color: #fff;
+    }
+
+    .insta-btn:hover::before {
+      box-shadow: inset 0 0 0 10em #fff;
+    }
+
+    /* ================= TELEGRAM BUTTON ================= */
+    .telegram {
+      background: transparent;
+      position: relative;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      outline: none;
+      overflow: hidden;
+      color: #fff;
+      transition: color 0.3s 0.1s ease-out;
+      text-align: center;
+      width: 190px;
+      height: 55px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+    }
+
+    .telegram span {
+      margin-left: 10px;
+    }
+
+    .telegram::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      content: "";
+      border-radius: 50%;
+      display: block;
+      width: 20em;
+      height: 20em;
+      left: -5em;
+      text-align: center;
+      transition: box-shadow 0.5s ease-out;
+      z-index: -1;
+    }
+
+    .telegram:hover {
+      color: #000;
+      border: 2px solid #fff;
+    }
+
+    .telegram:hover::before {
+      box-shadow: inset 0 0 0 10em #fff;
+    }
+
+    .telegram svg {
+      fill: currentColor;
+      transition: fill 0.3s ease;
+    }
+
+    /* ================= MANGA BUTTON (ANIMATED) ================= */
+    .manga-btn {
+      position: relative;
+      display: inline-block;
+      width: 190px;
+      height: 55px;
+      border: 2px solid #fff;
+      border-radius: 30px;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      background: transparent;
+      overflow: hidden;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
+      transition: all 0.5s ease;
+    }
+
+    .manga-btn span:first-child {
+      position: relative;
+      z-index: 1;
+    }
+
+    .manga-btn span:last-child {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .manga-btn:hover {
+      color: #000;
+      background: #fff;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+    }
+
+    .manga-btn:hover span:last-child {
+      width: 150px;
+      height: 150px;
+      opacity: 1;
+    }
+
+    a {
+      text-decoration: none !important;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="space"></canvas>
+
+  <div id="centerText">
+    <img src="characters/dstf234retyghj.jpg" alt="Luffy" class="logo" />
+
+    <div class="card">
+      <h1>Welcome to lufy site</h1>
+      <p>
+        We provide the latest <strong>One Piece</strong> manga chapters, fully translated to English, 
+        delivered in the highest quality and as fast as possible. Our goal is to make sure fans 
+        enjoy the story with clear visuals, accurate translations, and quick updates every week.
+      </p>
+    </div>
+
+    <div class="social-links">
+      <!-- Instagram -->
+      <a href="https://instagram.com/lufy" target="_blank">
+        <button class="insta-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+          </svg>
+          <span>Instagram</span>
+        </button>
+      </a>
+
+      <!-- Telegram -->
+      <a href="https://t.me/lufy" target="_blank">
+        <button class="telegram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" viewBox="0 0 26 26">
             <path d="M2.14753 11.8099C7.3949 9.52374 10.894 8.01654 12.6447 7.28833C17.6435 5.20916 18.6822 4.84799 19.3592 4.83606C19.5081 4.83344 19.8411 4.87034 20.0567 5.04534C20.2388 5.1931 20.2889 5.39271 20.3129 5.5328C20.3369 5.6729 20.3667 5.99204 20.343 6.2414C20.0721 9.08763 18.9 15.9947 18.3037 19.1825C18.0514 20.5314 17.5546 20.9836 17.0736 21.0279C16.0283 21.1241 15.2345 20.3371 14.2221 19.6735C12.6379 18.635 11.7429 17.9885 10.2051 16.9751C8.42795 15.804 9.58001 15.1603 10.5928 14.1084C10.8579 13.8331 15.4635 9.64397 15.5526 9.26395C15.5637 9.21642 15.5741 9.03926 15.4688 8.94571C15.3636 8.85216 15.2083 8.88415 15.0962 8.9096C14.9373 8.94566 12.4064 10.6184 7.50365 13.928C6.78528 14.4212 6.13461 14.6616 5.55163 14.649C4.90893 14.6351 3.67265 14.2856 2.7536 13.9869C1.62635 13.6204 0.730432 13.4267 0.808447 12.8044C0.849081 12.4803 1.29544 12.1488 2.14753 11.8099Z"></path>
           </svg>
           <span>Telegram</span>

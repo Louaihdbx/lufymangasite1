@@ -53,7 +53,7 @@
       border-radius: 50%;
     }
 
-    /* ===== زر Home الحديث ===== */
+    /* ===== زر Language الحديث ===== */
     .btn-31,
     .btn-31 *,
     .btn-31 :after,
@@ -244,8 +244,8 @@
     </a>
 
     <!-- الزر الحديث -->
-    <button class="btn-31" onclick="window.location.href='index.html'">
-      <span class="text-container"><span class="text">Home</span></span>
+    <button class="btn-31" onclick="window.location.href='onepiecelang.html'">
+      <span class="text-container"><span class="text">Language</span></span>
     </button>
   </header>
 
@@ -344,9 +344,7 @@
         ctx.lineTo(this.x - this.length, this.y - this.length);
         ctx.stroke();
       }
-      isDead() {
-        return this.opacity <= 0;
-      }
+      isDead() { return this.opacity <= 0; }
     }
 
     const meteors = [];

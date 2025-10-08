@@ -13,10 +13,10 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
-    /* ===== خلفية النجوم ===== */
+    /* ===== الخلفية ===== */
     canvas {
       position: fixed;
       top: 0;
@@ -34,6 +34,7 @@
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid #222;
+      position: relative;
       z-index: 2;
     }
 
@@ -42,7 +43,7 @@
       align-items: center;
       gap: 10px;
       font-weight: bold;
-      font-size: 18px;
+      font-size: 20px;
       color: white;
       text-decoration: none;
     }
@@ -53,7 +54,7 @@
       border-radius: 50%;
     }
 
-    /* ===== الزر الحديث ===== */
+    /* ===== الزر الحديث بدل Idioma ===== */
     .btn-31,
     .btn-31 *,
     .btn-31 :after,
@@ -134,17 +135,137 @@
       text-align: center;
       z-index: 2;
       padding: 40px 20px;
+      position: relative;
     }
 
-    /* ===== الكارد ===== */
+    /* ===== تصميم الكارد ===== */
     .chapter-card {
+      width: 100%;
+      max-width: 340px;
+      height: 480px;
       background: linear-gradient(145deg, #0a0a0a, #1c1c1c);
       border-radius: 16px;
-      width: 320px;
-      height: 480px;
+      border: 2px solid #1f1f1f;
+      box-shadow: 20px 20px 40px #080808, -20px -20px 40px #1e1e1e;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 20px 20px 40px #080808, -20px -20px 40px #1e1e1e;
-      border: 2px solid #1f1f1f;
-      text-decoration
+      align-items: center;
+      text-decoration: none;
+      color: #fff;
+      transition: transform .25s, box-shadow .25s;
+      padding: 20px;
+    }
+
+    .chapter-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255,255,255,0.15);
+    }
+
+    .chapter-card h3 {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    .chapter-card p {
+      font-size: 18px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    /* ===== الفوتر ===== */
+    footer {
+      text-align: center;
+      background: rgba(17,17,17,0.85);
+      padding: 10px;
+      font-size: 14px;
+      border-top: 1px solid #222;
+      z-index: 2;
+      position: relative;
+    }
+
+    @media (max-width: 480px) {
+      .chapter-card {
+        height: 420px;
+        padding: 16px;
+      }
+      .chapter-card h3 { font-size: 20px; }
+      .chapter-card p { font-size: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- خلفية النجوم -->
+  <canvas id="space"></canvas>
+
+  <!-- الهيدر -->
+  <header>
+    <a href="index.html" class="logo">
+      <img src="mangafile/dstf234retyghj.jpg" alt="logo">
+      <span>lufy manga</span>
+    </a>
+
+    <button class="btn-31" onclick="window.location.href='onepiecelang.html'">
+      <span class="text-container"><span class="text">Idioma</span></span>
+    </button>
+  </header>
+
+  <!-- المحتوى -->
+  <main>
+    <a href="chapterop1162es.html" class="chapter-card">
+      <h3>Capítulo 1162</h3>
+      <p>Próximamente...</p>
+    </a>
+  </main>
+
+  <!-- الفوتر -->
+  <footer>
+    © 2025 lufy manga - Versión Española
+  </footer>
+
+  <!-- سكربت النجوم -->
+  <script>
+    const canvas = document.getElementById('space');
+    const ctx = canvas.getContext('2d');
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+
+    const stars = [];
+    for (let i = 0; i < 150; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        brightness: Math.random(),
+        speed: (Math.random() - 0.5) * 0.2,
+        pulse: Math.random() * 0.05
+      });
+    }
+
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const s of stars) {
+        s.brightness += s.pulse * (Math.random() > 0.5 ? 1 : -1);
+        s.brightness = Math.min(1, Math.max(0.2, s.brightness));
+        s.x += s.speed;
+        if (s.x < 0) s.x = canvas.width;
+        if (s.x > canvas.width) s.x = 0;
+        ctx.fillStyle = '#fff';
+        ctx.globalAlpha = s.brightness;
+        ctx.fillRect(s.x, s.y, s.size, s.size);
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(drawStars);
+    }
+    drawStars();
+
+    addEventListener('resize', ()=>{
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+    });
+  </script>
+</body>
+</html>

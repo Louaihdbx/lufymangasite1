@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<!-- ✅ مهم للجوال عشان الميديا كويري تشتغل صح -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>Lufy Site</title>
 <style>
   body {
@@ -26,7 +28,8 @@
     justify-content: center;
     align-items: flex-start;
     gap: 40px;
-    flex-wrap: nowrap;
+    /* ✅ خليه يلف كاحتياط لو الميديا ما اشتغلت */
+    flex-wrap: wrap;
     margin-top: 100px;
   }
 
@@ -193,19 +196,24 @@
 
   a { text-decoration: none !important; }
 
-  /* ✅ للجوال */
+  /* ✅ للجوال: نخليها تحت بعض أكيد */
   @media (max-width: 900px) {
     .cards-container {
-      flex-direction: column !important;
+      flex-direction: column !important;   /* صف عمودي */
       align-items: center !important;
       justify-content: center !important;
       gap: 30px;
+      padding: 0 5%;
     }
 
     .card, .info-card {
-      width: 90%;
+      width: 100%;
       max-width: 420px;
       height: auto;
+    }
+
+    .cards-container > * {
+      margin-bottom: 25px;
     }
 
     .social-links {
@@ -286,20 +294,20 @@ function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
 resize();addEventListener('resize',resize);
 const stars=Array.from({length:150},()=>({x:Math.random()*canvas.width,y:Math.random()*canvas.height,size:Math.random()*2,brightness:Math.random(),speed:(Math.random()-.5)*.2,pulse:Math.random()*.05}));
 function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-for(const s of stars){
-s.brightness+=s.pulse*(Math.random()>.5?1:-1);
-if(s.brightness<.2)s.brightness=.2;
-if(s.brightness>1)s.brightness=1;
-s.x+=s.speed;
-if(s.x<0)s.x=canvas.width;
-if(s.x>canvas.width)s.x=0;
-ctx.fillStyle="#fff";
-ctx.globalAlpha=s.brightness;
-ctx.fillRect(s.x,s.y,s.size,s.size);
-}
-ctx.globalAlpha=1;
-requestAnimationFrame(draw);
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  for(const s of stars){
+    s.brightness+=s.pulse*(Math.random()>.5?1:-1);
+    if(s.brightness<.2)s.brightness=.2;
+    if(s.brightness>1)s.brightness=1;
+    s.x+=s.speed;
+    if(s.x<0)s.x=canvas.width;
+    if(s.x>canvas.width)s.x=0;
+    ctx.fillStyle="#fff";
+    ctx.globalAlpha=s.brightness;
+    ctx.fillRect(s.x,s.y,s.size,s.size);
+  }
+  ctx.globalAlpha=1;
+  requestAnimationFrame(draw);
 }
 draw();
 </script>

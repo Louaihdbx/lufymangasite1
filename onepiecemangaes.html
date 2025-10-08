@@ -16,6 +16,7 @@
       overflow: hidden;
     }
 
+    /* ===== خلفية النجوم ===== */
     canvas {
       position: fixed;
       top: 0;
@@ -25,12 +26,14 @@
       z-index: -1;
     }
 
+    /* ===== الهيدر ===== */
     header {
       background: rgba(17,17,17,0.85);
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid #222;
       z-index: 2;
     }
 
@@ -41,20 +44,88 @@
       font-weight: bold;
       font-size: 18px;
       color: white;
+      text-decoration: none;
     }
 
     .logo img {
-      width: 35px;
-      height: 35px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
+    /* ===== الزر الحديث ===== */
+    .btn-31,
+    .btn-31 *,
+    .btn-31 :after,
+    .btn-31 :before,
+    .btn-31:after,
+    .btn-31:before {
+      border: 0 solid;
+      box-sizing: border-box;
     }
 
+    .btn-31 {
+      background-color: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-family: "Poppins", Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0.8rem 1.8rem;
+      border-width: 1px;
+      border-radius: 6px;
+      position: relative;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .btn-31:before {
+      --progress: 100%;
+      background: #fff;
+      clip-path: polygon(100% 0, var(--progress) var(--progress), 0 100%, 100% 100%);
+      content: "";
+      inset: 0;
+      position: absolute;
+      transition: clip-path 0.25s ease;
+    }
+
+    .btn-31:hover:before {
+      --progress: 0%;
+    }
+
+    .btn-31 .text-container {
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .btn-31 .text {
+      display: block;
+      font-weight: 900;
+      mix-blend-mode: difference;
+      position: relative;
+      color: #fff;
+    }
+
+    .btn-31:hover .text {
+      animation: move-up-alternate 0.3s ease forwards;
+    }
+
+    @keyframes move-up-alternate {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(80%); }
+      51% { transform: translateY(-80%); }
+      100% { transform: translateY(0); }
+    }
+
+    .btn-31:hover {
+      box-shadow: 0 0 12px rgba(255,255,255,0.3);
+    }
+
+    /* ===== المحتوى ===== */
     main {
       flex: 1;
       display: flex;
@@ -62,105 +133,18 @@
       align-items: center;
       text-align: center;
       z-index: 2;
-      padding: 20px;
+      padding: 40px 20px;
     }
 
+    /* ===== الكارد ===== */
     .chapter-card {
-      background: rgba(20,20,20,0.95);
-      border-radius: 15px;
-      width: 300px;
-      height: 450px;
+      background: linear-gradient(145deg, #0a0a0a, #1c1c1c);
+      border-radius: 16px;
+      width: 320px;
+      height: 480px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 0 25px rgba(255,255,255,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      text-decoration: none;
-      color: white;
-    }
-
-    .chapter-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255,255,255,0.3);
-    }
-
-    .chapter-card h3 {
-      margin: 20px 0 0;
-      font-size: 22px;
-    }
-
-    .chapter-card p {
-      margin-bottom: 20px;
-      font-size: 16px;
-      color: #ddd;
-    }
-
-    footer {
-      text-align: center;
-      background: rgba(17,17,17,0.85);
-      padding: 10px;
-      font-size: 14px;
-      z-index: 2;
-    }
-  </style>
-</head>
-<body>
-
-  <canvas id="space"></canvas>
-
-  <header>
-    <div class="logo">
-      <img src="mangafile/dstf234retyghj.jpg" alt="logo">
-      <span>lufy manga</span>
-    </div>
-    <nav>
-      <a href="onepiecelang.html">Idioma</a>
-    </nav>
-  </header>
-
-  <main>
-    <a href="chapterop1162es.html" class="chapter-card">
-      <h3>Capítulo 1162</h3>
-      <p>Próximamente...</p>
-    </a>
-  </main>
-
-  <footer>
-    © 2025 lufy manga - Versión Española
-  </footer>
-
-  <script>
-    const canvas = document.getElementById('space');
-    const ctx = canvas.getContext('2d');
-    canvas.width = innerWidth;
-    canvas.height = innerHeight;
-
-    const stars = [];
-    for (let i = 0; i < 150; i++) {
-      stars.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2,
-        brightness: Math.random(),
-        speed: (Math.random() - 0.5) * 0.2
-      });
-    }
-
-    function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (const s of stars) {
-        s.x += s.speed;
-        if (s.x < 0) s.x = canvas.width;
-        if (s.x > canvas.width) s.x = 0;
-        ctx.fillStyle = '#fff';
-        ctx.globalAlpha = s.brightness;
-        ctx.fillRect(s.x, s.y, s.size, s.size);
-      }
-      ctx.globalAlpha = 1;
-      requestAnimationFrame(drawStars);
-    }
-
-    drawStars();
-  </script>
-</body>
-</html>
+      box-shadow: 20px 20px 40px #080808, -20px -20px 40px #1e1e1e;
+      border: 2px solid #1f1f1f;
+      text-decoration

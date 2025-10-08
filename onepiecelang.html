@@ -25,7 +25,7 @@
       z-index: -1;
     }
 
-    /* الهيدر */
+    /* ====== الهيدر ====== */
     header {
       background: rgba(17,17,17,0.85);
       padding: 10px 20px;
@@ -36,76 +36,168 @@
       position: relative;
       z-index: 2;
     }
-    .logo { display:flex; align-items:center; gap:10px; font-weight:700; }
-    .logo img { width:35px; height:35px; border-radius:50%; }
-    nav ul { list-style:none; display:flex; gap:15px; margin:0; padding:0; }
-    nav a { color:#fff; text-decoration:none; font-weight:700; }
 
-    /* المحتوى */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .logo img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* ====== الزر الحديث بدل Home ====== */
+    .btn-31,
+    .btn-31 *,
+    .btn-31 :after,
+    .btn-31 :before,
+    .btn-31:after,
+    .btn-31:before {
+      border: 0 solid;
+      box-sizing: border-box;
+    }
+
+    .btn-31 {
+      background-color: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-family: "Poppins", Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.5;
+      margin: 0;
+      padding: 0.8rem 1.8rem;
+      border-width: 1px;
+      border-radius: 6px;
+      position: relative;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .btn-31:before {
+      --progress: 100%;
+      background: #fff;
+      clip-path: polygon(
+        100% 0,
+        var(--progress) var(--progress),
+        0 100%,
+        100% 100%
+      );
+      content: "";
+      inset: 0;
+      position: absolute;
+      transition: clip-path 0.25s ease;
+    }
+
+    .btn-31:hover:before {
+      --progress: 0%;
+    }
+
+    .btn-31 .text-container {
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .btn-31 .text {
+      display: block;
+      font-weight: 900;
+      mix-blend-mode: difference;
+      position: relative;
+      color: #fff;
+    }
+
+    .btn-31:hover .text {
+      animation: move-up-alternate 0.3s ease forwards;
+    }
+
+    @keyframes move-up-alternate {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(80%); }
+      51% { transform: translateY(-80%); }
+      100% { transform: translateY(0); }
+    }
+
+    .btn-31:hover {
+      box-shadow: 0 0 12px rgba(255,255,255,0.3);
+    }
+
+    /* ====== المحتوى ====== */
     main {
       flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 24px;
-      padding: 34px 12px 40px;
+      gap: 28px;
+      padding: 40px 12px 60px;
       position: relative;
       z-index: 2;
     }
 
     h2 {
-      margin: 0 0 12px;
+      margin: 0;
       font-size: clamp(22px, 3.5vw, 32px);
       text-shadow: 0 0 10px #ffffff33;
     }
 
-    /* شبكة اللغات: 3 أعمدة دائماً حتى على الجوال */
+    /* شبكة اللغات */
     .lang-options {
       width: 100%;
       max-width: 1100px;
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      align-items: stretch;
+      gap: 22px;
       justify-items: center;
     }
 
-    /* البطاقة تتقلّص تلقائياً لتناسب ثلث الشاشة */
+    /* ====== كروت اللغات بنفس ستايل الكارد الحديث ====== */
     .lang-card {
       width: 100%;
-      max-width: 320px;             /* يمنعها تكبر زيادة على الكمبيوتر */
-      aspect-ratio: 3 / 4;          /* يحافظ على التناسُب وتقلّص على الجوال */
-      border-radius: 14px;
+      max-width: 320px;
+      aspect-ratio: 3 / 4;
+      border-radius: 16px;
       overflow: hidden;
-      background: rgba(28,28,28,0.9);
-      border: 1px solid #333;
-      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      background: linear-gradient(145deg, #0a0a0a, #1c1c1c);
+      border: 2px solid #1f1f1f;
+      box-shadow: 20px 20px 40px #080808, -20px -20px 40px #1e1e1e;
       color: #fff;
       text-decoration: none;
       display: flex;
       flex-direction: column;
       transition: transform .25s, box-shadow .25s;
     }
-    .lang-card:hover { transform: scale(1.04); box-shadow: 0 0 24px rgba(255,255,255,0.25); }
 
-    /* الصورة تملأ الجزء العلوي، والنص شريط سفلي */
+    .lang-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+    }
+
     .lang-card img {
       width: 100%;
-      height: calc(100% - 50px); /* يترك مساحة للشريط السفلي */
+      height: calc(100% - 55px);
       object-fit: cover;
       display: block;
-      border-bottom: 2px solid #222;
     }
+
     .lang-card p {
-      height: 50px;
+      height: 55px;
       margin: 0;
       display: grid;
       place-items: center;
       background: #111;
       font-weight: 700;
-      font-size: clamp(12px, 2.6vw, 18px); /* يصغّر الخط على الجوال */
+      font-size: clamp(14px, 2.6vw, 18px);
     }
 
+    /* ====== الفوتر ====== */
     footer {
       background: rgba(17,17,17,0.85);
       text-align: center;
@@ -115,22 +207,26 @@
       position: relative;
       z-index: 2;
     }
+
   </style>
 </head>
 <body>
 
   <canvas id="space"></canvas>
 
+  <!-- ===== الهيدر ===== -->
   <header>
-    <div class="logo">
+    <a href="index.html" class="logo">
       <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
       <span>lufy manga</span>
-    </div>
-    <nav>
-      <ul><li><a href="index.html">Home</a></li></ul>
-    </nav>
+    </a>
+
+    <button class="btn-31" onclick="window.location.href='index.html'">
+      <span class="text-container"><span class="text">Home</span></span>
+    </button>
   </header>
 
+  <!-- ===== المحتوى ===== -->
   <main>
     <h2>Select Your Language</h2>
 
@@ -155,12 +251,13 @@
     </div>
   </main>
 
+  <!-- ===== الفوتر ===== -->
   <footer>
     lufy manga © 2025
   </footer>
 
+  <!-- ===== سكربت النجوم ===== -->
   <script>
-    // نجوم الخلفية
     const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');
     function resize(){ canvas.width = innerWidth; canvas.height = innerHeight; }

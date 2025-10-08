@@ -15,6 +15,7 @@
       background: #000;
     }
 
+    /* ===== الخلفية ===== */
     canvas {
       position: fixed;
       top: 0; left: 0;
@@ -23,7 +24,7 @@
       z-index: -1;
     }
 
-    /* ====== الشريط العلوي ====== */
+    /* ===== الشريط العلوي ===== */
     header {
       background: rgba(17,17,17,0.85);
       padding: 10px 20px;
@@ -32,13 +33,7 @@
       align-items: center;
       position: relative;
       z-index: 2;
-    }
-
-    nav {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      align-items: center;
+      border-bottom: 1px solid #222;
     }
 
     .logo {
@@ -49,40 +44,98 @@
       font-size: 20px;
       color: white;
       text-shadow: 1px 1px 3px #000;
+      text-decoration: none;
     }
 
     .logo img {
-      width: 35px;
-      height: 35px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
     }
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 15px;
+    /* ===== زر Home الحديث ===== */
+    .btn-31,
+    .btn-31 *,
+    .btn-31 :after,
+    .btn-31 :before,
+    .btn-31:after,
+    .btn-31:before {
+      border: 0 solid;
+      box-sizing: border-box;
+    }
+
+    .btn-31 {
+      background-color: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-family: "Poppins", Arial, sans-serif;
+      font-size: 15px;
+      font-weight: 900;
+      line-height: 1.5;
       margin: 0;
-      padding: 0;
+      padding: 0.8rem 1.8rem;
+      border-width: 1px;
+      border-radius: 6px;
+      position: relative;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      overflow: hidden;
     }
 
-    nav ul li a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      font-size: 18px;
+    .btn-31:before {
+      --progress: 100%;
+      background: #fff;
+      clip-path: polygon(100% 0, var(--progress) var(--progress), 0 100%, 100% 100%);
+      content: "";
+      inset: 0;
+      position: absolute;
+      transition: clip-path 0.25s ease;
     }
 
-    /* ====== المحتوى ====== */
+    .btn-31:hover:before {
+      --progress: 0%;
+    }
+
+    .btn-31 .text-container {
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .btn-31 .text {
+      display: block;
+      font-weight: 900;
+      mix-blend-mode: difference;
+      position: relative;
+      color: #fff;
+    }
+
+    .btn-31:hover .text {
+      animation: move-up-alternate 0.3s ease forwards;
+    }
+
+    @keyframes move-up-alternate {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(80%); }
+      51% { transform: translateY(-80%); }
+      100% { transform: translateY(0); }
+    }
+
+    .btn-31:hover {
+      box-shadow: 0 0 12px rgba(255,255,255,0.3);
+    }
+
+    /* ===== المحتوى ===== */
     main {
       flex: 1;
-      padding: 30px 20px;
+      padding: 40px 20px 60px;
       text-align: center;
       position: relative;
       z-index: 2;
     }
 
     h2 {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       font-size: 36px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -90,32 +143,34 @@
       text-shadow: 2px 2px 6px #000;
     }
 
+    /* ===== شبكة الفصول ===== */
     .chapters {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 35px;
       justify-items: center;
     }
 
+    /* ===== الكروت الحديثة للفصول ===== */
     .chapter-card {
-      background: rgba(28,28,28,0.9);
-      border-radius: 15px;
+      width: 100%;
+      max-width: 320px;
+      background: linear-gradient(145deg, #0a0a0a, #1c1c1c);
+      border-radius: 16px;
+      border: 2px solid #1f1f1f;
+      box-shadow: 20px 20px 40px #080808, -20px -20px 40px #1e1e1e;
       overflow: hidden;
-      text-align: center;
-      width: 340px;
-      height: 520px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-decoration: none;
-      color: white;
+      color: #fff;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      box-shadow: 0 0 15px rgba(255,255,255,0.1);
+      transition: transform .25s, box-shadow .25s;
     }
 
     .chapter-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(255,255,255,0.2);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
     }
 
     .chapter-card img {
@@ -123,31 +178,29 @@
       height: 400px;
       object-fit: cover;
       background: #000;
-      border-bottom: 2px solid white;
     }
 
     .chapter-card h3 {
       margin: 10px 0 4px;
       font-size: 22px;
       font-weight: bold;
-      color: #fff;
       text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
     }
 
     .chapter-card p {
       font-size: 18px;
-      color: #f0f0f0;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       text-shadow: 1px 1px 5px #000;
+      color: #ccc;
     }
 
-    /* ====== الفوتر ====== */
+    /* ===== الفوتر ===== */
     footer {
       background: rgba(17,17,17,0.85);
       text-align: center;
       padding: 10px;
-      font-size: 16px;
-      margin-top: auto;
+      font-size: 14px;
+      border-top: 1px solid #222;
       position: relative;
       z-index: 2;
     }
@@ -162,21 +215,13 @@
       text-decoration: underline;
     }
 
-    /* ====== تحسين العرض للجوال ====== */
+    /* ===== الجوال ===== */
     @media (max-width: 480px) {
       h2 {
-        font-size: 30px;
-      }
-      .chapters {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
-      }
-      .chapter-card {
-        width: 100%;
-        height: 440px;
+        font-size: 28px;
       }
       .chapter-card img {
-        height: 340px;
+        height: 300px;
       }
       .chapter-card h3 {
         font-size: 20px;
@@ -191,22 +236,23 @@
   <!-- الخلفية -->
   <canvas id="space"></canvas>
 
-  <!-- الشريط العلوي -->
+  <!-- الهيدر -->
   <header>
-    <nav>
-      <div class="logo">
-        <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
-        <span>lufy manga</span>
-      </div>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-      </ul>
-    </nav>
+    <a href="index.html" class="logo">
+      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
+      <span>lufy manga</span>
+    </a>
+
+    <!-- الزر الحديث -->
+    <button class="btn-31" onclick="window.location.href='index.html'">
+      <span class="text-container"><span class="text">Home</span></span>
+    </button>
   </header>
 
   <!-- المحتوى -->
   <main>
     <h2>LIST OF CHAPTERS</h2>
+
     <div class="chapters">
       <a href="chapterop1162.html" class="chapter-card">
         <h3>Chapter 1162</h3>
@@ -240,7 +286,7 @@
     <a href="PrivacyPolicy.html">Privacy Policy</a>
   </footer>
 
-  <!-- سكربت النجوم -->
+  <!-- سكربت النجوم والشهب -->
   <script>
     const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');

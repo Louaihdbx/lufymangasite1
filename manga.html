@@ -125,7 +125,7 @@
     .cards {
       width: 100%;
       display: flex;
-      justify-content: center; /* يخليها بالنص */
+      justify-content: center;
       align-items: center;
       padding: 40px 0 80px;
       position: relative;
@@ -154,14 +154,15 @@
       height: 320px;
       object-fit: cover;
       display: block;
-      filter: none; /* إزالة أي تأثير أو توهج */
+      border-bottom: none;
+      filter: none;
     }
 
     .card-title {
       background: #111;
       text-align: center;
       padding: 10px 0;
-      border-top: none; /* ✅ حذف الخط الأحمر */
+      border-top: none;
     }
 
     .card-title p {
@@ -239,11 +240,11 @@
     </script>
   </div>
 
-  <!-- ✅ بطاقة One Piece بالنص -->
+  <!-- ✅ بطاقة One Piece بالنص وبالصورة الصحيحة -->
   <section class="cards">
     <div class="card-manga">
       <a href="onepiecelang.html" aria-label="Open One Piece manga">
-        <img src="mangafile/fba54ccc-c5d9-4054-9827-dae6526b4ef7.png" alt="One Piece cover art">
+        <img src="mangafile/3efc77ef-4d6c-44e9-8cee-cde7f693f0a6.png" alt="One Piece cover art">
       </a>
       <div class="card-title">
         <p>One Piece manga</p>

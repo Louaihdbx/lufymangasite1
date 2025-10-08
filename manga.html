@@ -30,6 +30,7 @@
       overflow-x:hidden;
     }
 
+    /* ===== الخلفية ===== */
     canvas {
       position: fixed;
       top: 0; left: 0;
@@ -38,6 +39,7 @@
       z-index: -1;
     }
 
+    /* ===== الهيدر ===== */
     header{
       width:100%;
       background:rgba(17,17,17,0.85);
@@ -67,16 +69,85 @@
       font-size:20px;
       font-weight:700;
     }
-    .nav-right a{
-      color:#fff;
-      text-decoration:none;
-      font-size:16px;
-      font-weight:600;
-      transition:color .2s;
-    }
-    .nav-right a:hover{ color:#87CEFA; }
 
-    /* ====== الكرت داخل الـ Hero ====== */
+    /* === الزر الجديد من Uiverse.io === */
+    .btn-31,
+    .btn-31 *,
+    .btn-31 :after,
+    .btn-31 :before,
+    .btn-31:after,
+    .btn-31:before {
+      border: 0 solid;
+      box-sizing: border-box;
+    }
+
+    .btn-31 {
+      background-color: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-family: "Poppins", Arial, sans-serif;
+      font-size: 16px;
+      font-weight: 900;
+      line-height: 1.5;
+      margin: 0;
+      padding: 1rem 2rem;
+      border-width: 1px;
+      border-radius: 6px;
+      position: relative;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+      overflow: hidden;
+    }
+
+    .btn-31:before {
+      --progress: 100%;
+      background: #fff;
+      clip-path: polygon(
+        100% 0,
+        var(--progress) var(--progress),
+        0 100%,
+        100% 100%
+      );
+      content: "";
+      inset: 0;
+      position: absolute;
+      transition: clip-path 0.25s ease;
+    }
+
+    .btn-31:hover:before {
+      --progress: 0%;
+    }
+
+    .btn-31 .text-container {
+      display: block;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .btn-31 .text {
+      display: block;
+      font-weight: 900;
+      mix-blend-mode: difference;
+      position: relative;
+      color: #fff;
+    }
+
+    .btn-31:hover .text {
+      animation: move-up-alternate 0.3s ease forwards;
+    }
+
+    @keyframes move-up-alternate {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(80%); }
+      51% { transform: translateY(-80%); }
+      100% { transform: translateY(0); }
+    }
+
+    .btn-31:hover {
+      box-shadow: 0 0 12px rgba(255,255,255,0.3);
+    }
+
+    /* ===== المحتوى ===== */
     .hero{
       width:100%;
       max-width:980px;
@@ -90,7 +161,6 @@
       align-items:center;
     }
 
-    /* From Uiverse.io by Yaseen549 */
     .card {
       width: 420px;
       border-radius: 30px;
@@ -112,7 +182,6 @@
       line-height: 1.4;
     }
 
-    /* إعلان */
     .ads-container{
       margin: 20px auto;
       text-align: center;
@@ -121,7 +190,6 @@
       position:relative;
     }
 
-    /* ====== البطاقة الجديدة ====== */
     .cards {
       width: 100%;
       display: flex;
@@ -154,8 +222,6 @@
       height: 320px;
       object-fit: cover;
       display: block;
-      border-bottom: none;
-      filter: none;
     }
 
     .card-title {
@@ -192,34 +258,29 @@
       transition: color 0.2s;
     }
     footer a:hover { color: #87CEFA; }
-
-    @media (max-width: 768px){
-      .logo img{ width:36px; height:36px; }
-      .logo h1{ font-size:18px; }
-      .hero .card{ width:300px; padding:20px; }
-      .card h2{ font-size:1.2rem; }
-      .card p{ font-size:0.85rem; }
-      .card-manga{ width:200px; }
-      .card-manga img{ height:280px; }
-      .nav-right a{ font-size:14px; }
-    }
   </style>
 </head>
 <body>
 
+  <!-- ✅ الخلفية -->
   <canvas id="space"></canvas>
 
+  <!-- ✅ الهيدر -->
   <header>
     <a href="index.html" class="logo">
       <img src="characters/dstf234retyghj.jpg" alt="logo">
       <h1>lufy manga</h1>
     </a>
-    <div class="nav-right">
-      <a href="index.html">Home</a>
-    </div>
+
+    <!-- ✅ الزر الجديد بدال Home -->
+    <button class="btn-31" onclick="window.location.href='index.html'">
+      <span class="text-container">
+        <span class="text">Home</span>
+      </span>
+    </button>
   </header>
 
-  <!-- ✅ الكرت الرئيسي -->
+  <!-- ✅ كرت الترحيب -->
   <section class="hero">
     <div class="card">
       <h2>Here you’ll find the latest chapter of the manga you want to read.</h2>
@@ -227,7 +288,7 @@
     </div>
   </section>
 
-  <!-- ✅ إعلان أسفل الـ Hero -->
+  <!-- ✅ إعلان -->
   <div class="ads-container">
     <ins class="adsbygoogle"
          style="display:block"
@@ -240,7 +301,7 @@
     </script>
   </div>
 
-  <!-- ✅ بطاقة One Piece بالصورة الأصلية -->
+  <!-- ✅ كرت One Piece -->
   <section class="cards">
     <div class="card-manga">
       <a href="onepiecelang.html" aria-label="Open One Piece manga">
@@ -252,6 +313,7 @@
     </div>
   </section>
 
+  <!-- ✅ الفوتر -->
   <footer>
     <div class="footer-left">
       © 2025 lufy manga
@@ -263,6 +325,7 @@
     </div>
   </footer>
 
+  <!-- ✅ سكربت النجوم والشُهب -->
   <script>
     const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');
@@ -284,9 +347,7 @@
     function drawStars() {
       for (const s of stars) {
         s.brightness += s.pulse * (Math.random() > 0.5 ? 1 : -1);
-        if (s.brightness < 0.2) s.brightness = 0.2;
-        if (s.brightness > 1) s.brightness = 1;
-
+        s.brightness = Math.min(Math.max(s.brightness, 0.2), 1);
         s.x += s.speed;
         if (s.x < 0) s.x = canvas.width;
         if (s.x > canvas.width) s.x = 0;
@@ -328,17 +389,14 @@
     const meteors = [];
     setInterval(() => {
       const count = 2 + Math.floor(Math.random() * 2);
-      for (let i = 0; i < count; i++) {
-        meteors.push(new Meteor());
-      }
+      for (let i = 0; i < count; i++) meteors.push(new Meteor());
     }, 10000);
 
     function drawMeteors() {
       for (let i = meteors.length - 1; i >= 0; i--) {
-        const m = meteors[i];
-        m.update();
-        m.draw();
-        if (m.isDead()) meteors.splice(i, 1);
+        meteors[i].update();
+        meteors[i].draw();
+        if (meteors[i].isDead()) meteors.splice(i, 1);
       }
     }
 

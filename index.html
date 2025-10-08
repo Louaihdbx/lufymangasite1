@@ -25,8 +25,8 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 50px;
-    flex-wrap: wrap;
+    gap: 40px;
+    flex-wrap: nowrap;
     margin-top: 100px;
   }
 
@@ -39,7 +39,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 0 0 25px rgba(255,255,255,0.1);
+    box-shadow: 0 0 25px rgba(255,255,255,0.08);
     overflow: hidden;
     transition: all 0.4s ease;
   }
@@ -92,7 +92,7 @@
 
   /* كرت المانجا */
   .info-card {
-    background-color: #111;
+    background-color: #000; /* أسود خالص */
     justify-content: flex-start;
     padding: 35px 25px;
   }
@@ -193,16 +193,18 @@
 
   a { text-decoration: none !important; }
 
-  /* للجوال */
-  @media (max-width: 768px) {
+  /* ✅ للجوال */
+  @media (max-width: 900px) {
     .cards-container {
-      flex-direction: column;
-      align-items: center;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
       gap: 30px;
     }
 
     .card, .info-card {
       width: 90%;
+      max-width: 420px;
       height: auto;
     }
 
@@ -256,7 +258,6 @@
 <div class="social-links">
   <a href="https://instagram.com/lufy" target="_blank" rel="noopener">
     <button class="insta-btn">
-      <!-- أيقونة إنستغرام الصحيحة -->
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
         <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.975.975 1.263 2.242 1.325 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.35 2.633-1.325 3.608-.975.975-2.242 1.263-3.608 1.325-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.325-.975-.975-1.263-2.242-1.325-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.35-2.633 1.325-3.608.975-.975 2.242-1.263 3.608-1.325C8.416 2.175 8.796 2.163 12 2.163zm0 1.837c-3.16 0-3.507.012-4.737.068-1.005.047-1.55.216-1.91.36-.48.186-.82.41-1.18.77s-.584.7-.77 1.18c-.144.36-.313.905-.36 1.91-.056 1.23-.068 1.577-.068 4.737s.012 3.507.068 4.737c.047 1.005.216 1.55.36 1.91.186.48.41.82.77 1.18s.7.584 1.18.77c.36.144.905.313 1.91.36 1.23.056 1.577.068 4.737.068s3.507-.012 4.737-.068c1.005-.047 1.55-.216 1.91-.36.48-.186.82-.41 1.18-.77s.584-.7.77-1.18c.144-.36.313-.905.36-1.91.056-1.23.068-1.577.068-4.737s-.012-3.507-.068-4.737c-.047-1.005-.216-1.55-.36-1.91-.186-.48-.41-.82-.77-1.18s-.7-.584-1.18-.77c-.36-.144-.905-.313-1.91-.36-1.23-.056-1.577-.068-4.737-.068zM12 5.838a6.162 6.162 0 1 1 0 12.324A6.162 6.162 0 0 1 12 5.838zm0 10.162a3.999 3.999 0 1 0 0-7.998 3.999 3.999 0 0 0 0 7.998zm4.406-11.845a1.44 1.44 0 1 1 0 2.881 1.44 1.44 0 0 1 0-2.881z"/>
       </svg>

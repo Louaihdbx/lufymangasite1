@@ -56,11 +56,7 @@
 
     /* ===== الزر الحديث بدل Langue ===== */
     .btn-31,
-    .btn-31 *,
-    .btn-31 :after,
-    .btn-31 :before,
-    .btn-31:after,
-    .btn-31:before {
+    .btn-31 * {
       border: 0 solid;
       box-sizing: border-box;
     }
@@ -73,7 +69,6 @@
       font-size: 15px;
       font-weight: 900;
       line-height: 1.5;
-      margin: 0;
       padding: 0.8rem 1.8rem;
       border-width: 1px;
       border-radius: 6px;
@@ -162,6 +157,22 @@
       box-shadow: 0 0 25px rgba(255,255,255,0.15);
     }
 
+    /* ===== تعديل الصورة داخل الكرت ===== */
+    .chapter-card img {
+      width: 80%;
+      height: auto;
+      max-height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 10px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .chapter-card:hover img {
+      transform: scale(1.05);
+    }
+
     .chapter-card h3 {
       margin-top: 20px;
       font-size: 22px;
@@ -216,11 +227,12 @@
   <!-- المحتوى -->
   <main>
     <a href="chapterop1162fr.html" class="chapter-card">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1162fr1/cover1.png" alt="One Piece Chapter 1162 Cover">
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1162fr1/cover1.png" alt="One Piece Chapitre 1162 Couverture">
       <h3>Chapitre 1162</h3>
       <p>Une bataille totale à God Valley</p>
     </a>
   </main>
+
   <!-- الفوتر -->
   <footer>
     © 2025 lufy manga - Version Française

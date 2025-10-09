@@ -227,7 +227,7 @@
   <main>
     <h2>One Piece - Chapter 1162</h2>
     <div class="chapter-pages" id="chapterPages">
-      <!-- 📄 صور الفصل 1162 هنا -->
+      <!-- 📄 ضع صور الفصل هنا لاحقًا -->
     </div>
   </main>
 
@@ -241,102 +241,3 @@
   const images = document.querySelectorAll('.chapter-pages img');
   let zoom = 1;
   let activeImage = null;
-
-  function getCenterImage() {
-    let middleY = window.scrollY + window.innerHeight / 2;
-    let closest = images[0];
-    let minDiff = Infinity;
-    images.forEach(img => {
-      const rect = img.getBoundingClientRect();
-      const center = rect.top + window.scrollY + rect.height / 2;
-      const diff = Math.abs(center - middleY);
-      if (diff < minDiff) {
-        minDiff = diff;
-        closest = img;
-      }
-    });
-    return closest;
-  }
-
-  function updateZoom() {
-    if (!activeImage) activeImage = getCenterImage();
-
-    images.forEach(img => {
-      if (img === activeImage) {
-        img.style.zIndex = 5;
-        img.style.position = 'relative';
-        img.style.transformOrigin = 'center center';
-        img.style.transform = `scale(${zoom})`;
-      } else {
-        img.style.transform = 'scale(1)';
-        img.style.zIndex = 1;
-        img.style.position = 'relative';
-      }
-    });
-
-    zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
-  }
-
-  document.getElementById('zoomIn').onclick = () => { 
-    activeImage = getCenterImage();
-    zoom = Math.min(2.5, zoom + 0.1); 
-    updateZoom(); 
-  };
-
-  document.getElementById('zoomOut').onclick = () => { 
-    activeImage = getCenterImage();
-    zoom = Math.max(0.5, zoom - 0.1); 
-    updateZoom(); 
-  };
-
-  document.getElementById('resetZoom').onclick = () => { 
-    zoom = 1; 
-    activeImage = null;
-    updateZoom(); 
-  };
-
-  function smoothScrollTo(targetY, duration = 800) {
-    const startY = window.scrollY;
-    const diff = targetY - startY;
-    let start;
-    function step(timestamp) {
-      if (!start) start = timestamp;
-      const progress = timestamp - start;
-      const percent = Math.min(progress / duration, 1);
-      window.scrollTo(0, startY + diff * (percent < 0.5 ? 2*percent*percent : -1+(4-2*percent)*percent));
-      if (percent < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-
-  images.forEach((img, i) => {
-    img.addEventListener('click', () => {
-      const next = images[i + 1];
-      if (next) {
-        const nextY = next.getBoundingClientRect().top + window.scrollY - 30;
-        smoothScrollTo(nextY, 700);
-        zoom = 1;
-        activeImage = null;
-        updateZoom();
-      }
-    });
-  });
-
-  document.getElementById('firstPageBtn').onclick = e => {
-    e.preventDefault();
-    smoothScrollTo(0, 1000);
-    zoom = 1;
-    activeImage = null;
-    updateZoom();
-  };
-
-  document.getElementById('lastPageBtn').onclick = e => {
-    e.preventDefault();
-    smoothScrollTo(document.body.scrollHeight, 1000);
-    zoom = 1;
-    activeImage = null;
-    updateZoom();
-  };
-  </script>
-</body>
-</html>

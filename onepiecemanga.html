@@ -55,11 +55,7 @@
 
     /* ===== زر Language الحديث ===== */
     .btn-31,
-    .btn-31 *,
-    .btn-31 :after,
-    .btn-31 :before,
-    .btn-31:after,
-    .btn-31:before {
+    .btn-31 * {
       border: 0 solid;
       box-sizing: border-box;
     }
@@ -151,7 +147,7 @@
       justify-items: center;
     }
 
-    /* ===== الكروت الحديثة للفصول ===== */
+    /* ===== الكروت ===== */
     .chapter-card {
       width: 100%;
       max-width: 320px;
@@ -215,20 +211,11 @@
       text-decoration: underline;
     }
 
-    /* ===== الجوال ===== */
     @media (max-width: 480px) {
-      h2 {
-        font-size: 28px;
-      }
-      .chapter-card img {
-        height: 300px;
-      }
-      .chapter-card h3 {
-        font-size: 20px;
-      }
-      .chapter-card p {
-        font-size: 16px;
-      }
+      h2 { font-size: 28px; }
+      .chapter-card img { height: 300px; }
+      .chapter-card h3 { font-size: 20px; }
+      .chapter-card p { font-size: 16px; }
     }
   </style>
 </head>
@@ -243,7 +230,7 @@
       <span>lufy manga</span>
     </a>
 
-    <!-- الزر الحديث -->
+    <!-- الزر -->
     <button class="btn-31" onclick="window.location.href='onepiecelang.html'">
       <span class="text-container"><span class="text">Language</span></span>
     </button>
@@ -254,9 +241,10 @@
     <h2>LIST OF CHAPTERS</h2>
 
     <div class="chapters">
-      <a href="chapterop1162.html" class="chapter-card">
+      <!-- ✅ تعديل الفصل 1162 -->
+      <a href="chapterop1162en.html" class="chapter-card">
         <h3>Chapter 1162</h3>
-        <p>coming soon...</p>
+        <p>the word !!</p>
       </a>
 
       <a href="chapterop1161.html" class="chapter-card">
@@ -276,10 +264,11 @@
         <h3>Chapter 1159</h3>
         <p>the island of destiny</p>
       </a>
+
       <a href="chapterop1158.html" class="chapter-card">
-  <h3>Chapter 1158</h3>
-  <p>coming soon...</p>
-</a>
+        <h3>Chapter 1158</h3>
+        <p>coming soon...</p>
+      </a>
     </div>
   </main>
 
@@ -290,7 +279,7 @@
     <a href="PrivacyPolicy.html">Privacy Policy</a>
   </footer>
 
-  <!-- سكربت النجوم والشهب -->
+  <!-- سكربت النجوم -->
   <script>
     const canvas = document.getElementById('space');
     const ctx = canvas.getContext('2d');
@@ -316,7 +305,6 @@
         s.x += s.speed;
         if (s.x < 0) s.x = canvas.width;
         if (s.x > canvas.width) s.x = 0;
-
         ctx.fillStyle = '#fff';
         ctx.globalAlpha = s.brightness;
         ctx.fillRect(s.x, s.y, s.size, s.size);
@@ -354,9 +342,7 @@
     const meteors = [];
     setInterval(() => {
       const count = 2 + Math.floor(Math.random() * 2);
-      for (let i = 0; i < count; i++) {
-        meteors.push(new Meteor());
-      }
+      for (let i = 0; i < count; i++) meteors.push(new Meteor());
     }, 10000);
 
     function drawMeteors() {
@@ -383,4 +369,3 @@
   </script>
 </body>
 </html>
-

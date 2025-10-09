@@ -54,7 +54,7 @@
       border-radius: 50%;
     }
 
-    /* ===== الزر الحديث بدل Langue ===== */
+    /* ===== زر اللغة ===== */
     .btn-31,
     .btn-31 * {
       border: 0 solid;
@@ -133,23 +133,17 @@
       position: relative;
     }
 
-    /* ===== تصميم الكارد ===== */
+    /* ===== تصميم الكارت الجديد ===== */
     .chapter-card {
       width: 100%;
       max-width: 340px;
-      height: 480px;
-      background: linear-gradient(145deg, #0a0a0a, #1c1c1c);
-      border-radius: 16px;
-      border: 2px solid #1f1f1f;
-      box-shadow: 20px 20px 40px #080808, -20px -20px 40px #1e1e1e;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
+      background: #111;
+      border-radius: 14px;
+      overflow: hidden;
       text-decoration: none;
       color: #fff;
-      transition: transform .25s, box-shadow .25s;
-      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      transition: transform 0.25s, box-shadow 0.25s;
     }
 
     .chapter-card:hover {
@@ -157,33 +151,28 @@
       box-shadow: 0 0 25px rgba(255,255,255,0.15);
     }
 
-    /* ===== تعديل الصورة داخل الكرت ===== */
     .chapter-card img {
-      width: 80%;
+      width: 100%;
       height: auto;
-      max-height: 220px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-top: 10px;
-      box-shadow: 0 0 10px rgba(255,255,255,0.1);
-      transition: transform 0.3s ease;
+      display: block;
     }
 
-    .chapter-card:hover img {
-      transform: scale(1.05);
+    .chapter-info {
+      background: rgba(0,0,0,0.8);
+      padding: 15px 10px;
     }
 
-    .chapter-card h3 {
-      margin-top: 20px;
-      font-size: 22px;
+    .chapter-info h3 {
+      font-size: 20px;
+      margin: 0;
       font-weight: bold;
-      text-shadow: 1px 1px 4px #000;
+      color: #fff;
     }
 
-    .chapter-card p {
-      font-size: 18px;
+    .chapter-info p {
+      font-size: 15px;
       color: #ccc;
-      margin-bottom: 20px;
+      margin-top: 6px;
     }
 
     /* ===== الفوتر ===== */
@@ -198,12 +187,8 @@
     }
 
     @media (max-width: 480px) {
-      .chapter-card {
-        height: 420px;
-        padding: 16px;
-      }
-      .chapter-card h3 { font-size: 20px; }
-      .chapter-card p { font-size: 16px; }
+      .chapter-info h3 { font-size: 18px; }
+      .chapter-info p { font-size: 14px; }
     }
   </style>
 </head>
@@ -227,9 +212,11 @@
   <!-- المحتوى -->
   <main>
     <a href="chapterop1162fr.html" class="chapter-card">
-      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1162fr1/cover1.png" alt="One Piece Chapitre 1162 Couverture">
-      <h3>Chapitre 1162</h3>
-      <p>Une bataille totale à God Valley</p>
+      <img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1162fr1/cover1.png" alt="One Piece Chapitre 1162">
+      <div class="chapter-info">
+        <h3>Chapitre 1162</h3>
+        <p>Une bataille totale à God Valley</p>
+      </div>
     </a>
   </main>
 

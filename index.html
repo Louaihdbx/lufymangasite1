@@ -4,6 +4,17 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <title>Lufy Site</title>
+
+<!-- ✅ كود Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZC1443H0NG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZC1443H0NG');
+</script>
+<!-- ✅ نهاية كود التحليلات -->
+
 <style>
   body {
     margin: 0;
@@ -19,7 +30,6 @@
     z-index: 0;
   }
 
-  /* الحاوية للكروت */
   .cards-container {
     position: relative;
     z-index: 10;
@@ -29,11 +39,10 @@
     gap: 40px;
     flex-wrap: wrap;
     margin-top: 100px;
-    padding-left: 15px;  /* ✅ يبعد عن الحافة اليسار */
-    padding-right: 15px; /* ✅ يبعد عن الحافة اليمين */
+    padding-left: 15px;
+    padding-right: 15px;
   }
 
-  /* الكروت نفس الحجم */
   .card, .info-card {
     width: 420px;
     height: 560px;
@@ -52,7 +61,6 @@
     box-shadow: 0 0 35px rgba(255,255,255,0.25);
   }
 
-  /* كرت لوفي */
   .card__img {
     width: 100%;
     height: 250px;
@@ -79,7 +87,7 @@
   }
 
   .card__title {
-    margin-top: 100px; /* ✅ رفعنا الاسم شوي */
+    margin-top: 100px;
     font-size: 24px;
     font-weight: 700;
     text-shadow: 0 0 5px rgba(255,255,255,0.3);
@@ -94,9 +102,8 @@
     text-align: center;
   }
 
-  /* كرت المانجا */
   .info-card {
-    background-color: #000; /* أسود خالص */
+    background-color: #000;
     justify-content: flex-start;
     padding: 35px 25px;
   }
@@ -132,7 +139,6 @@
     text-align: left;
   }
 
-  /* الأزرار */
   .social-links {
     position: relative;
     z-index: 20;
@@ -197,14 +203,13 @@
 
   a { text-decoration: none !important; }
 
-  /* ✅ للجوال */
   @media (max-width: 900px) {
     .cards-container {
       flex-direction: column !important;
       align-items: center !important;
       justify-content: center !important;
       gap: 30px;
-      padding: 0 25px; /* مسافة إضافية من الطرفين */
+      padding: 0 25px;
     }
 
     .card, .info-card {
@@ -233,7 +238,6 @@
 <canvas id="space"></canvas>
 
 <div class="cards-container">
-  <!-- كرت لوفي -->
   <div class="card">
     <div class="card__img"></div>
     <div class="card__avatar">
@@ -246,7 +250,6 @@
     </div>
   </div>
 
-  <!-- كرت المانجا -->
   <div class="info-card">
     <div>
       <div class="card_title">One Piece Manga Access</div>
@@ -263,12 +266,11 @@
   </div>
 </div>
 
-<!-- الأزرار -->
 <div class="social-links">
   <a href="https://instagram.com/lufy" target="_blank" rel="noopener">
     <button class="insta-btn">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.35 3.608 1.325.975.975 1.263 2.242 1.325 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.35 2.633-1.325 3.608-.975.975-2.242 1.263-3.608 1.325-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.35-3.608-1.325-.975-.975-1.263-2.242-1.325-3.608C2.175 15.647 2.163 15.267 2.163 12s.012-3.584.07-4.85c.062-1.366.35-2.633 1.325-3.608.975-.975 2.242-1.263 3.608-1.325C8.416 2.175 8.796 2.163 12 2.163zm0 1.837c-3.16 0-3.507.012-4.737.068-1.005.047-1.55.216-1.91.36-.48.186-.82.41-1.18.77s-.584.7-.77 1.18c-.144.36-.313.905-.36 1.91-.056 1.23-.068 1.577-.068 4.737s.012 3.507.068 4.737c.047 1.005.216 1.55.36 1.91.186.48.41.82.77 1.18s.7.584 1.18.77c.36.144.905.313 1.91.36 1.23.056 1.577.068 4.737.068s3.507-.012 4.737-.068c1.005-.047 1.55-.216 1.91-.36.48-.186.82-.41 1.18-.77s.584-.7.77-1.18c.144-.36.313-.905.36-1.91.056-1.23.068-1.577.068-4.737s-.012-3.507-.068-4.737c-.047-1.005-.216-1.55-.36-1.91-.186-.48-.41-.82-.77-1.18s-.7-.584-1.18-.77c-.36-.144-.905-.313-1.91-.36-1.23-.056-1.577-.068-4.737-.068zM12 5.838a6.162 6.162 0 1 1 0 12.324A6.162 6.162 0 0 1 12 5.838zm0 10.162a3.999 3.999 0 1 0 0-7.998 3.999 3.999 0 0 0 0 7.998zm4.406-11.845a1.44 1.44 0 1 1 0 2.881 1.44 1.44 0 0 1 0-2.881z"/>
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 ..."/>
       </svg>
       <span>Instagram</span>
     </button>
@@ -277,7 +279,7 @@
   <a href="https://t.me/lufy" target="_blank" rel="noopener">
     <button class="telegram">
       <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 26 26">
-        <path d="M2.14753 11.8099C7.3949 9.52374 10.894 8.01654 12.6447 7.28833C17.6435 5.20916 18.6822 4.84799 19.3592 4.83606C19.5081 4.83344 19.8411 4.87034 20.0567 5.04534C20.2388 5.1931 20.2889 5.39271 20.3129 5.5328C20.3369 5.6729 20.3667 5.99204 20.343 6.2414C20.0721 9.08763 18.9 15.9947 18.3037 19.1825C18.0514 20.5314 17.5546 20.9836 17.0736 21.0279C16.0283 21.1241 15.2345 20.3371 14.2221 19.6735C12.6379 18.635 11.7429 17.9885 10.2051 16.9751C8.42795 15.804 9.58001 15.1603 10.5928 14.1084C10.8579 13.8331 15.4635 9.64397 15.5526 9.26395C15.5637 9.21642 15.5741 9.03926 15.4688 8.94571C15.3636 8.85216 15.2083 8.88415 15.0962 8.9096C14.9373 8.94566 12.4064 10.6184 7.50365 13.928C6.78528 14.4212 6.13461 14.6616 5.55163 14.649C4.90893 14.6351 3.67265 14.2856 2.7536 13.9869C1.62635 13.6204 0.730432 13.4267 0.808447 12.8044C0.849081 12.4803 1.29544 12.1488 2.14753 11.8099Z"/>
+        <path d="M2.14753 11.8099C7.3949 9.52374 ..."/>
       </svg>
       <span>Telegram</span>
     </button>

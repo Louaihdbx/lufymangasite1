@@ -149,7 +149,7 @@
     flex-wrap: wrap;
   }
 
-  .insta-btn, .telegram, .manga-btn {
+  .insta-btn, .telegram, .x-btn, .manga-btn {
     background: transparent;
     position: relative;
     padding: 12px 30px;
@@ -169,7 +169,7 @@
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
   }
 
-  .insta-btn::before, .telegram::before, .manga-btn::before {
+  .insta-btn::before, .telegram::before, .x-btn::before, .manga-btn::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -182,21 +182,21 @@
     transition: box-shadow 0.5s ease-out;
   }
 
-  .insta-btn:hover, .telegram:hover, .manga-btn:hover {
+  .insta-btn:hover, .telegram:hover, .x-btn:hover, .manga-btn:hover {
     color: #000;
     border-color: #fff;
     box-shadow: 0 0 25px rgba(255,255,255,0.8);
   }
 
-  .insta-btn:hover::before, .telegram:hover::before, .manga-btn:hover::before {
+  .insta-btn:hover::before, .telegram:hover::before, .x-btn:hover::before, .manga-btn:hover::before {
     box-shadow: inset 0 0 0 10em #fff;
   }
 
-  .insta-btn span, .telegram span {
+  .insta-btn span, .telegram span, .x-btn span {
     margin-left: 10px;
   }
 
-  .telegram svg, .insta-btn svg {
+  .telegram svg, .insta-btn svg, .x-btn svg {
     fill: currentColor;
     transition: fill 0.3s ease;
   }
@@ -228,7 +228,7 @@
       gap: 15px;
     }
 
-    .insta-btn, .telegram, .manga-btn {
+    .insta-btn, .telegram, .x-btn, .manga-btn {
       width: 240px;
     }
   }
@@ -266,11 +266,12 @@
   </div>
 </div>
 
+<!-- ✅ أزرار التواصل -->
 <div class="social-links">
   <a href="https://instagram.com/lufy" target="_blank" rel="noopener">
     <button class="insta-btn">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 ..."/>
+        <path d="M12 2.2c3.2 0 3.6.01 4.9.07 1.2.06 1.9.27 2.4.46.6.23 1.1.5 1.6.96.46.46.73.97.96 1.6.19.5.4 1.2.46 2.4.06 1.3.07 1.7.07 4.9s-.01 3.6-.07 4.9c-.06 1.2-.27 1.9-.46 2.4-.23.6-.5 1.1-.96 1.6-.46.46-.97.73-1.6.96-.5.19-1.2.4-2.4.46-1.3.06-1.7.07-4.9.07s-3.6-.01-4.9-.07c-1.2-.06-1.9-.27-2.4-.46a4.9 4.9 0 0 1-1.6-.96 4.9 4.9 0 0 1-.96-1.6c-.19-.5-.4-1.2-.46-2.4C2.21 15.6 2.2 15.2 2.2 12s.01-3.6.07-4.9c.06-1.2.27-1.9.46-2.4.23-.6.5-1.1.96-1.6.46-.46.97-.73 1.6-.96.5-.19 1.2-.4 2.4-.46C8.4 2.21 8.8 2.2 12 2.2zM12 5.7a6.3 6.3 0 1 0 0 12.6 6.3 6.3 0 0 0 0-12.6zm0 10.3a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-10.9a1.47 1.47 0 1 0 0 2.94 1.47 1.47 0 0 0 0-2.94z"/>
       </svg>
       <span>Instagram</span>
     </button>
@@ -278,10 +279,19 @@
 
   <a href="https://t.me/lufy" target="_blank" rel="noopener">
     <button class="telegram">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 26 26">
-        <path d="M2.14753 11.8099C7.3949 9.52374 ..."/>
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M9.04 14.54l-.39 5.45c.56 0 .81-.24 1.11-.52l2.66-2.54 5.53 4.05c1.02.56 1.74.26 2-.94l3.63-17.02c.37-1.74-.63-2.42-1.72-2l-21.28 8.2c-1.45.56-1.42 1.37-.25 1.73l5.43 1.7 12.62-7.96-9.34 9.35z"/>
       </svg>
       <span>Telegram</span>
+    </button>
+  </a>
+
+  <a href="https://x.com/lufymangadotorg" target="_blank" rel="noopener">
+    <button class="x-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M18.244 2h3.263l-7.13 8.157L22 22h-6.313l-4.958-6.47L4.86 22H1.6l7.637-8.74L2 2h6.49l4.473 5.897L18.244 2zm-1.142 18.4h1.808L7.14 3.5H5.21l11.892 16.9z"/>
+      </svg>
+      <span>X</span>
     </button>
   </a>
 

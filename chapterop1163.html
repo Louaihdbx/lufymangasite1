@@ -1,107 +1,3 @@
-<header>
-    <div class="logo">
-      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
-      <span>lufy manga</span>
-    </div>
-    <nav>
-      <ul><li><a href="index.html">Home</a></li></ul>
-    </nav>
-  </header>
-
-  <div class="chapter-toolbar">
-    <a href="chapterop1162.html">← Previous Chapter</a>
-
-    <div class="zoom-area">
-      <a href="#" id="firstPageBtn">Jump to First Page</a>
-      <div class="zoom-controls">
-        <button id="zoomOut">−</button>
-        <span id="zoomLevel">100%</span>
-        <button id="zoomIn">+</button>
-        <button id="resetZoom">Reset</button>
-      </div>
-      <a href="#" id="lastPageBtn">Jump to Last Page</a>
-    </div>
-
-    <a href="chapterop1164.html">Next Chapter →</a>
-  </div>
-
-  <main>
-    <h2>One Piece - Chapter 1163</h2>
-    <div class="chapter-pages" id="chapterPages">
-            <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng1/PAGE1.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng1/page2.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng1/page3.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng2/page4.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng2/page5.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng2/page6.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng3/page7.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng3/page8.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng3/page9.png" alt=""></div>
-       <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng4/page10.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng4/page11.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng4/page12.png" alt=""></div>
-       <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng5/page13.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng5/page14.png" alt=""></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163eng5/page15.png" alt=""></div>
-    </div>
-  </main>
-  <footer>
-    <a href="onepiecemanga.html">Back to Chapters</a> |
-    <a href="PrivacyPolicy.html">Privacy Policy</a>
-  </footer>
-
-  <script>
-  const zoomLevelDisplay = document.getElementById('zoomLevel');
-  const images = document.querySelectorAll('.chapter-pages img');
-  let zoom = 1;
-  let activeImage = null;
-
-  function getCenterImage() {
-    let middleY = window.scrollY + window.innerHeight / 2;
-    let closest = images[0];
-    let minDiff = Infinity;
-    images.forEach(img => {
-      const rect = img.getBoundingClientRect();
-      const center = rect.top + window.scrollY + rect.height / 2;
-      const diff = Math.abs(center - middleY);
-      if (diff < minDiff) {
-        minDiff = diff;
-        closest = img;
-      }
-    });
-    return closest;
-  }
-
-  function updateZoom() {
-    if (!activeImage) activeImage = getCenterImage();
-
-    images.forEach(img => {
-      if (img === activeImage) {
-        img.style.zIndex = 5;
-        img.style.position = 'relative';
-        img.style.transformOrigin = 'center center';
-        img.style.transform = scale(${zoom});
-      } else {
-        img.style.transform = 'scale(1)';
-        img.style.zIndex = 1;
-        img.style.position = 'relative';
-      }
-    });
-
-    zoomLevelDisplay.textContent = ${Math.round(zoom * 100)}%;
-  }
-
-  document.getElementById('zoomIn').onclick = () => { 
-    activeImage = getCenterImage();
-    zoom = Math.min(2.5, zoom + 0.1); 
-    updateZoom(); 
-  };
-
-  document.getElementById('zoomOut').onclick = () => { 
-    activeImage = getCenterImage();
-    zoom = Math.max(0.5, zoom - 0.1); 
-    updateZoom(); 
-  };
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -300,7 +196,112 @@
   </style>
 </head>
 <body>
-document.getElementById('resetZoom').onclick = () => { 
+<header>
+    <div class="logo">
+      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
+      <span>lufy manga</span>
+    </div>
+    <nav>
+      <ul><li><a href="index.html">Home</a></li></ul>
+    </nav>
+  </header>
+
+  <div class="chapter-toolbar">
+    <a href="chapterop1162.html">← Previous Chapter</a>
+
+    <div class="zoom-area">
+      <a href="#" id="firstPageBtn">Jump to First Page</a>
+      <div class="zoom-controls">
+        <button id="zoomOut">−</button>
+        <span id="zoomLevel">100%</span>
+        <button id="zoomIn">+</button>
+        <button id="resetZoom">Reset</button>
+      </div>
+      <a href="#" id="lastPageBtn">Jump to Last Page</a>
+    </div>
+
+    <a href="chapterop1164.html">Next Chapter →</a>
+  </div>
+
+  <main>
+    <h2>One Piece - Chapter 1163</h2>
+    <div class="chapter-pages" id="chapterPages">
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page1.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page2.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page3.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page4.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page5.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page6.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page7.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page8.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page9.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page10.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page12.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page13.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page14.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page15.jpg"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page16.jpg"></div>
+    </div>
+  </main>
+
+  <footer>
+    <a href="onepiecemanga.html">Back to Chapters</a> |
+    <a href="PrivacyPolicy.html">Privacy Policy</a>
+  </footer>
+
+  <script>
+  const zoomLevelDisplay = document.getElementById('zoomLevel');
+  const images = document.querySelectorAll('.chapter-pages img');
+  let zoom = 1;
+  let activeImage = null;
+
+  function getCenterImage() {
+    let middleY = window.scrollY + window.innerHeight / 2;
+    let closest = images[0];
+    let minDiff = Infinity;
+    images.forEach(img => {
+      const rect = img.getBoundingClientRect();
+      const center = rect.top + window.scrollY + rect.height / 2;
+      const diff = Math.abs(center - middleY);
+      if (diff < minDiff) {
+        minDiff = diff;
+        closest = img;
+      }
+    });
+    return closest;
+  }
+
+  function updateZoom() {
+    if (!activeImage) activeImage = getCenterImage();
+
+    images.forEach(img => {
+      if (img === activeImage) {
+        img.style.zIndex = 5; // أقل من الهيدر
+        img.style.position = 'relative';
+        img.style.transformOrigin = 'center center';
+        img.style.transform = scale(${zoom});
+      } else {
+        img.style.transform = 'scale(1)';
+        img.style.zIndex = 1;
+        img.style.position = 'relative';
+      }
+    });
+
+    zoomLevelDisplay.textContent = ${Math.round(zoom * 100)}%;
+  }
+
+  document.getElementById('zoomIn').onclick = () => { 
+    activeImage = getCenterImage();
+    zoom = Math.min(2.5, zoom + 0.1); 
+    updateZoom(); 
+  };
+document.getElementById('zoomOut').onclick = () => { 
+    activeImage = getCenterImage();
+    zoom = Math.max(0.5, zoom - 0.1); 
+    updateZoom(); 
+  };
+
+  document.getElementById('resetZoom').onclick = () => { 
     zoom = 1; 
     activeImage = null;
     updateZoom(); 

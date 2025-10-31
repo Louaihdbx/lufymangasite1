@@ -196,9 +196,10 @@
   </style>
 </head>
 <body>
-<header>
+  <header>
     <div class="logo">
-      <img src="mangafile/dstf234retyghj.png" alt="Logo">
+      <!-- رجّعت الامتداد إلى jpg كما في 1162 حتى يظهر الشعار -->
+      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
       <span>lufy manga</span>
     </div>
     <nav>
@@ -226,20 +227,21 @@
   <main>
     <h2>One Piece - Chapter 1163</h2>
     <div class="chapter-pages" id="chapterPages">
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/cover.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page1.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m22/page2.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m2/page3.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m3/page4.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m3/page5.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m44/page6.png"></div>
-      <div class="page"><img src="https://cdn.statically.io/gh/Louaihdbx/1163m45/main/page7.jpg"></div>
-      <div class="page"><img src="https://cdn.statically.io/gh/Louaihdbx/1163m55/main/page8.jpg"></div>
-      <div class="page"><img src="https://cdn.statically.io/gh/Louaihdbx/1163m56/main/page9.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m10/page14.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m6/page11.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m7/page12.png"></div>
-      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m7/page13.png"></div>
+      <!-- لم أغيّر روابط صور 1163 كما طلبت -->
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/cover.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m1/page1.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m22/page2.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m2/page3.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m3/page4.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m3/page5.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m44/page6.png" alt=""></div>
+      <div class="page"><img src="https://cdn.statically.io/gh/Louaihdbx/1163m45/main/page7.jpg" alt=""></div>
+      <div class="page"><img src="https://cdn.statically.io/gh/Louaihdbx/1163m55/main/page8.jpg" alt=""></div>
+      <div class="page"><img src="https://cdn.statically.io/gh/Louaihdbx/1163m56/main/page9.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m10/page14.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m6/page11.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m7/page12.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1163m7/page13.png" alt=""></div>
     </div>
   </main>
 
@@ -278,7 +280,8 @@
         img.style.zIndex = 5; // أقل من الهيدر
         img.style.position = 'relative';
         img.style.transformOrigin = 'center center';
-        img.style.transform = scale(${zoom});
+        // إصلاح template literal
+        img.style.transform = `scale(${zoom})`;
       } else {
         img.style.transform = 'scale(1)';
         img.style.zIndex = 1;
@@ -286,7 +289,8 @@
       }
     });
 
-    zoomLevelDisplay.textContent = ${Math.round(zoom * 100)}%;
+    // إصلاح template literal
+    zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
   }
 
   document.getElementById('zoomIn').onclick = () => { 
@@ -294,7 +298,8 @@
     zoom = Math.min(2.5, zoom + 0.1); 
     updateZoom(); 
   };
-document.getElementById('zoomOut').onclick = () => { 
+
+  document.getElementById('zoomOut').onclick = () => { 
     activeImage = getCenterImage();
     zoom = Math.max(0.5, zoom - 0.1); 
     updateZoom(); 

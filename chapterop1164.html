@@ -196,9 +196,10 @@
   </style>
 </head>
 <body>
-<header>
+  <header>
     <div class="logo">
-      <img src="mangafile/dstf234retyghj.png" alt="Logo">
+      <!-- نفس امتداد 1162 لضمان ظهور الشعار -->
+      <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
       <span>lufy manga</span>
     </div>
     <nav>
@@ -226,20 +227,20 @@
   <main>
     <h2>One Piece - Chapter 1164</h2>
     <div class="chapter-pages" id="chapterPages">
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/cover.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page1.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page2.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page3.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page4.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page5.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page6.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page7.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page8.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page9.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page10.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page11.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page12.png"></div>
-<div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page13.png"></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/cover.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page1.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page2.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page3.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page4.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page5.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page6.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page7.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page8.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page9.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page10.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page11.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page12.png" alt=""></div>
+      <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1164m1@main/page13.png" alt=""></div>
     </div>
   </main>
 
@@ -278,7 +279,7 @@
         img.style.zIndex = 5; // أقل من الهيدر
         img.style.position = 'relative';
         img.style.transformOrigin = 'center center';
-        img.style.transform = scale(${zoom});
+        img.style.transform = `scale(${zoom})`;
       } else {
         img.style.transform = 'scale(1)';
         img.style.zIndex = 1;
@@ -286,7 +287,7 @@
       }
     });
 
-    zoomLevelDisplay.textContent = ${Math.round(zoom * 100)}%;
+    zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
   }
 
   document.getElementById('zoomIn').onclick = () => { 
@@ -294,6 +295,7 @@
     zoom = Math.min(2.5, zoom + 0.1); 
     updateZoom(); 
   };
+
   document.getElementById('zoomOut').onclick = () => { 
     activeImage = getCenterImage();
     zoom = Math.max(0.5, zoom - 0.1); 

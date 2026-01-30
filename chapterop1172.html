@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5.0, minimum-scale=0.5">
+  <title>One Piece - Chapter 1172</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+      touch-action: pan-x pan-y;
+    }
+
+    header {
+      background: #000;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      color: white;
+    }
+
+    .logo img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .chapter-toolbar {
+      background: #111;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 50px;
+      z-index: 9;
+      border-bottom: 1px solid #222;
+      flex-wrap: nowrap;
+      gap: 10px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .chapter-toolbar::-webkit-scrollbar { display: none; }
+
+    .chapter-toolbar a {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 15px;
+      transition: background 0.3s, transform 0.2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .chapter-toolbar a:hover {
+      background: #333;
+      transform: scale(1.05);
+    }
+
+    .zoom-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .zoom-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #1a1a1a;
+      padding: 8px 12px;
+      border-radius: 10px;
+      justify-content: center;
+    }
+
+    .zoom-controls button {
+      background: #222;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .zoom-controls button:hover {
+      background: #444;
+    }
+
+    #zoomLevel {
+      font-size: 15px;
+      min-width: 50px;
+      text-align: center;
+    }
+
+    main {
+      flex: 1;
+      text-align: center;
+      background: #000;
+      padding-bottom: 40px;
+    }
+
+    h2 {
+      margin: 25px 0;
+      font-size: 26px;
+      color: #f5f5f5;
+    }
+
+    .chapter-pages {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .page {
+      width: 90%;
+      overflow: hidden;
+      border-radius: 5px;
+    }
+
+    .page img {
+      width: 100%;
+      height: auto;
+      display: block;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    footer {
+      background: #000;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      border-top: 1px solid #222;
+    }
+
+    footer a {
+      color: #aaa;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <img src="mangafile/dstf234retyghj.jpg" alt="Logo">
+    <span>lufy manga</span>
+  </div>
+  <nav>
+    <ul><li><a href="index.html">Home</a></li></ul>
+  </nav>
+</header>
+
+<div class="chapter-toolbar">
+  <a href="chapterop1171.html">← Previous Chapter</a>
+
+  <div class="zoom-area">
+    <a href="#" id="firstPageBtn">Jump to First Page</a>
+    <div class="zoom-controls">
+      <button id="zoomOut">−</button>
+      <span id="zoomLevel">100%</span>
+      <button id="zoomIn">+</button>
+      <button id="resetZoom">Reset</button>
+    </div>
+    <a href="#" id="lastPageBtn">Jump to Last Page</a>
+  </div>
+
+  <a href="chapterop1173.html">Next Chapter →</a>
+</div>
+
+<main>
+  <h2>One Piece - Chapter 1172</h2>
+  <div class="chapter-pages" id="chapterPages">
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/cover.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page1.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page2.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page3.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page4.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page5.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page6.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page7.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page8.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page9.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page10.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page11.png"></div>
+    <div class="page"><img src="https://cdn.jsdelivr.net/gh/Louaihdbx/1172m1@main/page12.png"></div>
+  </div>
+</main>
+
+<footer>
+  <a href="onepiecemanga.html">Back to Chapters</a> |
+  <a href="PrivacyPolicy.html">Privacy Policy</a>
+</footer>
+
+<script>
+const zoomLevelDisplay = document.getElementById('zoomLevel');
+const images = document.querySelectorAll('.chapter-pages img');
+let zoom = 1;
+let activeImage = null;
+
+function getCenterImage() {
+  let middleY = window.scrollY + window.innerHeight / 2;
+  let closest = images[0];
+  let minDiff = Infinity;
+  images.forEach(img => {
+    const rect = img.getBoundingClientRect();
+    const center = rect.top + window.scrollY + rect.height / 2;
+    const diff = Math.abs(center - middleY);
+    if (diff < minDiff) {
+      minDiff = diff;
+      closest = img;
+    }
+  });
+  return closest;
+}
+
+function updateZoom() {
+  if (!activeImage) activeImage = getCenterImage();
+  images.forEach(img => {
+    img.style.transform = img === activeImage ? `scale(${zoom})` : 'scale(1)';
+  });
+  zoomLevelDisplay.textContent = `${Math.round(zoom * 100)}%`;
+}
+
+document.getElementById('zoomIn').onclick = () => { zoom = Math.min(2.5, zoom + 0.1); updateZoom(); };
+document.getElementById('zoomOut').onclick = () => { zoom = Math.max(0.5, zoom - 0.1); updateZoom(); };
+document.getElementById('resetZoom').onclick = () => { zoom = 1; activeImage = null; updateZoom(); };
+</script>
+
+</body>
+</html>
